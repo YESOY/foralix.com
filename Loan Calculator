@@ -1,0 +1,162 @@
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Loan Repayment Calculator - Free Tool</title>
+        <meta name="description" content="Calculate your monthly loan payments instantly with this free online loan calculator. Easy, fast, and accurate.">
+        <style>
+          body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f4f6f8;
+            padding: 20px;
+            max-width: 500px;
+            margin: auto;
+            color: #333;
+          }
+          .container {
+            background: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+          }
+          h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+          }
+          input, button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+          }
+          button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+          }
+          button:hover {
+            background-color: #0056b3;
+          }
+          .result {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 18px;
+            text-align: center;
+          }
+          .footer {
+            text-align: center;
+            font-size: 12px;
+            margin-top: 40px;
+            color: #777;
+          }
+          .logo {
+            text-align: center;
+            margin-bottom: 10px;
+          }
+          .logo img {
+            width: 60px;
+          }
+          .share {
+            text-align: center;
+            margin-top: 20px;
+          }
+          .share a {
+            text-decoration: none;
+            color: #007BFF;
+            font-size: 14px;
+          }
+          .back-button {
+            display: inline-block;
+            background-color: #007BFF;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 30px;
+            transition: background 0.2s ease;
+          }
+
+          .back-button:hover {
+            background-color: #0056b3;
+          }
+          header {
+            text-align: center;
+            padding: 20px 10px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 30px;
+          }
+
+          header h1 {
+            margin: 0;
+            font-size: 26px;
+          }
+
+          header a {
+            color: #007BFF;
+            text-decoration: none;
+          }
+
+
+        </style>
+      </head>
+      <body>
+        <header>
+          <h1><a href="https://2a96be99...replit.dev">SmartCalcHub</a></h1>
+        </header>
+
+        <div class="container">
+          <div class="logo">
+            <img src="https://cdn-icons-png.flaticon.com/512/201/201623.png" alt="Loan Logo" />
+          </div>
+          <h1>Loan Repayment Calculator</h1>
+
+          <input type="number" id="amount" placeholder="Loan Amount ($)" />
+          <input type="number" id="rate" placeholder="Annual Interest Rate (%)" />
+          <input type="number" id="term" placeholder="Loan Term (Years)" />
+          <button onclick="calculateLoan()">Calculate</button>
+
+          <div class="result" id="result"></div>
+
+          <div class="share">
+            <p><a href="#" onclick="shareWhatsApp()">📤 Share this tool on WhatsApp</a></p>
+          </div>
+        </div>
+
+        <div class="footer">
+          &copy; 2025 LoanTools | All Rights Reserved
+        </div>
+
+        <script>
+          function calculateLoan() {
+            const amount = parseFloat(document.getElementById("amount").value);
+            const rate = parseFloat(document.getElementById("rate").value) / 100 / 12;
+            const term = parseFloat(document.getElementById("term").value) * 12;
+
+            if (isNaN(amount) || isNaN(rate) || isNaN(term)) {
+              document.getElementById("result").textContent = "Please enter valid numbers.";
+              return;
+            }
+
+            const payment = (amount * rate) / (1 - Math.pow(1 + rate, -term));
+            document.getElementById("result").textContent = `Your estimated monthly payment is $${payment.toFixed(2)}`;
+          }
+
+          function shareWhatsApp() {
+            const url = window.location.href;
+            const text = "Check out this free Loan Repayment Calculator: " + url;
+            const whatsappUrl = "https://wa.me/?text=" + encodeURIComponent(text);
+            window.open(whatsappUrl, "_blank");
+          }
+        </script>
+        <div style="text-align: center; margin-top: 40px;">
+          <a href="https://2a96be99-de2f-425a-935f-2c5080d1895e-00-3pc5nkd2xkt52.kirk.replit.dev/" class="back-button">← Back to Homepage</a>
+        </div>
+
+      </body>
+      </html>
