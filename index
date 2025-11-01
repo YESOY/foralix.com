@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SmartCalcHub - Free Online Calculators</title>
+  <meta name="description" content="SmartCalcHub offers free, fast, and easy-to-use online financial calculators including loan repayment tools, savings estimators, and more.">
+  <style>
+
+    footer {
+      margin-top: 60px;
+      padding: 30px 20px;
+      background-color: #f0f2f5;
+      text-align: center;
+      font-size: 14px;
+      border-top: 1px solid #ddd;
+    }
+
+    .footer-links {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #007BFF;
+      font-weight: 500;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-note {
+      color: #888;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f2f4f8;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #007BFF;
+      margin-bottom: 40px;
+    }
+
+    .tools {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .tool-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 20px;
+      text-decoration: none;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border-left: 5px solid #007BFF;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .tool-card h2 {
+      margin: 0 0 10px;
+      color: #007BFF;
+      font-size: 20px;
+    }
+
+    .tool-card p {
+      margin: 0;
+      font-size: 15px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>SmartCalcHub</h1>
+    
+  </header>
+
+  <div class="tools">
+    <a href="https://a21c2c1c-055e-43f5-92c0-e2681d6df22d-00-3d5nb3pbtvz6t.spock.replit.dev/" class="tool-card" target="_blank">
+      <h2>Loan Calculator</h2>
+      <p>Calculate monthly payments based on interest and term.</p>
+    </a>
+
+    <a href="https://42bcc1db-7f6b-4c75-967e-7bac43bbceb3-00-160mutdyplmbb.spock.replit.dev/" class="tool-card" target="_blank">
+      <h2>Savings Growth Calculator</h2>
+      <p>See how your money grows with monthly deposits and compound interest over time.</p>
+    </a>
+  </div>
+
+  
+  <footer>
+    <div class="footer-links">
+      <a href="https://4c261a5d-c62a-46e7-b87c-7944c98d7e6a-00-23q6hhpucmjwe.worf.replit.dev/" target="_blank">About</a>
+      <a href="https://12226115-338b-46f9-9154-f700c5596458-00-osfwqqjgcs3u.spock.replit.dev/" target="_blank">Privacy</a>
+      <a href="https://b271506c-24e4-499f-bcd0-8f2041a7fc0e-00-1espabmdhmi84.janeway.replit.dev/" target="_blank">Contact</a>
+    </div>
+    <div class="footer-note">© 2025 SmartCalcHub. All rights reserved.</div>
+  </footer>
+
+</body>
+</html>
