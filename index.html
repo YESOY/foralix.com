@@ -5,36 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SmartCalcHub - Free Online Calculators</title>
   <meta name="description" content="SmartCalcHub offers free, fast, and easy-to-use online financial calculators including loan repayment tools, savings estimators, and more.">
+  
   <style>
-
-    footer {
-      margin-top: 60px;
-      padding: 30px 20px;
-      background-color: #f0f2f5;
-      text-align: center;
-      font-size: 14px;
-      border-top: 1px solid #ddd;
-    }
-
-    .footer-links {
-      margin-bottom: 10px;
-    }
-
-    .footer-links a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: #007BFF;
-      font-weight: 500;
-    }
-
-    .footer-links a:hover {
-      text-decoration: underline;
-    }
-
-    .footer-note {
-      color: #888;
-    }
-
     body {
       font-family: 'Segoe UI', sans-serif;
       background: #f2f4f8;
@@ -65,6 +37,7 @@
       box-shadow: 0 6px 16px rgba(0,0,0,0.06);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       border-left: 5px solid #007BFF;
+      color: inherit;
     }
 
     .tool-card:hover {
@@ -83,34 +56,60 @@
       font-size: 15px;
       color: #555;
     }
+
+    footer {
+      margin-top: 60px;
+      padding: 30px 20px;
+      background-color: #f0f2f5;
+      text-align: center;
+      font-size: 14px;
+      border-top: 1px solid #ddd;
+    }
+
+    .footer-links a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #007BFF;
+      font-weight: 500;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-note {
+      color: #888;
+    }
   </style>
 </head>
+
 <body>
 
   <header>
     <h1>SmartCalcHub</h1>
-    
   </header>
 
   <div class="tools">
-    <a href="https://a21c2c1c-055e-43f5-92c0-e2681d6df22d-00-3d5nb3pbtvz6t.spock.replit.dev/" class="tool-card" target="_blank">
+
+    <!-- ✅ LOCAL loan calculator -->
+    <a href="Loan.html" class="tool-card">
       <h2>Loan Calculator</h2>
       <p>Calculate monthly payments based on interest and term.</p>
     </a>
 
-    <a href="https://42bcc1db-7f6b-4c75-967e-7bac43bbceb3-00-160mutdyplmbb.spock.replit.dev/" class="tool-card" target="_blank">
+    <!-- ⚠️ This tool needs to be imported into GitHub Pages -->
+    <a href="#" class="tool-card">
       <h2>Savings Growth Calculator</h2>
-      <p>See how your money grows with monthly deposits and compound interest over time.</p>
+      <p>Coming soon: a savings and compound interest tool.</p>
     </a>
+
   </div>
 
-  
   <footer>
     <div class="footer-links">
       <a href="About.html">About Us</a>
       <a href="Contact.html">Contact Us</a>
       <a href="Privacy.html">Privacy Policy</a>
-      <a href="Loan.html">Loan Calculator</a>
     </div>
     <div class="footer-note">© 2025 SmartCalcHub. All rights reserved.</div>
   </footer>
