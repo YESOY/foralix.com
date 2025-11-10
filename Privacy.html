@@ -4,48 +4,609 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Privacy Policy - SmartCalcHub</title>
+  <meta name="description" content="SmartCalcHub Privacy Policy - Learn how we protect your privacy and handle your data with transparency and security.">
   <style>
+    :root {
+      --brand-primary: #007BFF;
+      --brand-primary-dark: #0056b3;
+      --brand-gradient: linear-gradient(135deg, #007BFF 0%, #0056b3 100%);
+      --background: #f8fafc;
+      --surface: #ffffff;
+      --text-primary: #1e293b;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --radius: 12px;
+      --radius-lg: 20px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
+      background: var(--background);
+      color: var(--text-primary);
+      line-height: 1.7;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1000px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* Enhanced Header */
+    .header {
+      text-align: center;
       padding: 40px 20px;
-      max-width: 800px;
-      margin: auto;
-      background: #f8f9fa;
-      color: #333;
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
     }
-    h1 {
-      color: #007BFF;
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--brand-gradient);
     }
-    a {
-      color: #007BFF;
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand-logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      background: var(--brand-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3);
+      transition: var(--transition);
+    }
+
+    .brand-logo:hover {
+      transform: scale(1.05) rotate(5deg);
+    }
+
+    .logo-icon {
+      font-size: 36px;
+      color: white;
+      font-weight: bold;
+    }
+
+    .brand-text {
+      text-align: left;
+    }
+
+    .header-title {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+
+    .header-subtitle {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-top: 8px;
+    }
+
+    .header-link {
       text-decoration: none;
+      color: inherit;
+    }
+
+    /* Main Content */
+    .main-content {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 50px;
+      margin-bottom: 40px;
+      position: relative;
+      border: 1px solid var(--border-light);
+    }
+
+    .main-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--brand-gradient);
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .page-title {
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .last-updated {
+      color: var(--text-muted);
+      font-size: 1rem;
+      font-weight: 500;
+      background: #f8fafc;
+      padding: 8px 16px;
+      border-radius: var(--radius);
+      display: inline-block;
+    }
+
+    /* Content Sections */
+    .content-section {
+      margin-bottom: 40px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid var(--border-light);
+    }
+
+    .section-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--brand-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .section-content {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    /* Highlight Boxes */
+    .privacy-highlight {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-left: 4px solid var(--brand-primary);
+      padding: 25px;
+      border-radius: var(--radius);
+      margin: 25px 0;
+    }
+
+    .highlight-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .highlight-content {
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* Privacy Features Grid */
+    .privacy-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin: 40px 0;
+    }
+
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      padding: 30px 25px;
+      text-align: center;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--brand-primary);
+    }
+
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      background: var(--brand-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: white;
+      font-size: 24px;
+    }
+
+    .feature-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .feature-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Links */
+    .policy-link {
+      color: var(--brand-primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .policy-link:hover {
+      color: var(--brand-primary-dark);
+      text-decoration: underline;
+    }
+
+    /* Back Button */
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--surface);
+      color: var(--text-primary);
+      padding: 16px 32px;
+      text-decoration: none;
+      border-radius: var(--radius);
+      margin-top: 40px;
+      transition: var(--transition);
+      font-weight: 600;
+      text-align: center;
+      border: 2px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .back-button:hover {
+      background: var(--brand-primary);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--brand-primary);
+    }
+
+    .button-container {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 30px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-light);
+      width: 100%;
+    }
+
+    /* Lists */
+    ul {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      body {
+        padding: 16px;
+      }
+      
+      .main-content {
+        padding: 30px 20px;
+      }
+      
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .brand-text {
+        text-align: center;
+      }
+      
+      .page-title {
+        font-size: 1.75rem;
+      }
+      
+      .privacy-features {
+        grid-template-columns: 1fr;
+      }
+      
+      .section-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-title {
+        font-size: 2rem;
+      }
+      
+      .main-content {
+        padding: 25px 16px;
+      }
+      
+      .section-title {
+        font-size: 1.3rem;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Privacy Policy</h1>
-  <p><strong>Last updated:</strong> July 11, 2025</p>
+  <div class="container">
+    <header class="header">
+      <div class="header-content">
+        <div class="brand-logo">
+          <span class="logo-icon">∑</span>
+        </div>
+        <div class="brand-text">
+          <a href="index.html" class="header-link">
+            <h1 class="header-title">SmartCalcHub</h1>
+            <div class="header-subtitle">Professional Financial Calculators</div>
+          </a>
+        </div>
+      </div>
+    </header>
 
-  <p>At SmartCalcHub, we value your privacy. This policy explains how we collect, use, and protect your information.</p>
+    <main class="main-content">
+      <div class="page-header">
+        <h1 class="page-title">Privacy Policy</h1>
+        <div class="last-updated">
+          <strong>Last updated:</strong> July 11, 2025
+        </div>
+      </div>
 
-  <h2>1. Information We Collect</h2>
-  <p>We do not collect any personal information directly. Our calculators run entirely in your browser.</p>
+      <div class="content-section">
+        <div class="section-header">
+          <div class="section-number">1</div>
+          <h2 class="section-title">Our Commitment to Your Privacy</h2>
+        </div>
+        <p class="section-content">
+          At SmartCalcHub, we are deeply committed to protecting your privacy and ensuring the security of your information. 
+          We believe transparency about data practices builds trust, and we've designed our platform with your privacy as a fundamental principle.
+        </p>
+        
+        <div class="privacy-highlight">
+          <div class="highlight-title">🔒 Core Privacy Principle</div>
+          <div class="highlight-content">
+            Your financial calculations and personal data never leave your device. All computations happen locally in your browser, 
+            ensuring complete privacy and security for your sensitive financial information.
+          </div>
+        </div>
+      </div>
 
-  <h2>2. Cookies</h2>
-  <p>We may use third-party tools like Google AdSense that use cookies to show relevant ads. These cookies do not personally identify you.</p>
+      <div class="content-section">
+        <div class="section-header">
+          <div class="section-number">2</div>
+          <h2 class="section-title">Information We Collect</h2>
+        </div>
+        <p class="section-content">
+          We operate on a strict privacy-first approach. Our calculators run entirely in your browser, which means:
+        </p>
+        
+        <div class="privacy-features">
+          <div class="feature-card">
+            <div class="feature-icon">🚫</div>
+            <h3 class="feature-title">No Personal Data</h3>
+            <p class="feature-description">
+              We do not collect, store, or process any personal identification information.
+            </p>
+          </div>
 
-  <h2>3. Third-Party Services</h2>
-  <p>We may use Google AdSense or analytics tools in the future. These services may collect anonymized data. You can review <a href="https://policies.google.com/technologies/ads" target="_blank">Google’s Privacy Policy here</a>.</p>
+          <div class="feature-card">
+            <div class="feature-icon">💻</div>
+            <h3 class="feature-title">Local Processing</h3>
+            <p class="feature-description">
+              All calculations happen on your device. Your data never reaches our servers.
+            </p>
+          </div>
 
-  <h2>4. Data Protection</h2>
-  <p>Since we don’t store user data, there is no risk of your data being shared or exposed.</p>
+          <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3 class="feature-title">No Account Required</h3>
+            <p class="feature-description">
+              Use our calculators immediately without creating an account or providing any information.
+            </p>
+          </div>
+        </div>
+      </div>
 
-  <h2>5. Contact</h2>
-  <p>If you have any questions, contact us at: <a href="mailto:your@email.com">your@email.com</a></p>
+      <div class="content-section">
+        <div class="section-header">
+          <div class="section-number">3</div>
+          <h2 class="section-title">Cookies & Tracking Technologies</h2>
+        </div>
+        <p class="section-content">
+          To support our free service and continue providing valuable tools, we may use third-party services that employ cookies:
+        </p>
+        
+        <div class="privacy-highlight">
+          <div class="highlight-title">🍪 Advertising Cookies</div>
+          <div class="highlight-content">
+            We may use Google AdSense to display relevant advertisements. These services use cookies to serve ads based on your 
+            browsing behavior, but they do not personally identify you. You can control advertising preferences through 
+            <a href="https://adssettings.google.com" class="policy-link" target="_blank" rel="noopener">Google's Ad Settings</a>.
+          </div>
+        </div>
+      </div>
 
-  <p>By using SmartCalcHub, you agree to this privacy policy.</p>
+      <div class="content-section">
+        <div class="section-header">
+          <div class="section-number">4</div>
+          <h2 class="section-title">Third-Party Services</h2>
+        </div>
+        <p class="section-content">
+          We maintain partnerships with trusted third-party services to enhance your experience while prioritizing your privacy:
+        </p>
+        
+        <ul>
+          <li><strong>Google AdSense:</strong> For serving relevant advertisements</li>
+          <li><strong>Analytics Services:</strong> To understand usage patterns and improve our tools (anonymous data only)</li>
+          <li><strong>Content Delivery Networks:</strong> To ensure fast loading times worldwide</li>
+        </ul>
+        
+        <p class="section-content">
+          You can review <a href="https://policies.google.com/technologies/ads" class="policy-link" target="_blank" rel="noopener">Google's Privacy Policy here</a> to understand how they handle data.
+        </p>
+      </div>
 
-  </p>
-  <p><a href="index.html">← Back to homepage</a>
+      <div class="content-section">
+        <div class="section-header">
+          <div class="section-number">5</div>
+          <h2 class="section-title">Data Protection & Security</h2>
+        </div>
+        <p class="section-content">
+          Your security is our priority. We've implemented multiple layers of protection:
+        </p>
+        
+        <div class="privacy-highlight">
+          <div class="highlight-title">🛡️ Security Assurance</div>
+          <div class="highlight-content">
+            Since we don't store user data on our servers, there is virtually no risk of your personal or financial information 
+            being exposed, shared, or compromised through our platform. Your privacy is protected by design.
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <div class="section-header">
+          <div class="section-number">6</div>
+          <h2 class="section-title">Your Rights & Choices</h2>
+        </div>
+        <p class="section-content">
+          You maintain complete control over your privacy while using SmartCalcHub:
+        </p>
+        
+        <ul>
+          <li><strong>Browser Controls:</strong> Manage cookies through your browser settings</li>
+          <li><strong>Ad Preferences:</strong> Opt out of personalized advertising through provider settings</li>
+          <li><strong>No Tracking:</strong> Use our core calculator functions without any data collection</li>
+        </ul>
+      </div>
+
+      <div class="content-section">
+        <div class="section-header">
+          <div class="section-number">7</div>
+          <h2 class="section-title">Policy Updates</h2>
+        </div>
+        <p class="section-content">
+          We may update this Privacy Policy to reflect changes in our practices or services. We will notify users of any 
+          material changes by updating the "Last updated" date at the top of this policy. Continued use of SmartCalcHub 
+          after changes constitutes acceptance of the updated policy.
+        </p>
+      </div>
+
+      <div class="content-section">
+        <div class="section-header">
+          <div class="section-number">8</div>
+          <h2 class="section-title">Contact Information</h2>
+        </div>
+        <p class="section-content">
+          If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, 
+          please don't hesitate to contact us:
+        </p>
+        
+        <div class="privacy-highlight">
+          <div class="highlight-title">📧 Get In Touch</div>
+          <div class="highlight-content">
+            Email: <a href="mailto:smartcalchub@gmail.com" class="policy-link">smartcalchub@gmail.com</a><br>
+            We typically respond to privacy-related inquiries within 24 hours.
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <div class="privacy-highlight" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left-color: #22c55e;">
+          <div class="highlight-title">✅ Agreement</div>
+          <div class="highlight-content">
+            By using SmartCalcHub, you acknowledge that you have read, understood, and agree to the terms outlined in this Privacy Policy. 
+            We're committed to maintaining your trust through transparent and responsible data practices.
+          </div>
+        </div>
+      </div>
+
+      <div class="button-container">
+        <a href="index.html" class="back-button">
+          ← Back to Homepage
+        </a>
+      </div>
+    </main>
+
+    <footer class="footer">
+      © 2025 SmartCalcHub • Protecting Your Privacy Through Transparent Practices
+    </footer>
+  </div>
+
+  <script>
+    // Simple initialization without complex animations that might cause issues
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Privacy Policy page loaded successfully');
+    });
+  </script>
 </body>
 </html>
