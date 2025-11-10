@@ -1,161 +1,523 @@
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Loan Repayment Calculator - Free Tool</title>
-        <meta name="description" content="Calculate your monthly loan payments instantly with this free online loan calculator. Easy, fast, and accurate.">
-        <style>
-          body {
-            font-family: 'Segoe UI', sans-serif;
-            background: #f4f6f8;
-            padding: 20px;
-            max-width: 500px;
-            margin: auto;
-            color: #333;
-          }
-          .container {
-            background: #fff;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-          }
-          h1 {
-            text-align: center;
-            font-size: 24px;
-            margin-bottom: 20px;
-          }
-          input, button {
-            width: 100%;
-            padding: 12px;
-            margin-top: 10px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-          }
-          button {
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            cursor: pointer;
-          }
-          button:hover {
-            background-color: #0056b3;
-          }
-          .result {
-            margin-top: 20px;
-            font-weight: bold;
-            font-size: 18px;
-            text-align: center;
-          }
-          .footer {
-            text-align: center;
-            font-size: 12px;
-            margin-top: 40px;
-            color: #777;
-          }
-          .logo {
-            text-align: center;
-            margin-bottom: 10px;
-          }
-          .logo img {
-            width: 60px;
-          }
-          .share {
-            text-align: center;
-            margin-top: 20px;
-          }
-          .share a {
-            text-decoration: none;
-            color: #007BFF;
-            font-size: 14px;
-          }
-          .back-button {
-            display: inline-block;
-            background-color: #007BFF;
-            color: white;
-            padding: 12px 24px;
-            text-decoration: none;
-            border-radius: 8px;
-            margin-top: 30px;
-            transition: background 0.2s ease;
-          }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loan Repayment Calculator - SmartCalcHub</title>
+  <meta name="description" content="Calculate your monthly loan payments instantly with this free online loan calculator. Easy, fast, and accurate.">
+  <style>
+    :root {
+      --brand-primary: #007BFF;
+      --brand-primary-dark: #0056b3;
+      --background: #f4f6f8;
+      --surface: #ffffff;
+      --text-primary: #333;
+      --text-secondary: #555;
+      --text-muted: #777;
+      --border: #ccc;
+      --border-light: #e5e7eb;
+      --shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      --radius: 8px;
+      --radius-lg: 15px;
+      --transition: all 0.2s ease;
+    }
 
-          .back-button:hover {
-            background-color: #0056b3;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
+      background: var(--background);
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding: 20px;
+      max-width: 500px;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 20px 10px;
+      background-color: #f8f9fa;
+      border-bottom: 1px solid var(--border-light);
+      margin-bottom: 30px;
+      border-radius: var(--radius-lg);
+    }
+
+    .header-title {
+      margin: 0;
+      font-size: 26px;
+    }
+
+    .header-link {
+      color: var(--brand-primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .header-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Main Container */
+    .container {
+      background: var(--surface);
+      padding: 25px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      flex-grow: 1;
+    }
+
+    /* Logo */
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo-image {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      background: rgba(0, 123, 255, 0.1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+
+    /* Calculator Title */
+    .calculator-title {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: var(--text-primary);
+    }
+
+    /* Form Elements */
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 12px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      font-size: 16px;
+      transition: var(--transition);
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--brand-primary);
+      box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+    }
+
+    .form-input.error {
+      border-color: #dc3545;
+    }
+
+    .error-message {
+      color: #dc3545;
+      font-size: 14px;
+      margin-top: 4px;
+      display: none;
+    }
+
+    /* Buttons */
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: var(--radius);
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-primary {
+      background-color: var(--brand-primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--brand-primary-dark);
+    }
+
+    .btn-secondary {
+      background-color: #6c757d;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background-color: #545b62;
+    }
+
+    /* Results */
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+      text-align: center;
+      padding: 16px;
+      border-radius: var(--radius);
+      background-color: #f8f9fa;
+      display: none;
+    }
+
+    .result.success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .result.error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    /* Additional Results */
+    .additional-results {
+      margin-top: 20px;
+      display: none;
+    }
+
+    .result-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .result-item:last-child {
+      border-bottom: none;
+    }
+
+    .result-label {
+      color: var(--text-secondary);
+    }
+
+    .result-value {
+      font-weight: 600;
+    }
+
+    /* Share Section */
+    .share {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .share-link {
+      text-decoration: none;
+      color: var(--brand-primary);
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+    }
+
+    .share-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      margin-top: 40px;
+      color: var(--text-muted);
+    }
+
+    /* Back Button */
+    .back-button {
+      display: inline-block;
+      background-color: var(--brand-primary);
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: var(--radius);
+      margin-top: 30px;
+      transition: var(--transition);
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .back-button:hover {
+      background-color: var(--brand-primary-dark);
+      text-decoration: none;
+      color: white;
+    }
+
+    .button-container {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 480px) {
+      body {
+        padding: 16px;
+      }
+      
+      .container {
+        padding: 20px;
+      }
+      
+      .calculator-title {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header" role="banner">
+    <h1 class="header-title">
+      <a href="index.html" class="header-link">SmartCalcHub</a>
+    </h1>
+  </header>
+
+  <main class="container" role="main">
+    <div class="logo">
+      <div class="logo-image" aria-hidden="true">💰</div>
+    </div>
+    
+    <h1 class="calculator-title">Loan Repayment Calculator</h1>
+
+    <div class="form-group">
+      <label for="amount" class="form-label">Loan Amount ($)</label>
+      <input type="number" id="amount" class="form-input" placeholder="Enter loan amount" min="0" step="0.01" />
+      <div id="amount-error" class="error-message">Please enter a valid loan amount</div>
+    </div>
+
+    <div class="form-group">
+      <label for="rate" class="form-label">Annual Interest Rate (%)</label>
+      <input type="number" id="rate" class="form-input" placeholder="Enter annual interest rate" min="0" step="0.01" />
+      <div id="rate-error" class="error-message">Please enter a valid interest rate</div>
+    </div>
+
+    <div class="form-group">
+      <label for="term" class="form-label">Loan Term (Years)</label>
+      <input type="number" id="term" class="form-input" placeholder="Enter loan term in years" min="1" step="1" />
+      <div id="term-error" class="error-message">Please enter a valid loan term (minimum 1 year)</div>
+    </div>
+
+    <button id="calculate-btn" class="btn btn-primary">Calculate Monthly Payment</button>
+
+    <div id="result" class="result" role="status" aria-live="polite"></div>
+
+    <div id="additional-results" class="additional-results">
+      <div class="result-item">
+        <span class="result-label">Total Payments:</span>
+        <span class="result-value" id="total-payments">—</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Total Interest:</span>
+        <span class="result-value" id="total-interest">—</span>
+      </div>
+    </div>
+
+    <div class="share">
+      <a href="#" id="share-link" class="share-link">
+        <span>📤</span> Share this tool on WhatsApp
+      </a>
+    </div>
+  </main>
+
+  <div class="button-container">
+    <a href="index.html" class="back-button">← Back to Homepage</a>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    &copy; 2025 SmartCalcHub | All Rights Reserved
+  </footer>
+
+  <script>
+    // DOM utility functions
+    const $ = (id) => document.getElementById(id);
+    const $$ = (selector) => document.querySelectorAll(selector);
+    
+    // Format currency
+    const formatCurrency = (amount) => {
+      return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2
+      }).format(amount);
+    };
+
+    // Input validation
+    const validateInputs = () => {
+      const amount = parseFloat($('amount').value);
+      const rate = parseFloat($('rate').value);
+      const term = parseFloat($('term').value);
+      
+      let isValid = true;
+      
+      // Reset error states
+      $$('.error-message').forEach(el => el.style.display = 'none');
+      $$('.form-input').forEach(el => el.classList.remove('error'));
+      
+      // Validate loan amount
+      if (isNaN(amount) || amount <= 0) {
+        $('amount-error').style.display = 'block';
+        $('amount').classList.add('error');
+        isValid = false;
+      }
+      
+      // Validate interest rate
+      if (isNaN(rate) || rate < 0) {
+        $('rate-error').style.display = 'block';
+        $('rate').classList.add('error');
+        isValid = false;
+      }
+      
+      // Validate loan term
+      if (isNaN(term) || term < 1) {
+        $('term-error').style.display = 'block';
+        $('term').classList.add('error');
+        isValid = false;
+      }
+      
+      return isValid;
+    };
+
+    // Calculate loan payment
+    const calculateLoanPayment = () => {
+      if (!validateInputs()) return null;
+      
+      const amount = parseFloat($('amount').value);
+      const annualRate = parseFloat($('rate').value) / 100;
+      const termYears = parseFloat($('term').value);
+      
+      const monthlyRate = annualRate / 12;
+      const termMonths = termYears * 12;
+      
+      // Handle zero interest rate
+      if (monthlyRate === 0) {
+        return amount / termMonths;
+      }
+      
+      // Standard loan payment formula
+      const monthlyPayment = (amount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -termMonths));
+      
+      return monthlyPayment;
+    };
+
+    // Calculate additional loan details
+    const calculateLoanDetails = (monthlyPayment) => {
+      const amount = parseFloat($('amount').value);
+      const termYears = parseFloat($('term').value);
+      const termMonths = termYears * 12;
+      
+      const totalPayments = monthlyPayment * termMonths;
+      const totalInterest = totalPayments - amount;
+      
+      return {
+        totalPayments,
+        totalInterest
+      };
+    };
+
+    // Display results
+    const displayResults = (monthlyPayment, loanDetails) => {
+      const resultElement = $('result');
+      const additionalResults = $('additional-results');
+      
+      if (monthlyPayment === null) {
+        resultElement.textContent = 'Please fix the errors above to calculate your payment.';
+        resultElement.className = 'result error';
+        resultElement.style.display = 'block';
+        additionalResults.style.display = 'none';
+        return;
+      }
+      
+      resultElement.textContent = `Your estimated monthly payment is ${formatCurrency(monthlyPayment)}`;
+      resultElement.className = 'result success';
+      resultElement.style.display = 'block';
+      
+      // Display additional results
+      $('total-payments').textContent = formatCurrency(loanDetails.totalPayments);
+      $('total-interest').textContent = formatCurrency(loanDetails.totalInterest);
+      additionalResults.style.display = 'block';
+    };
+
+    // Main calculation function
+    const calculateLoan = () => {
+      const monthlyPayment = calculateLoanPayment();
+      const loanDetails = monthlyPayment ? calculateLoanDetails(monthlyPayment) : null;
+      displayResults(monthlyPayment, loanDetails);
+    };
+
+    // Share on WhatsApp
+    const shareOnWhatsApp = () => {
+      const url = window.location.href;
+      const text = "Check out this free Loan Repayment Calculator from SmartCalcHub: " + url;
+      const whatsappUrl = "https://wa.me/?text=" + encodeURIComponent(text);
+      window.open(whatsappUrl, "_blank");
+    };
+
+    // Reset form
+    const resetForm = () => {
+      $('amount').value = '';
+      $('rate').value = '';
+      $('term').value = '';
+      $('result').style.display = 'none';
+      $('additional-results').style.display = 'none';
+      
+      // Reset error states
+      $$('.error-message').forEach(el => el.style.display = 'none');
+      $$('.form-input').forEach(el => el.classList.remove('error'));
+      
+      // Focus on first input
+      $('amount').focus();
+    };
+
+    // Initialize event listeners
+    const initializeEventListeners = () => {
+      $('calculate-btn').addEventListener('click', calculateLoan);
+      $('share-link').addEventListener('click', shareOnWhatsApp);
+      
+      // Calculate on Enter key in any input
+      $$('.form-input').forEach(input => {
+        input.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            calculateLoan();
           }
-          header {
-            text-align: center;
-            padding: 20px 10px;
-            background-color: #f8f9fa;
-            border-bottom: 1px solid #ddd;
-            margin-bottom: 30px;
-          }
+        });
+        
+        // Clear errors when user starts typing
+        input.addEventListener('input', () => {
+          input.classList.remove('error');
+          $(`${input.id}-error`).style.display = 'none';
+        });
+      });
+    };
 
-          header h1 {
-            margin: 0;
-            font-size: 26px;
-          }
+    // Initialize the application
+    const init = () => {
+      initializeEventListeners();
+      console.log('Loan Calculator initialized');
+    };
 
-          header a {
-            color: #007BFF;
-            text-decoration: none;
-          }
-
-
-        </style>
-      </head>
-      <body>
-        <header>
-            <h1><a href="index.html">SmartCalcHub</a></h1>
-        </header>
-        <div class="container">
-          <div class="logo">
-            <img src="https://cdn-icons-png.flaticon.com/512/201/201623.png" alt="Loan Logo" />
-          </div>
-          <h1>Loan Repayment Calculator</h1>
-
-          <input type="number" id="amount" placeholder="Loan Amount ($)" />
-          <input type="number" id="rate" placeholder="Annual Interest Rate (%)" />
-          <input type="number" id="term" placeholder="Loan Term (Years)" />
-          <button onclick="calculateLoan()">Calculate</button>
-
-          <div class="result" id="result"></div>
-
-          <div class="share">
-            <p><a href="#" onclick="shareWhatsApp()">📤 Share this tool on WhatsApp</a></p>
-          </div>
-        </div>
-
-        <div class="footer">
-          &copy; 2025 LoanTools | All Rights Reserved
-        </div>
-
-        <script>
-          function calculateLoan() {
-            const amount = parseFloat(document.getElementById("amount").value);
-            const rate = parseFloat(document.getElementById("rate").value) / 100 / 12;
-            const term = parseFloat(document.getElementById("term").value) * 12;
-
-            if (isNaN(amount) || isNaN(rate) || isNaN(term)) {
-              document.getElementById("result").textContent = "Please enter valid numbers.";
-              return;
-            }
-
-            const payment = (amount * rate) / (1 - Math.pow(1 + rate, -term));
-            document.getElementById("result").textContent = `Your estimated monthly payment is $${payment.toFixed(2)}`;
-          }
-
-          function shareWhatsApp() {
-            const url = window.location.href;
-            const text = "Check out this free Loan Repayment Calculator: " + url;
-            const whatsappUrl = "https://wa.me/?text=" + encodeURIComponent(text);
-            window.open(whatsappUrl, "_blank");
-          }
-        </script>
-        <div style="text-align: center; margin-top: 40px;">
-          <a href="index.html" class="back-button">←Back to Homepage</a>
-        </div>
-
-      </body>
-      </html>
+    // Start when DOM is loaded
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
