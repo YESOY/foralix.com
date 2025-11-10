@@ -9,17 +9,19 @@
     :root {
       --brand-primary: #007BFF;
       --brand-primary-dark: #0056b3;
-      --background: #f4f6f8;
+      --brand-gradient: linear-gradient(135deg, #007BFF 0%, #0056b3 100%);
+      --background: #f8fafc;
       --surface: #ffffff;
-      --text-primary: #333;
-      --text-secondary: #555;
-      --text-muted: #777;
-      --border: #ccc;
-      --border-light: #e5e7eb;
-      --shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-      --radius: 8px;
-      --radius-lg: 15px;
-      --transition: all 0.2s ease;
+      --text-primary: #1e293b;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --radius: 12px;
+      --radius-lg: 20px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     * {
@@ -29,7 +31,7 @@
     }
 
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
       background: var(--background);
       color: var(--text-primary);
       line-height: 1.6;
@@ -41,167 +43,274 @@
       flex-direction: column;
     }
 
-    /* Header */
+    /* Enhanced Header */
     .header {
       text-align: center;
-      padding: 20px 10px;
-      background-color: #f8f9fa;
-      border-bottom: 1px solid var(--border-light);
-      margin-bottom: 30px;
+      padding: 30px 20px;
+      background: var(--surface);
       border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      margin-bottom: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--brand-gradient);
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand-logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      background: var(--brand-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+      transition: var(--transition);
+    }
+
+    .brand-logo:hover {
+      transform: scale(1.05) rotate(5deg);
+    }
+
+    .logo-icon {
+      font-size: 28px;
+      color: white;
+      font-weight: bold;
+    }
+
+    .brand-text {
+      text-align: left;
     }
 
     .header-title {
       margin: 0;
-      font-size: 26px;
+      font-size: 28px;
+      font-weight: 700;
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+
+    .header-subtitle {
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 500;
+      margin-top: 4px;
     }
 
     .header-link {
-      color: var(--brand-primary);
       text-decoration: none;
-      font-weight: 600;
+      color: inherit;
+      transition: var(--transition);
     }
 
     .header-link:hover {
-      text-decoration: underline;
+      opacity: 0.9;
     }
 
     /* Main Container */
     .container {
       background: var(--surface);
-      padding: 25px;
+      padding: 30px;
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow);
       flex-grow: 1;
+      border: 1px solid var(--border-light);
     }
 
-    /* Logo */
-    .logo {
+    /* Calculator Header */
+    .calculator-header {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+      position: relative;
     }
 
-    .logo-image {
-      width: 60px;
-      height: 60px;
-      border-radius: 12px;
-      background: rgba(0, 123, 255, 0.1);
-      display: inline-flex;
+    .calculator-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .calculator-subtitle {
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    .calculator-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 28px;
+      margin: 0 auto 20px;
+      border: 2px solid #e0f2fe;
     }
 
-    /* Calculator Title */
-    .calculator-title {
-      text-align: center;
-      font-size: 24px;
-      margin-bottom: 20px;
-      color: var(--text-primary);
+    .calculator-icon i {
+      font-size: 36px;
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     /* Form Elements */
     .form-group {
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
 
     .form-label {
       display: block;
-      margin-bottom: 6px;
-      font-weight: 500;
+      margin-bottom: 8px;
+      font-weight: 600;
       color: var(--text-secondary);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .form-input {
       width: 100%;
-      padding: 12px;
+      padding: 16px;
       border-radius: var(--radius);
-      border: 1px solid var(--border);
+      border: 2px solid var(--border);
       font-size: 16px;
       transition: var(--transition);
+      background: #fafbfc;
+      font-weight: 500;
     }
 
     .form-input:focus {
       outline: none;
       border-color: var(--brand-primary);
-      box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1);
+      transform: translateY(-2px);
     }
 
     .form-input.error {
-      border-color: #dc3545;
+      border-color: #ef4444;
+      background: #fef2f2;
     }
 
     .error-message {
-      color: #dc3545;
+      color: #ef4444;
       font-size: 14px;
-      margin-top: 4px;
+      margin-top: 6px;
       display: none;
+      font-weight: 500;
     }
 
     /* Buttons */
     .btn {
       width: 100%;
-      padding: 12px;
+      padding: 16px;
       border-radius: var(--radius);
       border: none;
       font-size: 16px;
       font-weight: 600;
       cursor: pointer;
       transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
     }
 
     .btn-primary {
-      background-color: var(--brand-primary);
+      background: var(--brand-gradient);
       color: white;
+      box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
     }
 
     .btn-primary:hover {
-      background-color: var(--brand-primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
     }
 
     .btn-secondary {
-      background-color: #6c757d;
+      background: #64748b;
       color: white;
     }
 
     .btn-secondary:hover {
-      background-color: #545b62;
+      background: #475569;
     }
 
     /* Results */
     .result {
-      margin-top: 20px;
+      margin-top: 24px;
       font-weight: bold;
       font-size: 18px;
       text-align: center;
-      padding: 16px;
+      padding: 20px;
       border-radius: var(--radius);
-      background-color: #f8f9fa;
+      background-color: #f8fafc;
       display: none;
+      border-left: 4px solid transparent;
     }
 
     .result.success {
-      background-color: #d4edda;
-      color: #155724;
-      border: 1px solid #c3e6cb;
+      background-color: #f0fdf4;
+      color: #166534;
+      border-left-color: #22c55e;
     }
 
     .result.error {
-      background-color: #f8d7da;
-      color: #721c24;
-      border: 1px solid #f5c6cb;
+      background-color: #fef2f2;
+      color: #991b1b;
+      border-left-color: #ef4444;
     }
 
     /* Additional Results */
     .additional-results {
-      margin-top: 20px;
+      margin-top: 24px;
       display: none;
+      background: #f8fafc;
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid var(--border-light);
     }
 
     .result-item {
       display: flex;
       justify-content: space-between;
-      padding: 10px 0;
+      padding: 12px 0;
       border-bottom: 1px solid var(--border-light);
     }
 
@@ -211,16 +320,21 @@
 
     .result-label {
       color: var(--text-secondary);
+      font-weight: 500;
     }
 
     .result-value {
-      font-weight: 600;
+      font-weight: 700;
+      color: var(--text-primary);
     }
 
     /* Share Section */
     .share {
       text-align: center;
-      margin-top: 20px;
+      margin-top: 24px;
+      padding: 16px;
+      background: #f0f9ff;
+      border-radius: var(--radius);
     }
 
     .share-link {
@@ -229,12 +343,14 @@
       font-size: 14px;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       transition: var(--transition);
+      font-weight: 600;
     }
 
     .share-link:hover {
-      text-decoration: underline;
+      color: var(--brand-primary-dark);
+      transform: translateY(-1px);
     }
 
     /* Footer */
@@ -243,26 +359,33 @@
       font-size: 12px;
       margin-top: 40px;
       color: var(--text-muted);
+      padding: 20px 0;
     }
 
     /* Back Button */
     .back-button {
-      display: inline-block;
-      background-color: var(--brand-primary);
-      color: white;
-      padding: 12px 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface);
+      color: var(--text-primary);
+      padding: 14px 24px;
       text-decoration: none;
       border-radius: var(--radius);
       margin-top: 30px;
       transition: var(--transition);
       font-weight: 600;
       text-align: center;
+      border: 2px solid var(--border);
+      box-shadow: var(--shadow);
     }
 
     .back-button:hover {
-      background-color: var(--brand-primary-dark);
-      text-decoration: none;
+      background: var(--brand-primary);
       color: white;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--brand-primary);
     }
 
     .button-container {
@@ -277,48 +400,85 @@
       }
       
       .container {
-        padding: 20px;
+        padding: 24px 20px;
       }
       
       .calculator-title {
         font-size: 22px;
       }
+      
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .brand-text {
+        text-align: center;
+      }
+    }
+
+    /* Animation for results */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.5s ease-out;
     }
   </style>
 </head>
 <body>
   <header class="header" role="banner">
-    <h1 class="header-title">
-      <a href="index.html" class="header-link">SmartCalcHub</a>
-    </h1>
+    <div class="header-content">
+      <div class="brand-logo">
+        <span class="logo-icon">∑</span>
+      </div>
+      <div class="brand-text">
+        <a href="index.html" class="header-link">
+          <h1 class="header-title">SmartCalcHub</h1>
+          <div class="header-subtitle">Professional Financial Calculators</div>
+        </a>
+      </div>
+    </div>
   </header>
 
   <main class="container" role="main">
-    <div class="logo">
-      <div class="logo-image" aria-hidden="true">💰</div>
+    <div class="calculator-header">
+      <div class="calculator-icon">
+        <i>💰</i>
+      </div>
+      <h1 class="calculator-title">Loan Repayment Calculator</h1>
+      <p class="calculator-subtitle">Calculate your monthly payments with precision</p>
     </div>
-    
-    <h1 class="calculator-title">Loan Repayment Calculator</h1>
 
     <div class="form-group">
-      <label for="amount" class="form-label">Loan Amount ($)</label>
-      <input type="number" id="amount" class="form-input" placeholder="Enter loan amount" min="0" step="0.01" />
+      <label for="amount" class="form-label">Loan Amount</label>
+      <input type="number" id="amount" class="form-input" placeholder="Enter loan amount in USD" min="0" step="0.01" />
       <div id="amount-error" class="error-message">Please enter a valid loan amount</div>
     </div>
 
     <div class="form-group">
-      <label for="rate" class="form-label">Annual Interest Rate (%)</label>
-      <input type="number" id="rate" class="form-input" placeholder="Enter annual interest rate" min="0" step="0.01" />
+      <label for="rate" class="form-label">Annual Interest Rate</label>
+      <input type="number" id="rate" class="form-input" placeholder="Enter annual interest rate (%)" min="0" step="0.01" />
       <div id="rate-error" class="error-message">Please enter a valid interest rate</div>
     </div>
 
     <div class="form-group">
-      <label for="term" class="form-label">Loan Term (Years)</label>
+      <label for="term" class="form-label">Loan Term</label>
       <input type="number" id="term" class="form-input" placeholder="Enter loan term in years" min="1" step="1" />
       <div id="term-error" class="error-message">Please enter a valid loan term (minimum 1 year)</div>
     </div>
 
-    <button id="calculate-btn" class="btn btn-primary">Calculate Monthly Payment</button>
+    <button id="calculate-btn" class="btn btn-primary">
+      Calculate Monthly Payment
+    </button>
 
     <div id="result" class="result" role="status" aria-live="polite"></div>
 
@@ -341,7 +501,9 @@
   </main>
 
   <div class="button-container">
-    <a href="index.html" class="back-button">← Back to Homepage</a>
+    <a href="index.html" class="back-button">
+      ← Back to Homepage
+    </a>
   </div>
 
   <footer class="footer" role="contentinfo">
@@ -449,12 +611,13 @@
       }
       
       resultElement.textContent = `Your estimated monthly payment is ${formatCurrency(monthlyPayment)}`;
-      resultElement.className = 'result success';
+      resultElement.className = 'result success fade-in-up';
       resultElement.style.display = 'block';
       
       // Display additional results
       $('total-payments').textContent = formatCurrency(loanDetails.totalPayments);
       $('total-interest').textContent = formatCurrency(loanDetails.totalInterest);
+      additionalResults.className = 'additional-results fade-in-up';
       additionalResults.style.display = 'block';
     };
 
@@ -513,7 +676,7 @@
     // Initialize the application
     const init = () => {
       initializeEventListeners();
-      console.log('Loan Calculator initialized');
+      console.log('Enhanced Loan Calculator initialized');
     };
 
     // Start when DOM is loaded
