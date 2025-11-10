@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cookie Policy – SmartCalcHub</title>
+  <meta name="description" content="SmartCalcHub Cookie Policy - Learn how we use cookies and tracking technologies to enhance your experience while protecting your privacy.">
+  <style>
+    :root {
+      --brand-primary: #007BFF;
+      --brand-primary-dark: #0056b3;
+      --brand-gradient: linear-gradient(135deg, #007BFF 0%, #0056b3 100%);
+      --background: #f8fafc;
+      --surface: #ffffff;
+      --text-primary: #1e293b;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --radius: 12px;
+      --radius-lg: 20px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
+      background: var(--background);
+      color: var(--text-primary);
+      line-height: 1.7;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 1000px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* Enhanced Header */
+    .header {
+      text-align: center;
+      padding: 40px 20px;
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--brand-gradient);
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand-logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      background: var(--brand-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3);
+      transition: var(--transition);
+    }
+
+    .brand-logo:hover {
+      transform: scale(1.05) rotate(5deg);
+    }
+
+    .logo-icon {
+      font-size: 36px;
+      color: white;
+      font-weight: bold;
+    }
+
+    .brand-text {
+      text-align: left;
+    }
+
+    .header-title {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+
+    .header-subtitle {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-top: 8px;
+    }
+
+    .header-link {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Main Content */
+    .main-content {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 50px;
+      margin-bottom: 40px;
+      position: relative;
+      border: 1px solid var(--border-light);
+    }
+
+    .main-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--brand-gradient);
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .page-title {
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .page-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: var(--brand-gradient);
+      border-radius: 2px;
+    }
+
+    .last-updated {
+      color: var(--text-muted);
+      font-size: 1rem;
+      font-weight: 500;
+      background: #f8fafc;
+      padding: 8px 16px;
+      border-radius: var(--radius);
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    /* Content Sections */
+    .content-section {
+      margin-bottom: 40px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid var(--border-light);
+    }
+
+    .section-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--brand-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .section-content {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    /* Cookie Types Grid */
+    .cookie-types {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin: 40px 0;
+    }
+
+    .cookie-card {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      padding: 30px 25px;
+      text-align: center;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+    }
+
+    .cookie-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--brand-primary);
+    }
+
+    .cookie-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      background: var(--brand-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: white;
+      font-size: 24px;
+    }
+
+    .cookie-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .cookie-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .cookie-examples {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* Highlight Boxes */
+    .cookie-highlight {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-left: 4px solid var(--brand-primary);
+      padding: 25px;
+      border-radius: var(--radius);
+      margin: 25px 0;
+    }
+
+    .highlight-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .highlight-content {
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* Control Section */
+    .control-section {
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      border: 1px solid #bbf7d0;
+      border-left: 4px solid #22c55e;
+      padding: 30px;
+      border-radius: var(--radius);
+      margin: 30px 0;
+    }
+
+    .control-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #166534;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .control-content {
+      color: #166534;
+      line-height: 1.7;
+    }
+
+    /* Browser Table */
+    .browser-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+      background: var(--surface);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .browser-table th {
+      background: var(--brand-gradient);
+      color: white;
+      padding: 15px;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .browser-table td {
+      padding: 15px;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-secondary);
+    }
+
+    .browser-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .browser-table tr:hover {
+      background: #f8fafc;
+    }
+
+    /* Lists */
+    .content-list {
+      margin: 10px 0 20px 25px;
+    }
+
+    .list-item {
+      margin-bottom: 12px;
+      position: relative;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .list-item::before {
+      content: "•";
+      color: var(--brand-primary);
+      font-weight: bold;
+      position: absolute;
+      left: -20px;
+    }
+
+    /* Links */
+    .policy-link {
+      color: var(--brand-primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .policy-link:hover {
+      color: var(--brand-primary-dark);
+      text-decoration: underline;
+    }
+
+    /* Contact Information */
+    .contact-info {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-radius: var(--radius);
+      padding: 25px;
+      border-left: 4px solid var(--brand-primary);
+      margin: 20px 0;
+    }
+
+    .contact-item {
+      margin-bottom: 8px;
+      color: var(--text-secondary);
+    }
+
+    /* Back Button */
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--surface);
+      color: var(--text-primary);
+      padding: 16px 32px;
+      text-decoration: none;
+      border-radius: var(--radius);
+      margin-top: 40px;
+      transition: var(--transition);
+      font-weight: 600;
+      text-align: center;
+      border: 2px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .back-button:hover {
+      background: var(--brand-primary);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--brand-primary);
+    }
+
+    .button-container {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 30px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-light);
+      width: 100%;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      body {
+        padding: 16px;
+      }
+      
+      .main-content {
+        padding: 30px 20px;
+      }
+      
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .brand-text {
+        text-align: center;
+      }
+      
+      .page-title {
+        font-size: 1.75rem;
+      }
+      
+      .cookie-types {
+        grid-template-columns: 1fr;
+      }
+      
+      .section-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+      
+      .browser-table {
+        font-size: 0.9rem;
+      }
+      
+      .browser-table th,
+      .browser-table td {
+        padding: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-title {
+        font-size: 2rem;
+      }
+      
+      .main-content {
+        padding: 25px 16px;
+      }
+      
+      .section-title {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-content">
+        <div class="brand-logo">
+          <span class="logo-icon">∑</span>
+        </div>
+        <div class="brand-text">
+          <a href="index.html" class="header-link">
+            <h1 class="header-title">SmartCalcHub</h1>
+            <div class="header-subtitle">Professional Financial Calculators</div>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="page-header">
+        <h1 class="page-title">Cookie Policy</h1>
+        <div class="last-updated">
+          <strong>Last updated:</strong> 2025
+        </div>
+      </div>
+
+      <div class="content-section">
+        <div class="section-header">
+          <div class="section-number">1</div>
+          <h2 class="section-title">Introduction to Cookies</h2>
+        </div>
+        <p class="section-content">
+          This Cookie Policy explains how SmartCalcHub uses cookies and similar tracking technologies when you visit our website. 
+          We believe in being transparent about our use of these technologies to enhance your experience while respecting your privacy.
+        </p>
+        
+        <div class="cookie-highlight">
+          <div class="highlight-title">🍪 What Are Cookies?</div>
+          <div class="highlight-content">
+            Cookies are small text files that are stored on your device when you visit websites. They help websites remember 
+            your preferences, understand how you use the site, and provide you with a better, more personalized experience.
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <div class="section-header">
+          <div class="section-number">2</div>
+          <h2 class="section-title">Types of Cookies We Use</h2>
+        </div>
+        <p class="section-content">
+          We use different types of cookies for various purposes to ensure our website functions properly and to improve your experience:
+        </p>
+        
+        <div class="cookie-types">
+          <div class="cookie-card">
+            <div class="cookie-icon">🔒</div>
+            <h3 class="cookie-title">Essential Cookies</h3>
+            <p class="cookie-description">
+              Necessary for the website to function properly. These cookies enable basic functions like page navigation and access to secure areas.
+            </p>
+            <div class="cookie-examples">
+              Examples: Session management, security tokens
+            </div>
+          </div>
+
+          <div class="cookie-card">
+            <div class="cookie-icon">📊</div>
+            <h3 class="cookie-title">Analytics Cookies</h3>
+            <p class="cookie-description">
+              Help us understand how visitors interact with our website by collecting and reporting information anonymously.
+            </p>
+            <div class="cookie-examples">
+              Examples: Google Analytics, visitor statistics
+            </div>
+          </div>
+
+          <div class="cookie-card">
+            <div class="cookie-icon">🎯</div>
+            <h3 class="cookie-title">Advertising Cookies</h3>
+            <p class="cookie-description">
+              Used to display relevant advertisements based on your browsing interests and behavior across websites.
+            </p>
+            <div class="cookie-examples">
+              Examples: Google AdSense, personalized ads
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <div class="section-header">
+          <div class="section-number">3</div>
+          <h2 class="section-title">Specific Cookies We Use</h2>
+        </div>
+        <p class="section-content">
+          Below is a detailed list of the specific cookies we use on SmartCalcHub:
+        </p>
+        
+        <div class="cookie-highlight">
+          <div class="highlight-title">📋 Cookie Details</div>
+          <div class="highlight-content">
+            <strong>Essential Cookies:</strong><br>
+            • session_id - Maintains your session while using our calculators<br>
+            • csrf_token - Protects against cross-site request forgery attacks<br><br>
+            
+            <strong>Analytics Cookies:</strong><br>
+            • _ga - Google Analytics tracking<br>
+            • _gid - Google Analytics session tracking<br><br>
+            
+            <strong>Advertising Cookies:</strong><br>
+            • Various Google AdSense cookies for ad personalization
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <div class="section-header">
+          <div class="section-number">4</div>
+          <h2 class="section-title">Third-Party Cookies</h2>
+        </div>
+        <p class="section-content">
+          We work with trusted third-party providers who may also set cookies when you visit our site:
+        </p>
+        
+        <ul class="content-list">
+          <li class="list-item">
+            <strong>Google Analytics:</strong> Helps us understand how visitors use our site to improve user experience
+          </li>
+          <li class="list-item">
+            <strong>Google AdSense:</strong> Displays relevant advertisements to support our free service
+          </li>
+          <li class="list-item">
+            <strong>Content Delivery Networks:</strong> Ensure fast loading times worldwide
+          </li>
+        </ul>
+        
+        <p class="section-content">
+          These third parties have their own privacy policies. We recommend reviewing 
+          <a href="https://policies.google.com/technologies/ads" class="policy-link" target="_blank" rel="noopener">Google's Privacy Policy</a> 
+          for more information about how they handle your data.
+        </p>
+      </div>
+
+      <div class="content-section">
+        <div class="section-header">
+          <div class="section-number">5</div>
+          <h2 class="section-title">Managing Your Cookie Preferences</h2>
+        </div>
+        <p class="section-content">
+          You have full control over cookies and can manage your preferences in several ways:
+        </p>
+        
+        <div class="control-section">
+          <div class="control-title">🛠️ Cookie Control Options</div>
+          <div class="control-content">
+            • <strong>Browser Settings:</strong> Most browsers allow you to refuse or delete cookies<br>
+            • <strong>Ad Personalization:</strong> Opt out of personalized ads through Google's Ad Settings<br>
+            • <strong>Analytics Opt-out:</strong> Use browser extensions to block analytics tracking<br>
+            • <strong>Essential Cookies:</strong> Note that blocking essential cookies may affect website functionality
+          </div>
+        </div>
+
+        <h3 style="color: var(--text-primary); margin: 25px 0 15px 0;">Browser-Specific Instructions</h3>
+        <table class="browser-table">
+          <thead>
+            <tr>
+              <th>Browser</th>
+              <th>How to Manage Cookies</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Google Chrome</td>
+              <td>Settings → Privacy and Security → Cookies and other site data</td>
+            </tr>
+            <tr>
+              <td>Mozilla Firefox</td>
+              <td>Options → Privacy & Security → Cookies and Site Data</td>
+            </tr>
+            <tr>
+              <td>Safari</td>
+              <td>Preferences → Privacy → Cookies and website data</td>
+            </tr>
+            <tr>
+              <td>Microsoft Edge</td>
+              <td>Settings → Cookies and site permissions → Cookies and site data</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="content-section">
+        <div class="section-header">
+          <div class="section-number">6</div>
+          <h2 class="section-title">Data Retention</h2>
+        </div>
+        <p class="section-content">
+          Different cookies have different lifespans. Here's how long we typically retain cookie data:
+        </p>
+        
+        <ul class="content-list">
+          <li class="list-item">
+            <strong>Session Cookies:</strong> Expire when you close your browser
+          </li>
+          <li class="list-item">
+            <strong>Persistent Cookies:</strong> Remain for set periods (typically 30 days to 2 years)
+          </li>
+          <li class="list-item">
+            <strong>Analytics Data:</strong> Aggregated and anonymized, retained for 26 months
+          </li>
+        </ul>
+      </div>
+
+      <div class="content-section">
+        <div class="section-header">
+          <div class="section-number">7</div>
+          <h2 class="section-title">Updates to This Policy</h2>
+        </div>
+        <p class="section-content">
+          We may update this Cookie Policy from time to time to reflect changes in our practices, technologies, or legal requirements. 
+          We will notify you of any material changes by updating the "Last updated" date at the top of this policy.
+        </p>
+        
+        <div class="cookie-highlight">
+          <div class="highlight-title">📝 Policy Changes</div>
+          <div class="highlight-content">
+            We encourage you to review this Cookie Policy periodically to stay informed about how we use cookies. 
+            Your continued use of SmartCalcHub after any changes indicates your acceptance of the updated policy.
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <div class="section-header">
+          <div class="section-number">8</div>
+          <h2 class="section-title">Contact Information</h2>
+        </div>
+        <p class="section-content">
+          If you have any questions, concerns, or requests regarding this Cookie Policy or our use of cookies, 
+          please don't hesitate to contact us:
+        </p>
+        
+        <div class="contact-info">
+          <div class="contact-item"><strong>Email:</strong> <a href="mailto:smartcalchub@gmail.com" class="policy-link">smartcalchub@gmail.com</a></div>
+          <div class="contact-item"><strong>Response Time:</strong> We typically respond within 24-48 hours</div>
+        </div>
+        
+        <p class="section-content">
+          For more information about how we handle your personal data, please review our 
+          <a href="PrivacyPolicy.html" class="policy-link">Privacy Policy</a>.
+        </p>
+      </div>
+
+      <div class="button-container">
+        <a href="index.html" class="back-button">
+          ← Back to Homepage
+        </a>
+      </div>
+    </main>
+
+    <footer class="footer">
+      © 2025 SmartCalcHub • Transparent Cookie Practices for Better User Experience
+    </footer>
+  </div>
+
+  <script>
+    // Simple initialization without complex animations
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Cookie Policy page loaded successfully');
+      
+      // Add smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
