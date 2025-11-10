@@ -9,15 +9,19 @@
     :root {
       --brand-primary: #007BFF;
       --brand-primary-dark: #0056b3;
-      --background: #f2f4f8;
+      --brand-gradient: linear-gradient(135deg, #007BFF 0%, #0056b3 100%);
+      --background: #f8fafc;
       --surface: #ffffff;
-      --text-primary: #333;
-      --text-secondary: #555;
-      --text-muted: #888;
-      --border: #e5e7eb;
-      --shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+      --text-primary: #1e293b;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
       --radius: 12px;
-      --line-height: 1.6;
+      --radius-lg: 20px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     * {
@@ -27,59 +31,157 @@
     }
 
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
       background: var(--background);
       color: var(--text-primary);
-      line-height: var(--line-height);
-      margin: 0;
+      line-height: 1.7;
       padding: 20px;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    /* Skip link for accessibility */
-    .skip-link {
-      position: absolute;
-      top: -40px;
-      left: 6px;
-      background: var(--brand-primary);
-      color: white;
-      padding: 8px;
-      text-decoration: none;
-      border-radius: 4px;
-      z-index: 100;
-    }
-
-    .skip-link:focus {
-      top: 6px;
-    }
-
-    /* Main Container */
     .container {
-      max-width: 900px;
+      max-width: 1000px;
+      width: 100%;
       margin: 0 auto;
-      background: var(--surface);
-      padding: 40px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
     }
 
-    /* Header */
+    /* Enhanced Header */
     .header {
-      margin-bottom: 30px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--border);
+      text-align: center;
+      padding: 40px 20px;
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--brand-gradient);
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand-logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      background: var(--brand-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3);
+      transition: var(--transition);
+    }
+
+    .brand-logo:hover {
+      transform: scale(1.05) rotate(5deg);
+    }
+
+    .logo-icon {
+      font-size: 36px;
+      color: white;
+      font-weight: bold;
+    }
+
+    .brand-text {
+      text-align: left;
+    }
+
+    .header-title {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+
+    .header-subtitle {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-top: 8px;
+    }
+
+    .header-link {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Main Content */
+    .main-content {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 50px;
+      margin-bottom: 40px;
+      position: relative;
+      border: 1px solid var(--border-light);
+    }
+
+    .main-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--brand-gradient);
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
     }
 
     .page-title {
-      color: var(--brand-primary);
-      margin-bottom: 10px;
       font-size: 2.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .page-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: var(--brand-gradient);
+      border-radius: 2px;
     }
 
     .last-updated {
       color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: 500;
+      background: #f8fafc;
+      padding: 8px 16px;
+      border-radius: var(--radius);
+      display: inline-block;
+      margin-top: 10px;
     }
 
     /* Content Sections */
@@ -87,15 +189,65 @@
       margin-bottom: 40px;
     }
 
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid var(--border-light);
+    }
+
+    .section-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--brand-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
     .section-title {
-      color: var(--brand-primary);
-      margin: 30px 0 15px;
       font-size: 1.5rem;
       font-weight: 600;
+      color: var(--text-primary);
+      margin: 0;
     }
 
     .section-content {
-      margin-bottom: 15px;
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    /* Highlight Boxes */
+    .terms-highlight {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-left: 4px solid var(--brand-primary);
+      padding: 25px;
+      border-radius: var(--radius);
+      margin: 25px 0;
+    }
+
+    .highlight-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .highlight-content {
+      color: var(--text-secondary);
+      line-height: 1.7;
     }
 
     /* Lists */
@@ -104,8 +256,10 @@
     }
 
     .list-item {
-      margin-bottom: 8px;
+      margin-bottom: 12px;
       position: relative;
+      color: var(--text-secondary);
+      line-height: 1.6;
     }
 
     .list-item::before {
@@ -113,69 +267,100 @@
       color: var(--brand-primary);
       font-weight: bold;
       position: absolute;
-      left: -15px;
+      left: -20px;
     }
 
     /* Links */
-    .link {
+    .policy-link {
       color: var(--brand-primary);
       text-decoration: none;
-      transition: color 0.2s ease;
+      font-weight: 500;
+      transition: var(--transition);
     }
 
-    .link:hover {
+    .policy-link:hover {
       color: var(--brand-primary-dark);
       text-decoration: underline;
     }
 
-    .link:focus {
-      outline: 2px solid var(--brand-primary);
-      outline-offset: 2px;
-    }
-
-    /* Footer */
-    .footer {
-      text-align: center;
-      margin-top: 50px;
-      padding-top: 30px;
-      border-top: 1px solid var(--border);
-    }
-
-    .back-link {
-      display: inline-block;
-      background-color: var(--brand-primary);
-      color: white;
-      padding: 12px 24px;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: background-color 0.2s ease;
-    }
-
-    .back-link:hover {
-      background-color: var(--brand-primary-dark);
-      text-decoration: none;
-      color: white;
-    }
-
-    /* Highlight important text */
-    .highlight {
-      background-color: rgba(0, 123, 255, 0.1);
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-weight: 500;
-    }
-
     /* Contact Information */
     .contact-info {
-      background-color: #f8f9fa;
-      padding: 20px;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
       border-radius: var(--radius);
+      padding: 25px;
+      border-left: 4px solid var(--brand-primary);
       margin: 20px 0;
     }
 
     .contact-item {
       margin-bottom: 8px;
+      color: var(--text-secondary);
+    }
+
+    /* Important Notice */
+    .important-notice {
+      background: linear-gradient(135deg, #fef3f2 0%, #fee2e2 100%);
+      border: 1px solid #fecaca;
+      border-left: 4px solid #ef4444;
+      padding: 25px;
+      border-radius: var(--radius);
+      margin: 30px 0;
+    }
+
+    .notice-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #991b1b;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .notice-content {
+      color: #991b1b;
+      line-height: 1.7;
+    }
+
+    /* Back Button */
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--surface);
+      color: var(--text-primary);
+      padding: 16px 32px;
+      text-decoration: none;
+      border-radius: var(--radius);
+      margin-top: 40px;
+      transition: var(--transition);
+      font-weight: 600;
+      text-align: center;
+      border: 2px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .back-button:hover {
+      background: var(--brand-primary);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--brand-primary);
+    }
+
+    .button-container {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 30px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-light);
+      width: 100%;
     }
 
     /* Responsive Adjustments */
@@ -184,125 +369,164 @@
         padding: 16px;
       }
       
-      .container {
+      .main-content {
         padding: 30px 20px;
+      }
+      
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .brand-text {
+        text-align: center;
       }
       
       .page-title {
         font-size: 1.75rem;
       }
       
-      .section-title {
-        font-size: 1.3rem;
+      .section-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
       }
     }
 
     @media (max-width: 480px) {
-      .container {
-        padding: 20px 16px;
+      .header-title {
+        font-size: 2rem;
       }
       
-      .page-title {
-        font-size: 1.5rem;
+      .main-content {
+        padding: 25px 16px;
       }
       
-      .content-list {
-        margin-left: 20px;
-      }
-    }
-
-    /* Print Styles */
-    @media print {
-      body {
-        background: white;
-        padding: 0;
-      }
-      
-      .container {
-        box-shadow: none;
-        padding: 0;
-      }
-      
-      .back-link {
-        display: none;
+      .section-title {
+        font-size: 1.3rem;
       }
     }
   </style>
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-
   <div class="container">
-    <header class="header" role="banner">
-      <h1 class="page-title">Terms of Service</h1>
-      <p class="last-updated"><strong>Last updated: 2025</strong></p>
+    <header class="header">
+      <div class="header-content">
+        <div class="brand-logo">
+          <span class="logo-icon">∑</span>
+        </div>
+        <div class="brand-text">
+          <a href="index.html" class="header-link">
+            <h1 class="header-title">SmartCalcHub</h1>
+            <div class="header-subtitle">Professional Financial Calculators</div>
+          </a>
+        </div>
+      </div>
     </header>
 
-    <main id="main-content" role="main">
-      <section class="content-section" aria-labelledby="introduction">
+    <main class="main-content">
+      <div class="page-header">
+        <h1 class="page-title">Terms of Service</h1>
+        <div class="last-updated">
+          <strong>Last updated:</strong> 2025
+        </div>
+      </div>
+
+      <div class="content-section">
+        <div class="section-header">
+          <div class="section-number">1</div>
+          <h2 class="section-title">Introduction & Acceptance</h2>
+        </div>
         <p class="section-content">
           Welcome to SmartCalcHub ("we", "us", "our") operated at <strong>Foralix.com</strong>. 
           By accessing or using this website, you agree to the following Terms of Service. 
           If you do not agree with these terms, please discontinue use of the site.
         </p>
-      </section>
+      </div>
 
-      <section class="content-section" aria-labelledby="use-of-website">
-        <h2 id="use-of-website" class="section-title">1. Use of Website and Tools</h2>
+      <div class="content-section">
+        <div class="section-header">
+          <div class="section-number">2</div>
+          <h2 class="section-title">Use of Website and Tools</h2>
+        </div>
         <p class="section-content">
           SmartCalcHub provides financial and mathematical calculators for informational and educational purposes only. You agree that:
         </p>
         <ul class="content-list">
-          <li class="list-item">You use all calculators, tools, and outputs at your own risk.</li>
-          <li class="list-item">We do not guarantee the accuracy, completeness, or reliability of calculations or projections.</li>
-          <li class="list-item">Our tools are not a substitute for professional financial, legal, or investment advice.</li>
-          <li class="list-item">Any decisions made using the results from our calculators are solely your responsibility.</li>
+          <li class="list-item">You use all calculators, tools, and outputs at your own risk</li>
+          <li class="list-item">We do not guarantee the accuracy, completeness, or reliability of calculations or projections</li>
+          <li class="list-item">Our tools are not a substitute for professional financial, legal, or investment advice</li>
+          <li class="list-item">Any decisions made using the results from our calculators are solely your responsibility</li>
         </ul>
-      </section>
+      </div>
 
-      <section class="content-section" aria-labelledby="professional-advice">
-        <h2 id="professional-advice" class="section-title">2. No Professional Advice</h2>
+      <div class="content-section">
+        <div class="section-header">
+          <div class="section-number">3</div>
+          <h2 class="section-title">No Professional Advice</h2>
+        </div>
         <p class="section-content">
-          The content and calculators provided on this website do <span class="highlight">not</span> constitute professional financial, legal, tax, accounting, or investment advice. Always consult with a licensed professional before making financial decisions.
+          The content and calculators provided on this website do <strong>not</strong> constitute professional financial, legal, tax, accounting, or investment advice.
         </p>
-      </section>
+        
+        <div class="important-notice">
+          <div class="notice-title">⚠️ Important Disclaimer</div>
+          <div class="notice-content">
+            Always consult with qualified, licensed professionals before making financial decisions. 
+            Our calculators are designed for educational and estimation purposes only.
+          </div>
+        </div>
+      </div>
 
-      <section class="content-section" aria-labelledby="liability">
-        <h2 id="liability" class="section-title">3. Limitation of Liability</h2>
+      <div class="content-section">
+        <div class="section-header">
+          <div class="section-number">4</div>
+          <h2 class="section-title">Limitation of Liability</h2>
+        </div>
         <p class="section-content">
           To the fullest extent permitted by law, SmartCalcHub and its owners/operators:
         </p>
         <ul class="content-list">
-          <li class="list-item">Are not liable for any direct, indirect, incidental, or consequential damages arising from your use of this website.</li>
-          <li class="list-item">Make no warranty regarding the accuracy or reliability of any calculations, forecasts, or outputs.</li>
-          <li class="list-item">Are not responsible for financial losses, decisions, or outcomes based on calculator results.</li>
+          <li class="list-item">Are not liable for any direct, indirect, incidental, or consequential damages arising from your use of this website</li>
+          <li class="list-item">Make no warranty regarding the accuracy or reliability of any calculations, forecasts, or outputs</li>
+          <li class="list-item">Are not responsible for financial losses, decisions, or outcomes based on calculator results</li>
         </ul>
-      </section>
+      </div>
 
-      <section class="content-section" aria-labelledby="third-party">
-        <h2 id="third-party" class="section-title">4. Third‑Party Services and External Links</h2>
+      <div class="content-section">
+        <div class="section-header">
+          <div class="section-number">5</div>
+          <h2 class="section-title">Third-Party Services and External Links</h2>
+        </div>
         <p class="section-content">
-          Our website may include links to external websites or third-party tools. These links are provided for convenience only. We do not control or endorse third‑party sites and are not responsible for their content, policies, or practices.
+          Our website may include links to external websites or third-party tools. These links are provided for convenience only. 
+          We do not control or endorse third-party sites and are not responsible for their content, policies, or practices.
         </p>
-      </section>
+      </div>
 
-      <section class="content-section" aria-labelledby="adsense">
-        <h2 id="adsense" class="section-title">5. Google AdSense and Advertising</h2>
+      <div class="content-section">
+        <div class="section-header">
+          <div class="section-number">6</div>
+          <h2 class="section-title">Google AdSense and Advertising</h2>
+        </div>
         <p class="section-content">
           SmartCalcHub participates in Google AdSense and may display contextual ads. By using the site, you agree to the following:
         </p>
         <ul class="content-list">
-          <li class="list-item">Ads may be personalized based on your browsing behavior.</li>
-          <li class="list-item">Google may use cookies or device identifiers to serve advertisements.</li>
-          <li class="list-item">You may opt out of personalized ads via <a href="https://adssettings.google.com" class="link" target="_blank" rel="noopener">Google's Ad Settings</a>.</li>
+          <li class="list-item">Ads may be personalized based on your browsing behavior</li>
+          <li class="list-item">Google may use cookies or device identifiers to serve advertisements</li>
+          <li class="list-item">You may opt out of personalized ads via <a href="https://adssettings.google.com" class="policy-link" target="_blank" rel="noopener">Google's Ad Settings</a></li>
         </ul>
         <p class="section-content">
-          We are not responsible for the content, accuracy, legality, or behavior of third‑party advertisements.
+          We are not responsible for the content, accuracy, legality, or behavior of third-party advertisements.
         </p>
-      </section>
+      </div>
 
-      <section class="content-section" aria-labelledby="cookies">
-        <h2 id="cookies" class="section-title">6. Cookies and Tracking Technologies</h2>
+      <div class="content-section">
+        <div class="section-header">
+          <div class="section-number">7</div>
+          <h2 class="section-title">Cookies and Tracking Technologies</h2>
+        </div>
         <p class="section-content">
           This website may use:
         </p>
@@ -314,65 +538,103 @@
         <p class="section-content">
           These tools help us understand usage patterns and improve performance. You may disable cookies at any time in your browser settings.
         </p>
-      </section>
+        
+        <div class="terms-highlight">
+          <div class="highlight-title">🍪 Cookie Management</div>
+          <div class="highlight-content">
+            Most browsers allow you to control cookies through their settings preferences. 
+            However, limiting cookies may impact your experience with certain website features.
+          </div>
+        </div>
+      </div>
 
-      <section class="content-section" aria-labelledby="analytics">
-        <h2 id="analytics" class="section-title">7. Analytics and Data Collection</h2>
+      <div class="content-section">
+        <div class="section-header">
+          <div class="section-number">8</div>
+          <h2 class="section-title">Analytics and Data Collection</h2>
+        </div>
         <p class="section-content">
           We may use analytics tools to collect anonymized data such as:
         </p>
         <ul class="content-list">
           <li class="list-item">Page visits and navigation patterns</li>
-          <li class="list-item">Device type and browser</li>
+          <li class="list-item">Device type and browser information</li>
           <li class="list-item">Approximate geographic location (non-identifiable)</li>
         </ul>
         <p class="section-content">
-          No personally identifiable information (PII) is collected unless voluntarily submitted by you.
+          No personally identifiable information (PII) is collected unless voluntarily submitted by you through contact forms.
         </p>
-      </section>
+      </div>
 
-      <section class="content-section" aria-labelledby="user-responsibilities">
-        <h2 id="user-responsibilities" class="section-title">8. User Responsibilities</h2>
+      <div class="content-section">
+        <div class="section-header">
+          <div class="section-number">9</div>
+          <h2 class="section-title">User Responsibilities</h2>
+        </div>
         <p class="section-content">
           By using this site, you agree to:
         </p>
         <ul class="content-list">
-          <li class="list-item">Use the calculators lawfully and responsibly.</li>
-          <li class="list-item">Not attempt to disrupt site functionality or security.</li>
-          <li class="list-item">Not copy, redistribute, or resell the calculator tools without permission.</li>
+          <li class="list-item">Use the calculators lawfully and responsibly</li>
+          <li class="list-item">Not attempt to disrupt site functionality or security</li>
+          <li class="list-item">Not copy, redistribute, or resell the calculator tools without permission</li>
+          <li class="list-item">Comply with all applicable laws and regulations</li>
         </ul>
-      </section>
+      </div>
 
-      <section class="content-section" aria-labelledby="changes">
-        <h2 id="changes" class="section-title">9. Changes to These Terms</h2>
+      <div class="content-section">
+        <div class="section-header">
+          <div class="section-number">10</div>
+          <h2 class="section-title">Changes to These Terms</h2>
+        </div>
         <p class="section-content">
-          We may update these Terms of Service at any time. Continued use of the site after changes means you accept the updated terms. We recommend reviewing this page periodically.
+          We may update these Terms of Service at any time. Continued use of the site after changes means you accept the updated terms. 
+          We recommend reviewing this page periodically for any updates.
         </p>
-      </section>
+        
+        <div class="terms-highlight">
+          <div class="highlight-title">📝 Policy Updates</div>
+          <div class="highlight-content">
+            Significant changes to these terms will be highlighted with an updated "Last updated" date. 
+            Your continued use of SmartCalcHub constitutes acceptance of any revised terms.
+          </div>
+        </div>
+      </div>
 
-      <section class="content-section" aria-labelledby="contact">
-        <h2 id="contact" class="section-title">10. Contact Information</h2>
+      <div class="content-section">
+        <div class="section-header">
+          <div class="section-number">11</div>
+          <h2 class="section-title">Contact Information</h2>
+        </div>
         <p class="section-content">
           If you have questions about these Terms of Service, you may contact us at:
         </p>
+        
         <div class="contact-info">
-          <p class="contact-item"><strong>Email:</strong> <a href="mailto:support@foralix.com" class="link">support@foralix.com</a></p>
+          <div class="contact-item"><strong>Email:</strong> <a href="mailto:support@foralix.com" class="policy-link">support@foralix.com</a></div>
         </div>
+        
         <p class="section-content">
-          Or via the contact form on our website.
+          Or via the contact form on our website. We typically respond to inquiries within 24-48 hours.
         </p>
-      </section>
+      </div>
+
+      <div class="button-container">
+        <a href="index.html" class="back-button">
+          ← Back to Homepage
+        </a>
+      </div>
     </main>
 
-    <footer class="footer" role="contentinfo">
-      <a href="index.html" class="back-link">← Back to homepage</a>
+    <footer class="footer">
+      © 2025 SmartCalcHub • Clear Terms for Transparent Service
     </footer>
   </div>
 
   <script>
-    // Initialize the page
-    const init = () => {
-      console.log('Terms of Service page loaded');
+    // Simple initialization without complex animations
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Terms of Service page loaded successfully');
       
       // Add smooth scrolling for anchor links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -387,42 +649,6 @@
           }
         });
       });
-      
-      // Track page view (for future analytics implementation)
-      trackPageView();
-    };
-
-    // Track page view (placeholder for analytics)
-    const trackPageView = () => {
-      // Implementation for Google Analytics or other analytics service
-      if (typeof gtag !== 'undefined') {
-        gtag('config', 'GA_MEASUREMENT_ID', {
-          page_title: 'Terms of Service',
-          page_location: window.location.href
-        });
-      }
-    };
-
-    // Print functionality
-    const addPrintButton = () => {
-      const printButton = document.createElement('button');
-      printButton.textContent = 'Print Terms';
-      printButton.className = 'back-link';
-      printButton.style.marginLeft = '10px';
-      printButton.addEventListener('click', () => window.print());
-      
-      document.querySelector('.footer').appendChild(printButton);
-    };
-
-    // Initialize when DOM is loaded
-    document.addEventListener('DOMContentLoaded', () => {
-      init();
-      addPrintButton();
-    });
-
-    // Handle potential errors gracefully
-    window.addEventListener('error', (e) => {
-      console.error('Error occurred:', e.error);
     });
   </script>
 </body>
