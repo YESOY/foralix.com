@@ -14,19 +14,63 @@
   </script>
 
   <script>
-// Minimal loan calculator - TEST VERSION
+// Enhanced loan calculator with basic calculation
 console.log('Loan calculator loading...');
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM ready');
     
     const calculateBtn = document.getElementById('calculate-btn');
+    const amountInput = document.getElementById('amount');
+    const rateInput = document.getElementById('rate');
+    const termInput = document.getElementById('term');
+    const resultElement = document.getElementById('result');
+    
     if (calculateBtn) {
         calculateBtn.addEventListener('click', function() {
             console.log('Calculate button clicked!');
-            alert('Calculator is working!');
+            
+            // Get input values
+            const amount = parseFloat(amountInput.value);
+            const annualRate = parseFloat(rateInput.value) / 100;
+            const termYears = parseFloat(termInput.value);
+            
+            console.log('Inputs:', { amount, annualRate, termYears });
+            
+            // Basic validation
+            if (!amount || !annualRate || !termYears) {
+                resultElement.textContent = 'Please fill in all fields correctly.';
+                resultElement.className = 'result error';
+                resultElement.style.display = 'block';
+                return;
+            }
+            
+            // Simple calculation
+            const monthlyRate = annualRate / 12;
+            const termMonths = termYears * 12;
+            
+            let monthlyPayment;
+            if (monthlyRate === 0) {
+                monthlyPayment = amount / termMonths;
+            } else {
+                monthlyPayment = (amount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -termMonths));
+            }
+            
+            console.log('Calculated payment:', monthlyPayment);
+            
+            // Display result
+            resultElement.textContent = `Monthly Payment: $${monthlyPayment.toFixed(2)}`;
+            resultElement.className = 'result success';
+            resultElement.style.display = 'block';
         });
     }
+    
+    // Clear errors on input
+    [amountInput, rateInput, termInput].forEach(input => {
+        input.addEventListener('input', function() {
+            this.classList.remove('error');
+        });
+    });
 });
 </script>
   <title>Loan Repayment Calculator - SmartCalcHub</title>
