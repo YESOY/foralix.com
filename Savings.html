@@ -562,6 +562,95 @@
       
     </header>
 
+    <!-- Add this section right after the header and before the calculator grid -->
+
+    
+    <section class="content-section" style="background: var(--surface); padding: 40px; border-radius: var(--radius-lg); margin-bottom: 30px; box-shadow: var(--shadow);">
+    <div class="content-header" style="text-align: center; margin-bottom: 30px;">
+        <h2 style="color: var(--text-primary); font-size: 2rem; margin-bottom: 15px;">Savings Growth Calculator</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem; max-width: 800px; margin: 0 auto;">Plan your financial future with our comprehensive savings calculator. Understand how compound interest and regular contributions can grow your wealth over time.</p>
+    </div>
+    
+    <div class="content-grid" style="display: grid; gap: 30px; grid-template-columns: 1fr;">
+        <div class="content-block">
+            <h3 style="color: var(--brand-primary); margin-bottom: 15px;">What is Compound Interest?</h3>
+            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 15px;">
+                Compound interest is the interest calculated on the initial principal and also on the accumulated interest of previous periods. Think of it as "interest on interest" - it makes your money grow faster over time. The power of compounding can turn modest savings into substantial wealth, especially when you start early and contribute regularly.
+            </p>
+            <p style="color: var(--text-secondary); line-height: 1.7;">
+                For example, if you invest $1,000 at 5% annual interest, after one year you'll have $1,050. In the second year, you earn interest on $1,050, not just your original $1,000. Over decades, this compounding effect becomes incredibly powerful.
+            </p>
+        </div>
+        
+        <div class="content-block">
+            <h3 style="color: var(--brand-primary); margin-bottom: 15px;">How Our Savings Calculator Works</h3>
+            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 15px;">
+                Our calculator uses the future value formula for compound interest with regular contributions:
+            </p>
+            <div style="background: #f8f9fa; padding: 20px; border-radius: var(--radius); border-left: 4px solid var(--brand-primary); margin-bottom: 15px;">
+                <p style="font-family: monospace; color: var(--text-primary); margin: 0;">
+                    FV = P × (1 + r/n)^(nt) + PMT × [((1 + r/n)^(nt) - 1) / (r/n)]
+                </p>
+            </div>
+            <p style="color: var(--text-secondary); line-height: 1.7;">
+                Where:<br>
+                • <strong>FV</strong> = Future Value<br>
+                • <strong>P</strong> = Initial Principal<br>
+                • <strong>PMT</strong> = Monthly Contribution<br>
+                • <strong>r</strong> = Annual Interest Rate<br>
+                • <strong>n</strong> = Compounding Frequency<br>
+                • <strong>t</strong> = Time in Years
+            </p>
+        </div>
+        
+        <div class="content-block">
+            <h3 style="color: var(--brand-primary); margin-bottom: 15px;">Why Consider Inflation?</h3>
+            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 15px;">
+                Inflation reduces the purchasing power of money over time. Our calculator includes an optional inflation adjustment to show you the "real" value of your savings in today's dollars. This helps you understand what your future savings will actually be worth when you need to use them.
+            </p>
+            <p style="color: var(--text-secondary); line-height: 1.7;">
+                For instance, $100,000 in 20 years might only have the purchasing power of $60,000 today if inflation averages 2.5% annually. Planning with inflation in mind ensures your savings goals account for rising costs of living.
+            </p>
+        </div>
+        
+        <div class="content-block">
+            <h3 style="color: var(--brand-primary); margin-bottom: 15px;">Practical Savings Strategies</h3>
+            <div style="display: grid; gap: 15px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 20px; border-radius: var(--radius);">
+                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">Start Early</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">The earlier you start saving, the more time compound interest has to work its magic. Even small amounts saved early can outperform larger amounts saved later.</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 20px; border-radius: var(--radius);">
+                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">Consistent Contributions</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Regular monthly contributions create a powerful savings habit and significantly boost your final balance through dollar-cost averaging.</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 20px; border-radius: var(--radius);">
+                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">Increase Over Time</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">As your income grows, increase your savings rate. Even a 1% annual increase in contributions can dramatically improve your long-term results.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-block">
+            <h3 style="color: var(--brand-primary); margin-bottom: 15px;">Common Questions</h3>
+            <div style="background: #f8f9fa; padding: 20px; border-radius: var(--radius);">
+                <div style="margin-bottom: 15px;">
+                    <h4 style="color: var(--text-primary); margin-bottom: 8px;">What's the difference between simple and compound interest?</h4>
+                    <p style="color: var(--text-secondary); margin: 0; font-size: 0.95rem;">Simple interest is calculated only on the principal amount, while compound interest is calculated on the principal plus accumulated interest.</p>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <h4 style="color: var(--text-primary); margin-bottom: 8px;">How often should interest compound?</h4>
+                    <p style="color: var(--text-secondary); margin: 0; font-size: 0.95rem;">More frequent compounding (daily vs. annually) results in slightly higher returns due to interest being calculated on interest more often.</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--text-primary); margin-bottom: 8px;">Is this calculator accurate for real investments?</h4>
+                    <p style="color: var(--text-secondary); margin: 0; font-size: 0.95rem;">This provides estimates based on fixed rates. Real investments may have variable returns, fees, and taxes that affect final results.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
     <div class="grid">
       <!-- Inputs -->
       <section class="card">
