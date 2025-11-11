@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <script>
+  // Force HTTPS redirect - more reliable version
+  if (window.location.protocol === 'http:') {
+    // Full page redirect to HTTPS
+    window.location.href = 'https://' + window.location.host + window.location.pathname + window.location.search + window.location.hash;
+  }
+
+  </script>
+  
+  <title>Mortgage Calculator - SmartCalcHub</title>
+<meta name="description" content="Calculate your monthly mortgage payments with taxes, insurance, and PMI. Free online mortgage calculator for home buying.">
+  <style>
+    :root {
+      --brand-primary: #007BFF;
+      --brand-primary-dark: #0056b3;
+      --brand-gradient: linear-gradient(135deg, #007BFF 0%, #0056b3 100%);
+      --background: #f8fafc;
+      --surface: #ffffff;
+      --text-primary: #1e293b;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --radius: 12px;
+      --radius-lg: 20px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
+      background: var(--background);
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Enhanced Header */
+    .header {
+      text-align: center;
+      padding: 30px 20px;
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      margin-bottom: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--brand-gradient);
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand-logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      background: var(--brand-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+      transition: var(--transition);
+    }
+
+    .brand-logo:hover {
+      transform: scale(1.05) rotate(5deg);
+    }
+
+    .logo-icon {
+      font-size: 28px;
+      color: white;
+      font-weight: bold;
+    }
+
+    .brand-text {
+      text-align: left;
+    }
+
+    .header-title {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+
+    .header-subtitle {
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    .header-link {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    .header-link:hover {
+      opacity: 0.9;
+    }
+
+    /* Main Container */
+    .container {
+      background: var(--surface);
+      padding: 30px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      flex-grow: 1;
+      border: 1px solid var(--border-light);
+    }
+
+    /* Calculator Header */
+    .calculator-header {
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .calculator-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .calculator-subtitle {
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    .calculator-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      border: 2px solid #e0f2fe;
+    }
+
+    .calculator-icon i {
+      font-size: 36px;
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Form Elements */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 16px;
+      border-radius: var(--radius);
+      border: 2px solid var(--border);
+      font-size: 16px;
+      transition: var(--transition);
+      background: #fafbfc;
+      font-weight: 500;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--brand-primary);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .form-input.error {
+      border-color: #ef4444;
+      background: #fef2f2;
+    }
+
+    .error-message {
+      color: #ef4444;
+      font-size: 14px;
+      margin-top: 6px;
+      display: none;
+      font-weight: 500;
+    }
+
+    /* Buttons */
+    .btn {
+      width: 100%;
+      padding: 16px;
+      border-radius: var(--radius);
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn-primary {
+      background: var(--brand-gradient);
+      color: white;
+      box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+    }
+
+    .btn-secondary {
+      background: #64748b;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: #475569;
+    }
+
+    /* Results */
+    .result {
+      margin-top: 24px;
+      font-weight: bold;
+      font-size: 18px;
+      text-align: center;
+      padding: 20px;
+      border-radius: var(--radius);
+      background-color: #f8fafc;
+      display: none;
+      border-left: 4px solid transparent;
+    }
+
+    .result.success {
+      background-color: #f0fdf4;
+      color: #166534;
+      border-left-color: #22c55e;
+    }
+
+    .result.error {
+      background-color: #fef2f2;
+      color: #991b1b;
+      border-left-color: #ef4444;
+    }
+
+    /* Additional Results */
+    .additional-results {
+      margin-top: 24px;
+      display: none;
+      background: #f8fafc;
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid var(--border-light);
+    }
+
+    .result-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .result-item:last-child {
+      border-bottom: none;
+    }
+
+    .result-label {
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .result-value {
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* Share Section */
+    .share {
+      text-align: center;
+      margin-top: 24px;
+      padding: 16px;
+      background: #f0f9ff;
+      border-radius: var(--radius);
+    }
+
+    .share-link {
+      text-decoration: none;
+      color: var(--brand-primary);
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+      font-weight: 600;
+    }
+
+    .share-link:hover {
+      color: var(--brand-primary-dark);
+      transform: translateY(-1px);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      margin-top: 40px;
+      color: var(--text-muted);
+      padding: 20px 0;
+    }
+
+    /* Back Button */
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface);
+      color: var(--text-primary);
+      padding: 14px 24px;
+      text-decoration: none;
+      border-radius: var(--radius);
+      margin-top: 30px;
+      transition: var(--transition);
+      font-weight: 600;
+      text-align: center;
+      border: 2px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .back-button:hover {
+      background: var(--brand-primary);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--brand-primary);
+    }
+
+    .button-container {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 480px) {
+      body {
+        padding: 16px;
+      }
+      
+      .container {
+        padding: 24px 20px;
+      }
+      
+      .calculator-title {
+        font-size: 22px;
+      }
+      
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .brand-text {
+        text-align: center;
+      }
+    }
+
+    /* Animation for results */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.5s ease-out;
+    }
+  </style>
+</head>
+<body>
+  <header class="header" role="banner">
+    <div class="header-content">
+      <div class="brand-logo">
+        <span class="logo-icon">∑</span>
+      </div>
+      <div class="brand-text">
+        <a href="index.html" class="header-link">
+          <h1 class="header-title">SmartCalcHub</h1>
+          <div class="header-subtitle">Professional Financial Calculators</div>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Add this to Loan Calculator page after header and before calculator grid -->
+
+ <section class="content-section" style="background: var(--surface); padding: 40px; border-radius: var(--radius-lg); margin-bottom: 30px; box-shadow: var(--shadow);">
+    <div class="content-header" style="text-align: center; margin-bottom: 30px;">
+        <h2 style="color: var(--text-primary); font-size: 2rem; margin-bottom: 15px;">Mortgage Payment Calculator</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem; max-width: 800px; margin: 0 auto;">Calculate your complete monthly mortgage payment including principal, interest, property taxes, home insurance, and PMI. Perfect for home buyers and refinancing.</p>
+    </div>
+    
+    <div class="content-grid" style="display: grid; gap: 30px; grid-template-columns: 1fr;">
+        <div class="content-block">
+            <h3 style="color: var(--brand-primary); margin-bottom: 15px;">Understanding Mortgage Payments</h3>
+            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 15px;">
+                A mortgage payment consists of four main components: Principal (loan repayment), Interest (lender's fee), Taxes (property taxes), and Insurance (homeowners insurance). This is often called PITI. If your down payment is less than 20%, you'll also pay PMI (Private Mortgage Insurance).
+            </p>
+            <p style="color: var(--text-secondary); line-height: 1.7;">
+                Understanding how these components work together helps you budget accurately and make informed decisions about your home purchase. Your monthly payment can vary significantly based on your down payment, loan term, and local tax rates.
+            </p>
+        </div>
+        
+        <div class="content-block">
+            <h3 style="color: var(--brand-primary); margin-bottom: 15px;">How Our Mortgage Calculator Works</h3>
+            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 15px;">
+                Our calculator computes your complete monthly housing costs using the standard mortgage formula plus additional costs:
+            </p>
+            <div style="background: #f8f9fa; padding: 20px; border-radius: var(--radius); border-left: 4px solid var(--brand-primary); margin-bottom: 15px;">
+                <p style="font-family: monospace; color: var(--text-primary); margin: 0;">
+                    Total Payment = P&I + Property Tax + Insurance + PMI
+                </p>
+            </div>
+            <p style="color: var(--text-secondary); line-height: 1.7;">
+                Where:<br>
+                • <strong>P&I</strong> = Principal & Interest (loan payment)<br>
+                • <strong>Property Tax</strong> = Annual tax ÷ 12 months<br>
+                • <strong>Insurance</strong> = Homeowners insurance ÷ 12 months<br>
+                • <strong>PMI</strong> = Required if down payment < 20%<br>
+            </p>
+        </div>
+        
+        <div class="content-block">
+            <h3 style="color: var(--brand-primary); margin-bottom: 15px;">Types of Mortgages You Can Calculate</h3>
+            <div style="display: grid; gap: 15px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 20px; border-radius: var(--radius);">
+                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">30-Year Fixed</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Most popular option with stable payments for 30 years. Lower monthly payments but more interest over time.</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 20px; border-radius: var(--radius);">
+                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">15-Year Fixed</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Higher monthly payments but significantly less interest and faster equity building.</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 20px; border-radius: var(--radius);">
+                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">Adjustable Rate (ARM)</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Lower initial rates that adjust periodically. Good for short-term ownership.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-block">
+            <h3 style="color: var(--brand-primary); margin-bottom: 15px;">Key Mortgage Concepts Explained</h3>
+            <div style="background: #f8f9fa; padding: 25px; border-radius: var(--radius);">
+                <div style="margin-bottom: 20px;">
+                    <h4 style="color: var(--text-primary); margin-bottom: 8px;">Down Payment</h4>
+                    <p style="color: var(--text-secondary); margin: 0; font-size: 0.95rem;">The initial payment you make toward the home's purchase price. Typically 3-20% of the home price. Larger down payments mean lower monthly costs.</p>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <h4 style="color: var(--text-primary); margin-bottom: 8px;">PMI (Private Mortgage Insurance)</h4>
+                    <p style="color: var(--text-secondary); margin: 0; font-size: 0.95rem;">Required when your down payment is less than 20%. Protects the lender if you default on the loan. Can be removed once you reach 20% equity.</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--text-primary); margin-bottom: 8px;">Escrow Account</h4>
+                    <p style="color: var(--text-secondary); margin: 0; font-size: 0.95rem;">An account managed by your lender to pay property taxes and insurance. These costs are included in your monthly payment.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-block">
+            <h3 style="color: var(--brand-primary); margin-bottom: 15px;">Home Buying Tips</h3>
+            <div style="display: grid; gap: 15px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                <div style="border: 1px solid var(--border); padding: 20px; border-radius: var(--radius);">
+                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">💰 Save for Down Payment</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Aim for 20% down to avoid PMI and get better interest rates. Even 10% down significantly reduces your costs.</p>
+                </div>
+                <div style="border: 1px solid var(--border); padding: 20px; border-radius: var(--radius);">
+                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">📊 Consider All Costs</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Remember closing costs (2-5% of home price), moving expenses, and immediate home repairs in your budget.</p>
+                </div>
+                <div style="border: 1px solid var(--border); padding: 20px; border-radius: var(--radius);">
+                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">🏠 Get Pre-Approved</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Know your budget before house hunting. Pre-approval shows sellers you're serious and can afford the home.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-block">
+            <h3 style="color: var(--brand-primary); margin-bottom: 15px;">Common Mortgage Questions</h3>
+            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 25px; border-radius: var(--radius);">
+                <div style="margin-bottom: 15px;">
+                    <h4 style="color: var(--text-primary); margin-bottom: 8px;">How much house can I afford?</h4>
+                    <p style="color: var(--text-secondary); margin: 0; font-size: 0.95rem;">Most lenders use the 28/36 rule: no more than 28% of gross income on housing costs, and 36% on total debt payments.</p>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <h4 style="color: var(--text-primary); margin-bottom: 8px;">What's the difference between interest rate and APR?</h4>
+                    <p style="color: var(--text-secondary); margin: 0; font-size: 0.95rem;">Interest rate is the cost of borrowing, while APR includes additional fees and costs. APR gives the true cost of the mortgage.</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--text-primary); margin-bottom: 8px;">When can I remove PMI?</h4>
+                    <p style="color: var(--text-secondary); margin: 0; font-size: 0.95rem;">You can request PMI removal once you reach 20% equity through payments or home value appreciation. It automatically terminates at 22% equity.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  <main class="container" role="main">
+    <div class="calculator-header">
+      <div class="calculator-icon">
+        <i>💰</i>
+      </div>
+      <h1 class="calculator-title">Loan Repayment Calculator</h1>
+      <p class="calculator-subtitle">Calculate your monthly payments with precision</p>
+    </div>
+
+    <div class="form-group">
+      <label for="amount" class="form-label">Loan Amount</label>
+      <input type="number" id="amount" class="form-input" placeholder="Enter loan amount in USD" min="0" step="0.01" />
+      <div id="amount-error" class="error-message">Please enter a valid loan amount</div>
+    </div>
+
+    <div class="form-group">
+      <label for="rate" class="form-label">Annual Interest Rate</label>
+      <input type="number" id="rate" class="form-input" placeholder="Enter annual interest rate (%)" min="0" step="0.01" />
+      <div id="rate-error" class="error-message">Please enter a valid interest rate</div>
+    </div>
+
+    <div class="form-group">
+      <label for="term" class="form-label">Loan Term</label>
+      <input type="number" id="term" class="form-input" placeholder="Enter loan term in years" min="1" step="1" />
+      <div id="term-error" class="error-message">Please enter a valid loan term (minimum 1 year)</div>
+    </div>
+
+    <button id="calculate-btn" class="btn btn-primary">
+      Calculate Monthly Payment
+    </button>
+
+    <div id="result" class="result" role="status" aria-live="polite"></div>
+
+    <div id="additional-results" class="additional-results">
+      <div class="result-item">
+        <span class="result-label">Total Payments:</span>
+        <span class="result-value" id="total-payments">—</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Total Interest:</span>
+        <span class="result-value" id="total-interest">—</span>
+      </div>
+    </div>
+
+    <div class="share">
+      <a href="#" id="share-link" class="share-link">
+        <span>📤</span> Share this tool on WhatsApp
+      </a>
+    </div>
+  </main>
+
+  <div class="button-container">
+    <a href="index.html" class="back-button">
+      ← Back to Homepage
+    </a>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    &copy; 2025 SmartCalcHub | All Rights Reserved
+  </footer>
+
+  <script>
+    // DOM utility functions
+    const $ = (id) => document.getElementById(id);
+    const $$ = (selector) => document.querySelectorAll(selector);
+    
+    // Format currency
+    const formatCurrency = (amount) => {
+      return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2
+      }).format(amount);
+    };
+
+    // Input validation
+    const validateInputs = () => {
+      const amount = parseFloat($('amount').value);
+      const rate = parseFloat($('rate').value);
+      const term = parseFloat($('term').value);
+      
+      let isValid = true;
+      
+      // Reset error states
+      $$('.error-message').forEach(el => el.style.display = 'none');
+      $$('.form-input').forEach(el => el.classList.remove('error'));
+      
+      // Validate loan amount
+      if (isNaN(amount) || amount <= 0) {
+        $('amount-error').style.display = 'block';
+        $('amount').classList.add('error');
+        isValid = false;
+      }
+      
+      // Validate interest rate
+      if (isNaN(rate) || rate < 0) {
+        $('rate-error').style.display = 'block';
+        $('rate').classList.add('error');
+        isValid = false;
+      }
+      
+      // Validate loan term
+      if (isNaN(term) || term < 1) {
+        $('term-error').style.display = 'block';
+        $('term').classList.add('error');
+        isValid = false;
+      }
+      
+      return isValid;
+    };
+
+    // Calculate loan payment
+    const calculateLoanPayment = () => {
+      if (!validateInputs()) return null;
+      
+      const amount = parseFloat($('amount').value);
+      const annualRate = parseFloat($('rate').value) / 100;
+      const termYears = parseFloat($('term').value);
+      
+      const monthlyRate = annualRate / 12;
+      const termMonths = termYears * 12;
+      
+      // Handle zero interest rate
+      if (monthlyRate === 0) {
+        return amount / termMonths;
+      }
+      
+      // Standard loan payment formula
+      const monthlyPayment = (amount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -termMonths));
+      
+      return monthlyPayment;
+    };
+
+    // Calculate additional loan details
+    const calculateLoanDetails = (monthlyPayment) => {
+      const amount = parseFloat($('amount').value);
+      const termYears = parseFloat($('term').value);
+      const termMonths = termYears * 12;
+      
+      const totalPayments = monthlyPayment * termMonths;
+      const totalInterest = totalPayments - amount;
+      
+      return {
+        totalPayments,
+        totalInterest
+      };
+    };
+
+    // Display results
+    const displayResults = (monthlyPayment, loanDetails) => {
+      const resultElement = $('result');
+      const additionalResults = $('additional-results');
+      
+      if (monthlyPayment === null) {
+        resultElement.textContent = 'Please fix the errors above to calculate your payment.';
+        resultElement.className = 'result error';
+        resultElement.style.display = 'block';
+        additionalResults.style.display = 'none';
+        return;
+      }
+      
+      resultElement.textContent = `Your estimated monthly payment is ${formatCurrency(monthlyPayment)}`;
+      resultElement.className = 'result success fade-in-up';
+      resultElement.style.display = 'block';
+      
+      // Display additional results
+      $('total-payments').textContent = formatCurrency(loanDetails.totalPayments);
+      $('total-interest').textContent = formatCurrency(loanDetails.totalInterest);
+      additionalResults.className = 'additional-results fade-in-up';
+      additionalResults.style.display = 'block';
+    };
+
+    // Main calculation function
+    const calculateLoan = () => {
+      const monthlyPayment = calculateLoanPayment();
+      const loanDetails = monthlyPayment ? calculateLoanDetails(monthlyPayment) : null;
+      displayResults(monthlyPayment, loanDetails);
+    };
+
+    // Share on WhatsApp
+    const shareOnWhatsApp = () => {
+      const url = window.location.href;
+      const text = "Check out this free Loan Repayment Calculator from SmartCalcHub: " + url;
+      const whatsappUrl = "https://wa.me/?text=" + encodeURIComponent(text);
+      window.open(whatsappUrl, "_blank");
+    };
+
+    // Reset form
+    const resetForm = () => {
+      $('amount').value = '';
+      $('rate').value = '';
+      $('term').value = '';
+      $('result').style.display = 'none';
+      $('additional-results').style.display = 'none';
+      
+      // Reset error states
+      $$('.error-message').forEach(el => el.style.display = 'none');
+      $$('.form-input').forEach(el => el.classList.remove('error'));
+      
+      // Focus on first input
+      $('amount').focus();
+    };
+
+    // Initialize event listeners
+    const initializeEventListeners = () => {
+      $('calculate-btn').addEventListener('click', calculateLoan);
+      $('share-link').addEventListener('click', shareOnWhatsApp);
+      
+      // Calculate on Enter key in any input
+      $$('.form-input').forEach(input => {
+        input.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            calculateLoan();
+          }
+        });
+        
+        // Clear errors when user starts typing
+        input.addEventListener('input', () => {
+          input.classList.remove('error');
+          $(`${input.id}-error`).style.display = 'none';
+        });
+      });
+    };
+
+    // Initialize the application
+    const init = () => {
+      initializeEventListeners();
+      console.log('Enhanced Loan Calculator initialized');
+    };
+
+    // Start when DOM is loaded
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
