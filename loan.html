@@ -12,6 +12,23 @@
   }
 
   </script>
+
+  <script>
+// Minimal loan calculator - TEST VERSION
+console.log('Loan calculator loading...');
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM ready');
+    
+    const calculateBtn = document.getElementById('calculate-btn');
+    if (calculateBtn) {
+        calculateBtn.addEventListener('click', function() {
+            console.log('Calculate button clicked!');
+            alert('Calculator is working!');
+        });
+    }
+});
+</script>
   <title>Loan Repayment Calculator - SmartCalcHub</title>
   <meta name="description" content="Calculate your monthly loan payments instantly with this free online loan calculator. Easy, fast, and accurate.">
   <style>
