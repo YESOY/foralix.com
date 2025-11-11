@@ -16,6 +16,13 @@
   <script>
 // Enhanced loan calculator with basic calculation
 console.log('Loan calculator loading...');
+    const formatCurrency = (amount) => {
+    return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2
+    }).format(amount);
+};
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM ready');
@@ -59,9 +66,18 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Calculated payment:', monthlyPayment);
             
             // Display result
-            resultElement.textContent = `Monthly Payment: $${monthlyPayment.toFixed(2)}`;
-            resultElement.className = 'result success';
-            resultElement.style.display = 'block';
+            // Display result
+
+          resultElement.textContent = `Monthly Payment: ${formatCurrency(monthlyPayment)}`;
+
+// Show additional results
+
+          const additionalResults = document.getElementById('additional-results');
+          if (additionalResults) {
+            document.getElementById('total-payments').textContent = formatCurrency(totalPayments);
+            document.getElementById('total-interest').textContent = formatCurrency(totalInterest);
+            additionalResults.style.display = 'block';
+}
         });
     }
     
