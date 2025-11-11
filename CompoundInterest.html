@@ -565,6 +565,84 @@
       </a>
     </header>
 
+    <!-- Add this to Compound Interest Calculator page -->
+
+    <section class="content-section" style="background: var(--surface); padding: 40px; border-radius: var(--radius-lg); margin-bottom: 30px; box-shadow: var(--shadow);">
+    <div class="content-header" style="text-align: center; margin-bottom: 30px;">
+        <h2 style="color: var(--text-primary); font-size: 2rem; margin-bottom: 15px;">Compound Interest Calculator</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem; max-width: 800px; margin: 0 auto;">Discover the incredible power of compound interest and how it can transform your savings and investments over time through the magic of exponential growth.</p>
+    </div>
+    
+    <div class="content-grid" style="display: grid; gap: 30px; grid-template-columns: 1fr;">
+        <div class="content-block">
+            <h3 style="color: var(--brand-primary); margin-bottom: 15px;">The Eighth Wonder of the World</h3>
+            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 15px;">
+                Albert Einstein famously called compound interest "the eighth wonder of the world" and "the most powerful force in the universe." This isn't an exaggeration - compound interest has the power to turn modest, regular savings into substantial wealth over time.
+            </p>
+            <p style="color: var(--text-secondary); line-height: 1.7;">
+                Unlike simple interest (which only earns returns on your initial investment), compound interest earns returns on both your initial principal AND the accumulated interest from previous periods. This creates an exponential growth curve that accelerates over time.
+            </p>
+        </div>
+        
+        <div class="content-block">
+            <h3 style="color: var(--brand-primary); margin-bottom: 15px;">The Mathematics of Compounding</h3>
+            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 15px;">
+                Our calculator uses the compound interest formula with regular contributions:
+            </p>
+            <div style="background: #f8f9fa; padding: 20px; border-radius: var(--radius); border-left: 4px solid var(--brand-primary); margin-bottom: 15px;">
+                <p style="font-family: monospace; color: var(--text-primary); margin: 0;">
+                    A = P(1 + r/n)^(nt) + C[((1 + r/n)^(nt) - 1)/(r/n)]
+                </p>
+            </div>
+            <p style="color: var(--text-secondary); line-height: 1.7;">
+                Where:<br>
+                • <strong>A</strong> = Future Value<br>
+                • <strong>P</strong> = Initial Principal<br>
+                • <strong>C</strong> = Regular Contribution<br>
+                • <strong>r</strong> = Annual Interest Rate<br>
+                • <strong>n</strong> = Compounding Frequency<br>
+                • <strong>t</strong> = Time in Years
+            </p>
+        </div>
+        
+        <div class="content-block">
+            <h3 style="color: var(--brand-primary); margin-bottom: 15px;">The Rule of 72</h3>
+            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 15px;">
+                A quick way to estimate how long it takes your money to double is the Rule of 72. Simply divide 72 by your annual interest rate:
+            </p>
+            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 20px; border-radius: var(--radius); text-align: center; margin-bottom: 15px;">
+                <p style="font-size: 1.2rem; color: var(--text-primary); margin: 0;">
+                    Years to Double = 72 ÷ Annual Interest Rate
+                </p>
+            </div>
+            <p style="color: var(--text-secondary); line-height: 1.7;">
+                For example, at 6% interest, your money doubles every 12 years (72 ÷ 6 = 12). At 8%, it doubles every 9 years. This rule demonstrates the power of higher returns over time.
+            </p>
+        </div>
+        
+        <div class="content-block">
+            <h3 style="color: var(--brand-primary); margin-bottom: 15px;">Real-World Examples</h3>
+            <div style="display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                <div style="background: var(--surface); padding: 20px; border-radius: var(--radius); border: 1px solid var(--border-light); box-shadow: var(--shadow);">
+                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">The Early Starter</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 10px;">Sarah invests $200/month starting at age 25. By age 65, with 7% returns, she has <strong>$525,000</strong>.</p>
+                    <p style="color: var(--text-muted); font-size: 0.8rem; margin: 0;">Total contributions: $96,000</p>
+                </div>
+                <div style="background: var(--surface); padding: 20px; border-radius: var(--radius); border: 1px solid var(--border-light); box-shadow: var(--shadow);">
+                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">The Late Bloomer</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 10px;">John invests $400/month starting at age 35. By age 65, with 7% returns, he has <strong>$488,000</strong>.</p>
+                    <p style="color: var(--text-muted); font-size: 0.8rem; margin: 0;">Total contributions: $144,000</p>
+                </div>
+                <div style="background: var(--surface); padding: 20px; border-radius: var(--radius); border: 1px solid var(--border-light); box-shadow: var(--shadow);">
+                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">The Power of Time</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 10px;">Starting 10 years earlier with half the monthly contribution results in more money despite contributing less overall.</p>
+                    <p style="color: var(--text-muted); font-size: 0.8rem; margin: 0;">Time is your greatest asset</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
     <div class="grid">
       <!-- Inputs -->
       <section class="card">
