@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Compound Interest Calculator – SmartCalcHub</title>
-  <meta name="description" content="Free Compound Interest Calculator. Calculate future value with annual, monthly, daily compounding and contributions.">
+  <meta name="description" content="Free Compound Interest Calculator. Calculate investment growth with different compounding frequencies. Understand the power of compound interest.">
   <style>
     :root {
       --brand-primary: #007BFF;
@@ -35,9 +35,8 @@
       font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
       background: var(--background);
       color: var(--text-primary);
-      line-height: 1.7;
+      line-height: 1.6;
       margin: 0;
-      padding: 20px;
       min-height: 100vh;
     }
 
@@ -215,7 +214,7 @@
 
     .form-row {
       display: grid;
-      grid-template-columns: 1fr 150px;
+      grid-template-columns: 1fr 140px;
       gap: 16px;
       align-items: center;
       margin-bottom: 16px;
@@ -255,9 +254,16 @@
       background: #fef2f2;
     }
 
-    .error-message {
-      color: #ef4444;
+    .help-text {
       font-size: 12px;
+      color: var(--text-muted);
+      margin: -8px 0 12px 0;
+      font-style: italic;
+    }
+
+    .error-text {
+      font-size: 12px;
+      color: #ef4444;
       margin-top: 6px;
       display: none;
       font-weight: 500;
@@ -450,11 +456,37 @@
 
     /* Footer */
     .footer {
-      text-align: center;
       margin-top: 40px;
       padding: 24px;
+      text-align: center;
       color: var(--text-muted);
       border-top: 1px solid var(--border-light);
+    }
+
+    /* Educational Note */
+    .educational-note {
+      margin-top: 16px;
+      padding: 16px;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-radius: var(--radius);
+      font-size: 14px;
+      border-left: 4px solid var(--brand-primary);
+    }
+
+    /* Animation for results */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.5s ease-out;
     }
 
     /* Calculator Icon */
@@ -528,7 +560,9 @@
           </a>
         </div>
       </div>
-      
+      <a class="back-link" href="index.html" title="Back to SmartCalcHub">
+        ← Back to homepage
+      </a>
     </header>
 
     <div class="grid">
@@ -536,27 +570,27 @@
       <section class="card">
         <div class="card-header">
           <div class="card-header-icon">⚡</div>
-          Input Parameters
+          Investment Parameters
         </div>
         <div class="card-body">
           <div class="calculator-icon">
-            <i>💰</i>
+            <i>📈</i>
           </div>
 
           <div class="form-group">
             <div class="form-row">
-              <label for="initial" class="form-label">Initial Amount</label>
+              <label for="initial" class="form-label">Initial Investment</label>
               <input id="initial" class="form-input" type="number" value="1000" min="0" step="0.01" aria-label="Initial investment amount">
             </div>
-            <div id="initial-error" class="error-message">Please enter a valid initial amount</div>
+            <div id="initial-error" class="error-text">Please enter a valid initial investment</div>
           </div>
 
           <div class="form-group">
             <div class="form-row">
-              <label for="monthly" class="form-label">Monthly Contribution</label>
-              <input id="monthly" class="form-input" type="number" value="200" min="0" step="0.01" aria-label="Monthly contribution amount">
+              <label for="monthly" class="form-label">Periodic Contribution</label>
+              <input id="monthly" class="form-input" type="number" value="200" min="0" step="0.01" aria-label="Periodic contribution amount">
             </div>
-            <div id="monthly-error" class="error-message">Please enter a valid monthly contribution</div>
+            <div id="monthly-error" class="error-text">Please enter a valid periodic contribution</div>
           </div>
 
           <div class="form-group">
@@ -564,7 +598,7 @@
               <label for="rate" class="form-label">Annual Interest Rate</label>
               <input id="rate" class="form-input" type="number" value="6" min="0" step="0.01" aria-label="Annual interest rate in percent">
             </div>
-            <div id="rate-error" class="error-message">Please enter a valid interest rate</div>
+            <div id="rate-error" class="error-text">Please enter a valid interest rate</div>
           </div>
 
           <div class="form-group">
@@ -572,7 +606,7 @@
               <label for="years" class="form-label">Investment Period</label>
               <input id="years" class="form-input" type="number" value="10" min="1" step="1" aria-label="Number of years">
             </div>
-            <div id="years-error" class="error-message">Please enter a valid number of years (minimum 1)</div>
+            <div id="years-error" class="error-text">Please enter a valid number of years (minimum 1)</div>
           </div>
 
           <div class="form-group">
@@ -587,31 +621,37 @@
             </div>
           </div>
 
+          <div class="help-text">Shows the mathematical power of compound interest over time.</div>
+          
           <div class="actions">
-            <button id="calcBtn" class="btn btn-primary" aria-label="Calculate compound interest">
-              Calculate Growth
+            <button class="btn btn-primary" id="calcBtn" aria-label="Calculate compound interest">
+              Calculate Compound Growth
             </button>
-            <button id="resetBtn" class="btn btn-secondary" title="Reset inputs to defaults">
+            <button class="btn btn-secondary" id="resetBtn" title="Reset inputs to defaults">
               Reset Values
             </button>
           </div>
         </div>
       </section>
 
-      <!-- Results & Chart -->
+      <!-- Results & chart -->
       <section class="card">
         <div class="card-header">
           <div class="card-header-icon">📊</div>
-          Investment Projection
+          Compound Growth Projection
         </div>
         <div class="card-body">
+          <div class="calculator-icon">
+            <i>💰</i>
+          </div>
+          
           <div class="kpis">
             <div class="kpi">
               <span class="kpi-label">Future Value</span>
               <span class="kpi-value" id="fv">—</span>
             </div>
             <div class="kpi">
-              <span class="kpi-label">Total Contributions</span>
+              <span class="kpi-label">Total Invested</span>
               <span class="kpi-value" id="contrib">—</span>
             </div>
             <div class="kpi">
@@ -620,21 +660,25 @@
             </div>
           </div>
 
+          <div id="educationalNote" class="educational-note">
+            <strong>💡 The Power of Compounding:</strong> Your money grows exponentially as interest earns its own interest over time.
+          </div>
+
           <div class="chart-container">
             <canvas id="chart" class="chart" height="300" aria-label="Compound interest growth chart" role="img"></canvas>
           </div>
 
           <div class="table-container">
-            <table>
+            <table id="tbl">
               <thead>
                 <tr>
                   <th>Year</th>
                   <th>End Balance</th>
-                  <th>Total Contributed</th>
+                  <th>Total Invested</th>
                   <th>Interest Earned</th>
                 </tr>
               </thead>
-              <tbody id="tableBody"></tbody>
+              <tbody></tbody>
             </table>
           </div>
         </div>
@@ -642,7 +686,7 @@
     </div>
 
     <footer class="footer">
-      © 2025 SmartCalcHub • Professional Financial Tools
+      © 2025 SmartCalcHub • <a class="back-link" href="index.html" style="display: inline; padding: 8px 16px; margin: 0;">Back to homepage</a>
     </footer>
   </div>
 
@@ -651,13 +695,10 @@
     const $ = (id) => document.getElementById(id);
     const $$ = (selector) => document.querySelectorAll(selector);
     
-    // Format currency
-    const formatCurrency = (amount) => {
-      return new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-        minimumFractionDigits: 2
-      }).format(amount);
+    // Format currency with error handling
+    const formatCurrency = (n) => {
+      if (isNaN(n) || !isFinite(n)) return '—';
+      return n.toLocaleString(undefined, { style: 'currency', currency: 'USD' });
     };
 
     // Input validation
@@ -670,17 +711,17 @@
       let isValid = true;
       
       // Reset error states
-      $$('.error-message').forEach(el => el.style.display = 'none');
+      $$('.error-text').forEach(el => el.style.display = 'none');
       $$('.form-input').forEach(el => el.classList.remove('error'));
       
-      // Validate initial amount
+      // Validate initial investment
       if (isNaN(initial) || initial < 0) {
         $('initial-error').style.display = 'block';
         $('initial').classList.add('error');
         isValid = false;
       }
       
-      // Validate monthly contribution
+      // Validate periodic contribution
       if (isNaN(monthly) || monthly < 0) {
         $('monthly-error').style.display = 'block';
         $('monthly').classList.add('error');
@@ -717,180 +758,49 @@
       const n = years * m;
       const i = r / m;
 
-      // Calculate future value
+      // Calculate future value using compound interest formula
       const futureValueLump = P * Math.pow(1 + i, n);
       const futureValueContrib = i === 0 ? PMT * n : PMT * ((Math.pow(1 + i, n) - 1) / i);
       const futureValue = futureValueLump + futureValueContrib;
-      const totalContributions = P + PMT * n;
+      const totalInvested = P + PMT * n;
 
       return {
         futureValue,
-        totalContributions,
-        totalInterest: futureValue - totalContributions
+        totalInvested,
+        totalInterest: futureValue - totalInvested
       };
     };
 
-    // Build yearly breakdown table
-    const buildTable = (P, PMT, i, m, years) => {
-      const body = $("tableBody");
-      body.innerHTML = "";
+    // Calculate yearly breakdown
+    const calculateYearlyBreakdown = (P, PMT, i, m, years) => {
+      const points = [];
       let balance = P;
-
+      let totalInvested = P;
+      
       for (let year = 1; year <= years; year++) {
         for (let period = 0; period < m; period++) {
+          // Compound the existing balance
           balance *= (1 + i);
+          // Add periodic contribution
           balance += PMT;
         }
-
-        const contributions = P + PMT * (year * m);
-        const interest = balance - contributions;
-
-        const row = document.createElement("tr");
-        row.innerHTML = `
-          <td>${year}</td>
-          <td>${formatCurrency(balance)}</td>
-          <td>${formatCurrency(contributions)}</td>
-          <td>${formatCurrency(interest)}</td>
-        `;
-        body.appendChild(row);
+        
+        totalInvested = P + PMT * (year * m);
+        const interestEarned = balance - totalInvested;
+        
+        points.push({
+          year,
+          balance,
+          invested: totalInvested,
+          interest: interestEarned
+        });
       }
-    };
-
-    // Draw chart
-    const drawChart = () => {
-      const canvas = $("chart");
-      const ctx = canvas.getContext("2d");
-      const rows = Array.from($("tableBody").children);
-
-      if (rows.length === 0) return;
-
-      // Set canvas dimensions for high DPI displays
-      const devicePixelRatio = window.devicePixelRatio || 1;
-      const width = canvas.clientWidth;
-      const height = canvas.clientHeight;
       
-      canvas.width = width * devicePixelRatio;
-      canvas.height = height * devicePixelRatio;
-      ctx.scale(devicePixelRatio, devicePixelRatio);
-
-      // Clear canvas
-      ctx.clearRect(0, 0, width, height);
-
-      // Extract data points
-      const points = rows.map((row, index) => ({
-        x: index + 1,
-        y: parseFloat(row.children[1].textContent.replace(/[^0-9.-]+/g, ""))
-      }));
-
-      // Chart dimensions
-      const padding = {
-        left: 60,
-        right: 20,
-        top: 20,
-        bottom: 40
-      };
-      
-      const innerWidth = width - padding.left - padding.right;
-      const innerHeight = height - padding.top - padding.bottom;
-
-      const maxY = Math.max(...points.map(p => p.y));
-      const minY = 0;
-      const yRange = maxY - minY;
-
-      // Draw axes
-      ctx.strokeStyle = '#e2e8f0';
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.moveTo(padding.left, padding.top);
-      ctx.lineTo(padding.left, height - padding.bottom);
-      ctx.lineTo(width - padding.right, height - padding.bottom);
-      ctx.stroke();
-
-      // Draw grid lines and Y-axis labels
-      ctx.fillStyle = '#64748b';
-      ctx.font = '12px Inter, system-ui, sans-serif';
-      ctx.textAlign = 'right';
-      
-      for (let i = 0; i <= 5; i++) {
-        const value = minY + (yRange * i / 5);
-        const y = padding.top + innerHeight - (innerHeight * i / 5);
-        
-        // Grid line
-        ctx.strokeStyle = '#f1f5f9';
-        ctx.beginPath();
-        ctx.moveTo(padding.left, y);
-        ctx.lineTo(width - padding.right, y);
-        ctx.stroke();
-        
-        // Label
-        ctx.fillStyle = '#64748b';
-        ctx.fillText(formatCurrency(value), padding.left - 10, y + 4);
-      }
-
-      // Draw line with gradient
-      const gradient = ctx.createLinearGradient(0, 0, 0, height);
-      gradient.addColorStop(0, '#007BFF');
-      gradient.addColorStop(1, '#0056b3');
-      
-      ctx.strokeStyle = gradient;
-      ctx.lineWidth = 3;
-      ctx.beginPath();
-      
-      points.forEach((point, index) => {
-        const x = padding.left + (innerWidth * index / (points.length - 1));
-        const y = padding.top + innerHeight - ((point.y - minY) / yRange * innerHeight);
-        
-        if (index === 0) {
-          ctx.moveTo(x, y);
-        } else {
-          ctx.lineTo(x, y);
-        }
-      });
-      
-      ctx.stroke();
-
-      // Draw points
-      ctx.fillStyle = '#007BFF';
-      
-      points.forEach((point, index) => {
-        const x = padding.left + (innerWidth * index / (points.length - 1));
-        const y = padding.top + innerHeight - ((point.y - minY) / yRange * innerHeight);
-        
-        ctx.beginPath();
-        ctx.arc(x, y, 4, 0, Math.PI * 2);
-        ctx.fill();
-        
-        // Add glow effect
-        ctx.shadowColor = '#007BFF';
-        ctx.shadowBlur = 8;
-        ctx.fill();
-        ctx.shadowBlur = 0;
-      });
-
-      // Draw X-axis labels
-      ctx.fillStyle = '#64748b';
-      ctx.textAlign = 'center';
-      ctx.font = '12px Inter, system-ui, sans-serif';
-      
-      points.forEach((point, index) => {
-        const x = padding.left + (innerWidth * index / (points.length - 1));
-        const y = height - padding.bottom + 20;
-        
-        // Only show some labels if there are many years
-        if (points.length <= 12 || index % Math.ceil(points.length / 12) === 0) {
-          ctx.fillText(`Year ${point.x}`, x, y);
-        }
-      });
-
-      // Chart title
-      ctx.fillStyle = '#1e293b';
-      ctx.textAlign = 'center';
-      ctx.font = '16px Inter, system-ui, sans-serif';
-      ctx.fillText('Compound Interest Growth Over Time', width / 2, 20);
+      return points;
     };
 
     // Main calculation function
-    const calculate = () => {
+    const compute = () => {
       const result = calculateCompoundInterest();
       
       if (!result) return;
@@ -904,15 +814,42 @@
 
       // Update result displays
       $("fv").textContent = formatCurrency(result.futureValue);
-      $("contrib").textContent = formatCurrency(result.totalContributions);
+      $("contrib").textContent = formatCurrency(result.totalInvested);
       $("interest").textContent = formatCurrency(result.totalInterest);
-
-      // Build table and draw chart
-      buildTable(P, PMT, i, m, years);
-      drawChart();
+      
+      // Show educational note
+      const educationalNote = $("educationalNote");
+      educationalNote.style.display = 'block';
+      educationalNote.classList.add('fade-in-up');
+      
+      // Calculate yearly breakdown
+      const yearlyData = calculateYearlyBreakdown(P, PMT, i, m, years);
+      
+      // Update table
+      updateTable(yearlyData);
+      
+      // Draw chart
+      drawChart(yearlyData);
     };
 
-    // Reset form
+    // Update the results table
+    const updateTable = (data) => {
+      const tbody = document.querySelector('#tbl tbody');
+      tbody.innerHTML = '';
+      
+      data.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${item.year}</td>
+          <td>${formatCurrency(item.balance)}</td>
+          <td>${formatCurrency(item.invested)}</td>
+          <td>${formatCurrency(item.interest)}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    };
+
+    // Reset form to defaults
     const reset = () => {
       $("initial").value = 1000;
       $("monthly").value = 200;
@@ -921,39 +858,175 @@
       $("compound").value = 12;
       
       // Clear errors
-      $$('.error-message').forEach(el => el.style.display = 'none');
+      $$('.error-text').forEach(el => el.style.display = 'none');
       $$('.form-input').forEach(el => el.classList.remove('error'));
       
-      calculate();
+      compute();
     };
 
-    // Initialize event listeners
+    // Chart drawing function
+    const drawChart = (points) => {
+      const canvas = $("chart");
+      const ctx = canvas.getContext('2d');
+      
+      // Set canvas dimensions for high DPI displays
+      const devicePixelRatio = window.devicePixelRatio || 1;
+      const width = canvas.clientWidth;
+      const height = canvas.clientHeight;
+      
+      canvas.width = width * devicePixelRatio;
+      canvas.height = height * devicePixelRatio;
+      ctx.scale(devicePixelRatio, devicePixelRatio);
+      
+      // Clear canvas
+      ctx.clearRect(0, 0, width, height);
+      
+      // Return if no data
+      if (points.length === 0) return;
+      
+      // Chart dimensions
+      const padding = {
+        left: 60,
+        right: 20,
+        top: 20,
+        bottom: 40
+      };
+      
+      const innerWidth = width - padding.left - padding.right;
+      const innerHeight = height - padding.top - padding.bottom;
+      
+      // Calculate data ranges
+      const years = points.map(p => p.year);
+      const balances = points.map(p => p.balance);
+      const maxBalance = Math.max(...balances);
+      const minBalance = 0;
+      const yRange = maxBalance - minBalance;
+      
+      // Draw axes
+      ctx.strokeStyle = '#e2e8f0';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(padding.left, padding.top);
+      ctx.lineTo(padding.left, height - padding.bottom);
+      ctx.lineTo(width - padding.right, height - padding.bottom);
+      ctx.stroke();
+      
+      // Draw grid lines and Y-axis labels
+      ctx.fillStyle = '#64748b';
+      ctx.font = '12px Inter, system-ui, sans-serif';
+      ctx.textAlign = 'right';
+      
+      for (let i = 0; i <= 5; i++) {
+        const value = minBalance + (yRange * i / 5);
+        const y = padding.top + innerHeight - (innerHeight * i / 5);
+        
+        // Grid line
+        ctx.strokeStyle = '#f1f5f9';
+        ctx.beginPath();
+        ctx.moveTo(padding.left, y);
+        ctx.lineTo(width - padding.right, y);
+        ctx.stroke();
+        
+        // Label
+        ctx.fillStyle = '#64748b';
+        ctx.fillText(
+          formatCurrency(value), 
+          padding.left - 10, 
+          y + 4
+        );
+      }
+      
+      // Draw line with gradient
+      const gradient = ctx.createLinearGradient(0, 0, 0, height);
+      gradient.addColorStop(0, '#007BFF');
+      gradient.addColorStop(1, '#0056b3');
+      
+      ctx.strokeStyle = gradient;
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      
+      points.forEach((point, index) => {
+        const x = padding.left + (innerWidth * index / (points.length - 1));
+        const y = padding.top + innerHeight - ((point.balance - minBalance) / yRange * innerHeight);
+        
+        if (index === 0) {
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
+      });
+      
+      ctx.stroke();
+      
+      // Draw points
+      ctx.fillStyle = '#007BFF';
+      
+      points.forEach((point, index) => {
+        const x = padding.left + (innerWidth * index / (points.length - 1));
+        const y = padding.top + innerHeight - ((point.balance - minBalance) / yRange * innerHeight);
+        
+        ctx.beginPath();
+        ctx.arc(x, y, 4, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Add glow effect
+        ctx.shadowColor = '#007BFF';
+        ctx.shadowBlur = 8;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      });
+      
+      // Draw X-axis labels
+      ctx.fillStyle = '#64748b';
+      ctx.textAlign = 'center';
+      ctx.font = '12px Inter, system-ui, sans-serif';
+      
+      points.forEach((point, index) => {
+        const x = padding.left + (innerWidth * index / (points.length - 1));
+        const y = height - padding.bottom + 20;
+        
+        // Only show some labels if there are many years
+        if (points.length <= 12 || index % Math.ceil(points.length / 12) === 0) {
+          ctx.fillText(`Year ${point.year}`, x, y);
+        }
+      });
+      
+      // Chart title
+      ctx.fillStyle = '#1e293b';
+      ctx.textAlign = 'center';
+      ctx.font = '16px Inter, system-ui, sans-serif';
+      ctx.fillText('Compound Interest Growth Over Time', width / 2, 20);
+    };
+
+    // Event Listeners
     const initializeEventListeners = () => {
-      $("calcBtn").addEventListener('click', calculate);
+      $("calcBtn").addEventListener('click', compute);
       $("resetBtn").addEventListener('click', reset);
       
       // Auto-calculate when inputs change
       $$('.form-input, .form-select').forEach(input => {
-        input.addEventListener('change', calculate);
+        input.addEventListener('change', compute);
         input.addEventListener('input', () => {
           // Remove error styling when user starts typing
           input.classList.remove('error');
-          const errorId = `${input.id}-error`;
-          if ($(errorId)) {
-            $(errorId).style.display = 'none';
-          }
+          $(`${input.id}-error`).style.display = 'none';
         });
       });
       
-      // Handle window resize
+      // Handle window resize with debouncing
       let resizeTimeout;
       window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
-          const rows = Array.from($("tableBody").children);
-          if (rows.length > 0) {
-            drawChart();
-          }
+          const rows = Array.from(document.querySelectorAll('#tbl tbody tr'));
+          if (rows.length === 0) return;
+          
+          const data = Array.from(rows).map((row, index) => ({
+            year: index + 1,
+            balance: parseFloat(row.children[1].textContent.replace(/[^0-9.-]+/g, ''))
+          }));
+          
+          drawChart(data);
         }, 250);
       });
     };
@@ -961,10 +1034,10 @@
     // Initialize the application
     const init = () => {
       initializeEventListeners();
-      calculate(); // Run initial calculation
+      compute(); // Run initial calculation
     };
 
-    // Start when DOM is loaded
+    // Start the app when DOM is loaded
     document.addEventListener('DOMContentLoaded', init);
   </script>
 </body>
