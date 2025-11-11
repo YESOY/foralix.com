@@ -5,16 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
   <script>
-  // Force HTTPS redirect - more reliable version
+  // Force HTTPS redirect
   if (window.location.protocol === 'http:') {
-    // Full page redirect to HTTPS
     window.location.href = 'https://' + window.location.host + window.location.pathname + window.location.search + window.location.hash;
   }
-
   </script>
   
   <title>Mortgage Calculator - SmartCalcHub</title>
-<meta name="description" content="Calculate your monthly mortgage payments with taxes, insurance, and PMI. Free online mortgage calculator for home buying.">
+  <meta name="description" content="Calculate your monthly mortgage payments with taxes, insurance, and PMI. Free online mortgage calculator for home buying.">
   <style>
     :root {
       --brand-primary: #007BFF;
@@ -338,6 +336,31 @@
       color: var(--text-primary);
     }
 
+    /* Payment Breakdown */
+    .payment-breakdown {
+      margin-top: 24px;
+      display: none;
+      background: #f8fafc;
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid var(--border-light);
+    }
+
+    .breakdown-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .breakdown-item:last-child {
+      border-bottom: none;
+      font-weight: bold;
+      border-top: 2px solid var(--border);
+      margin-top: 10px;
+      padding-top: 15px;
+    }
+
     /* Share Section */
     .share {
       text-align: center;
@@ -459,9 +482,7 @@
     </div>
   </header>
 
-  <!-- Add this to Loan Calculator page after header and before calculator grid -->
-
- <section class="content-section" style="background: var(--surface); padding: 40px; border-radius: var(--radius-lg); margin-bottom: 30px; box-shadow: var(--shadow);">
+  <section class="content-section" style="background: var(--surface); padding: 40px; border-radius: var(--radius-lg); margin-bottom: 30px; box-shadow: var(--shadow);">
     <div class="content-header" style="text-align: center; margin-bottom: 30px;">
         <h2 style="color: var(--text-primary); font-size: 2rem; margin-bottom: 15px;">Mortgage Payment Calculator</h2>
         <p style="color: var(--text-secondary); font-size: 1.1rem; max-width: 800px; margin: 0 auto;">Calculate your complete monthly mortgage payment including principal, interest, property taxes, home insurance, and PMI. Perfect for home buyers and refinancing.</p>
@@ -496,117 +517,96 @@
                 • <strong>PMI</strong> = Required if down payment < 20%<br>
             </p>
         </div>
-        
-        <div class="content-block">
-            <h3 style="color: var(--brand-primary); margin-bottom: 15px;">Types of Mortgages You Can Calculate</h3>
-            <div style="display: grid; gap: 15px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-                <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 20px; border-radius: var(--radius);">
-                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">30-Year Fixed</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Most popular option with stable payments for 30 years. Lower monthly payments but more interest over time.</p>
-                </div>
-                <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 20px; border-radius: var(--radius);">
-                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">15-Year Fixed</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Higher monthly payments but significantly less interest and faster equity building.</p>
-                </div>
-                <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 20px; border-radius: var(--radius);">
-                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">Adjustable Rate (ARM)</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Lower initial rates that adjust periodically. Good for short-term ownership.</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="content-block">
-            <h3 style="color: var(--brand-primary); margin-bottom: 15px;">Key Mortgage Concepts Explained</h3>
-            <div style="background: #f8f9fa; padding: 25px; border-radius: var(--radius);">
-                <div style="margin-bottom: 20px;">
-                    <h4 style="color: var(--text-primary); margin-bottom: 8px;">Down Payment</h4>
-                    <p style="color: var(--text-secondary); margin: 0; font-size: 0.95rem;">The initial payment you make toward the home's purchase price. Typically 3-20% of the home price. Larger down payments mean lower monthly costs.</p>
-                </div>
-                <div style="margin-bottom: 20px;">
-                    <h4 style="color: var(--text-primary); margin-bottom: 8px;">PMI (Private Mortgage Insurance)</h4>
-                    <p style="color: var(--text-secondary); margin: 0; font-size: 0.95rem;">Required when your down payment is less than 20%. Protects the lender if you default on the loan. Can be removed once you reach 20% equity.</p>
-                </div>
-                <div>
-                    <h4 style="color: var(--text-primary); margin-bottom: 8px;">Escrow Account</h4>
-                    <p style="color: var(--text-secondary); margin: 0; font-size: 0.95rem;">An account managed by your lender to pay property taxes and insurance. These costs are included in your monthly payment.</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="content-block">
-            <h3 style="color: var(--brand-primary); margin-bottom: 15px;">Home Buying Tips</h3>
-            <div style="display: grid; gap: 15px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-                <div style="border: 1px solid var(--border); padding: 20px; border-radius: var(--radius);">
-                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">💰 Save for Down Payment</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Aim for 20% down to avoid PMI and get better interest rates. Even 10% down significantly reduces your costs.</p>
-                </div>
-                <div style="border: 1px solid var(--border); padding: 20px; border-radius: var(--radius);">
-                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">📊 Consider All Costs</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Remember closing costs (2-5% of home price), moving expenses, and immediate home repairs in your budget.</p>
-                </div>
-                <div style="border: 1px solid var(--border); padding: 20px; border-radius: var(--radius);">
-                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">🏠 Get Pre-Approved</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Know your budget before house hunting. Pre-approval shows sellers you're serious and can afford the home.</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="content-block">
-            <h3 style="color: var(--brand-primary); margin-bottom: 15px;">Common Mortgage Questions</h3>
-            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 25px; border-radius: var(--radius);">
-                <div style="margin-bottom: 15px;">
-                    <h4 style="color: var(--text-primary); margin-bottom: 8px;">How much house can I afford?</h4>
-                    <p style="color: var(--text-secondary); margin: 0; font-size: 0.95rem;">Most lenders use the 28/36 rule: no more than 28% of gross income on housing costs, and 36% on total debt payments.</p>
-                </div>
-                <div style="margin-bottom: 15px;">
-                    <h4 style="color: var(--text-primary); margin-bottom: 8px;">What's the difference between interest rate and APR?</h4>
-                    <p style="color: var(--text-secondary); margin: 0; font-size: 0.95rem;">Interest rate is the cost of borrowing, while APR includes additional fees and costs. APR gives the true cost of the mortgage.</p>
-                </div>
-                <div>
-                    <h4 style="color: var(--text-primary); margin-bottom: 8px;">When can I remove PMI?</h4>
-                    <p style="color: var(--text-secondary); margin: 0; font-size: 0.95rem;">You can request PMI removal once you reach 20% equity through payments or home value appreciation. It automatically terminates at 22% equity.</p>
-                </div>
-            </div>
-        </div>
     </div>
 </section>
 
   <main class="container" role="main">
     <div class="calculator-header">
       <div class="calculator-icon">
-        <i>💰</i>
+        <i>🏠</i>
       </div>
-      <h1 class="calculator-title">Loan Repayment Calculator</h1>
-      <p class="calculator-subtitle">Calculate your monthly payments with precision</p>
+      <h1 class="calculator-title">Mortgage Payment Calculator</h1>
+      <p class="calculator-subtitle">Calculate your complete monthly housing costs</p>
+    </div>
+
+    <!-- Mortgage Specific Form Fields -->
+    <div class="form-group">
+      <label for="home-price" class="form-label">Home Price</label>
+      <input type="number" id="home-price" class="form-input" placeholder="Enter home price in USD" min="0" step="0.01" />
+      <div id="home-price-error" class="error-message">Please enter a valid home price</div>
     </div>
 
     <div class="form-group">
-      <label for="amount" class="form-label">Loan Amount</label>
-      <input type="number" id="amount" class="form-input" placeholder="Enter loan amount in USD" min="0" step="0.01" />
-      <div id="amount-error" class="error-message">Please enter a valid loan amount</div>
+      <label for="down-payment" class="form-label">Down Payment</label>
+      <input type="number" id="down-payment" class="form-input" placeholder="Enter down payment amount" min="0" step="0.01" />
+      <div id="down-payment-error" class="error-message">Please enter a valid down payment</div>
     </div>
 
     <div class="form-group">
-      <label for="rate" class="form-label">Annual Interest Rate</label>
-      <input type="number" id="rate" class="form-input" placeholder="Enter annual interest rate (%)" min="0" step="0.01" />
-      <div id="rate-error" class="error-message">Please enter a valid interest rate</div>
+      <label for="loan-term" class="form-label">Loan Term</label>
+      <input type="number" id="loan-term" class="form-input" placeholder="Enter loan term in years" min="1" step="1" value="30" />
+      <div id="loan-term-error" class="error-message">Please enter a valid loan term</div>
     </div>
 
     <div class="form-group">
-      <label for="term" class="form-label">Loan Term</label>
-      <input type="number" id="term" class="form-input" placeholder="Enter loan term in years" min="1" step="1" />
-      <div id="term-error" class="error-message">Please enter a valid loan term (minimum 1 year)</div>
+      <label for="interest-rate" class="form-label">Interest Rate</label>
+      <input type="number" id="interest-rate" class="form-input" placeholder="Enter annual interest rate (%)" min="0" step="0.01" value="4.5" />
+      <div id="interest-rate-error" class="error-message">Please enter a valid interest rate</div>
+    </div>
+
+    <div class="form-group">
+      <label for="property-tax" class="form-label">Annual Property Tax</label>
+      <input type="number" id="property-tax" class="form-input" placeholder="Enter annual property tax" min="0" step="0.01" value="3000" />
+      <div id="property-tax-error" class="error-message">Please enter a valid property tax amount</div>
+    </div>
+
+    <div class="form-group">
+      <label for="home-insurance" class="form-label">Annual Home Insurance</label>
+      <input type="number" id="home-insurance" class="form-input" placeholder="Enter annual insurance cost" min="0" step="0.01" value="1200" />
+      <div id="home-insurance-error" class="error-message">Please enter a valid insurance amount</div>
     </div>
 
     <button id="calculate-btn" class="btn btn-primary">
-      Calculate Monthly Payment
+      Calculate Mortgage Payment
     </button>
 
     <div id="result" class="result" role="status" aria-live="polite"></div>
 
+    <div id="payment-breakdown" class="payment-breakdown">
+      <h3 style="color: var(--text-primary); margin-bottom: 15px; text-align: center;">Monthly Payment Breakdown</h3>
+      <div class="breakdown-item">
+        <span class="result-label">Principal & Interest:</span>
+        <span class="result-value" id="breakdown-pi">—</span>
+      </div>
+      <div class="breakdown-item">
+        <span class="result-label">Property Tax:</span>
+        <span class="result-value" id="breakdown-tax">—</span>
+      </div>
+      <div class="breakdown-item">
+        <span class="result-label">Home Insurance:</span>
+        <span class="result-value" id="breakdown-insurance">—</span>
+      </div>
+      <div class="breakdown-item">
+        <span class="result-label">PMI:</span>
+        <span class="result-value" id="breakdown-pmi">—</span>
+      </div>
+      <div class="breakdown-item">
+        <span class="result-label">Total Monthly Payment:</span>
+        <span class="result-value" id="breakdown-total">—</span>
+      </div>
+    </div>
+
     <div id="additional-results" class="additional-results">
       <div class="result-item">
-        <span class="result-label">Total Payments:</span>
+        <span class="result-label">Loan Amount:</span>
+        <span class="result-value" id="total-loan-amount">—</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Down Payment %:</span>
+        <span class="result-value" id="down-payment-percent">—</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Total Payments (30 years):</span>
         <span class="result-value" id="total-payments">—</span>
       </div>
       <div class="result-item">
@@ -646,151 +646,170 @@
       }).format(amount);
     };
 
-    // Input validation
-    const validateInputs = () => {
-      const amount = parseFloat($('amount').value);
-      const rate = parseFloat($('rate').value);
-      const term = parseFloat($('term').value);
-      
-      let isValid = true;
-      
-      // Reset error states
-      $$('.error-message').forEach(el => el.style.display = 'none');
-      $$('.form-input').forEach(el => el.classList.remove('error'));
-      
-      // Validate loan amount
-      if (isNaN(amount) || amount <= 0) {
-        $('amount-error').style.display = 'block';
-        $('amount').classList.add('error');
-        isValid = false;
-      }
-      
-      // Validate interest rate
-      if (isNaN(rate) || rate < 0) {
-        $('rate-error').style.display = 'block';
-        $('rate').classList.add('error');
-        isValid = false;
-      }
-      
-      // Validate loan term
-      if (isNaN(term) || term < 1) {
-        $('term-error').style.display = 'block';
-        $('term').classList.add('error');
-        isValid = false;
-      }
-      
-      return isValid;
+    // Format percentage
+    const formatPercent = (value) => {
+      return value.toFixed(2) + '%';
     };
 
-    // Calculate loan payment
-    const calculateLoanPayment = () => {
-      if (!validateInputs()) return null;
-      
-      const amount = parseFloat($('amount').value);
-      const annualRate = parseFloat($('rate').value) / 100;
-      const termYears = parseFloat($('term').value);
-      
-      const monthlyRate = annualRate / 12;
-      const termMonths = termYears * 12;
-      
-      // Handle zero interest rate
+    // Calculate mortgage payment
+    const calculateMortgage = () => {
+      // Get input values
+      const homePrice = parseFloat($('home-price').value);
+      const downPayment = parseFloat($('down-payment').value);
+      const loanTerm = parseFloat($('loan-term').value);
+      const interestRate = parseFloat($('interest-rate').value) / 100;
+      const propertyTax = parseFloat($('property-tax').value) || 0;
+      const homeInsurance = parseFloat($('home-insurance').value) || 0;
+
+      // Validate inputs
+      if (!homePrice || homePrice <= 0) {
+        showError('home-price-error', 'Please enter a valid home price');
+        return null;
+      }
+      if (!downPayment || downPayment < 0 || downPayment >= homePrice) {
+        showError('down-payment-error', 'Please enter a valid down payment');
+        return null;
+      }
+      if (!loanTerm || loanTerm < 1) {
+        showError('loan-term-error', 'Please enter a valid loan term');
+        return null;
+      }
+      if (!interestRate || interestRate < 0) {
+        showError('interest-rate-error', 'Please enter a valid interest rate');
+        return null;
+      }
+
+      // Clear errors
+      clearErrors();
+
+      // Calculate loan amount
+      const loanAmount = homePrice - downPayment;
+      const downPaymentPercent = (downPayment / homePrice) * 100;
+
+      // Calculate monthly principal & interest
+      const monthlyRate = interestRate / 12;
+      const numberOfPayments = loanTerm * 12;
+
+      let monthlyPI;
       if (monthlyRate === 0) {
-        return amount / termMonths;
+        monthlyPI = loanAmount / numberOfPayments;
+      } else {
+        monthlyPI = (loanAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
       }
-      
-      // Standard loan payment formula
-      const monthlyPayment = (amount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -termMonths));
-      
-      return monthlyPayment;
-    };
 
-    // Calculate additional loan details
-    const calculateLoanDetails = (monthlyPayment) => {
-      const amount = parseFloat($('amount').value);
-      const termYears = parseFloat($('term').value);
-      const termMonths = termYears * 12;
-      
-      const totalPayments = monthlyPayment * termMonths;
-      const totalInterest = totalPayments - amount;
-      
+      // Calculate additional monthly costs
+      const monthlyTax = propertyTax / 12;
+      const monthlyInsurance = homeInsurance / 12;
+
+      // Calculate PMI (0.75% annual if down payment < 20%)
+      let monthlyPMI = 0;
+      if (downPaymentPercent < 20) {
+        const pmiRate = 0.0075; // 0.75% annual
+        monthlyPMI = (loanAmount * pmiRate) / 12;
+      }
+
+      // Calculate total monthly payment
+      const totalMonthlyPayment = monthlyPI + monthlyTax + monthlyInsurance + monthlyPMI;
+
+      // Calculate totals over loan term
+      const totalPayments = totalMonthlyPayment * numberOfPayments;
+      const totalInterest = (monthlyPI * numberOfPayments) - loanAmount;
+
       return {
+        loanAmount,
+        downPaymentPercent,
+        monthlyPI,
+        monthlyTax,
+        monthlyInsurance,
+        monthlyPMI,
+        totalMonthlyPayment,
         totalPayments,
-        totalInterest
+        totalInterest,
+        numberOfPayments
       };
     };
 
+    // Show error message
+    const showError = (errorId, message) => {
+      $(errorId).textContent = message;
+      $(errorId).style.display = 'block';
+      $(errorId.split('-error')[0]).classList.add('error');
+    };
+
+    // Clear all errors
+    const clearErrors = () => {
+      $$('.error-message').forEach(el => el.style.display = 'none');
+      $$('.form-input').forEach(el => el.classList.remove('error'));
+    };
+
     // Display results
-    const displayResults = (monthlyPayment, loanDetails) => {
-      const resultElement = $('result');
-      const additionalResults = $('additional-results');
-      
-      if (monthlyPayment === null) {
-        resultElement.textContent = 'Please fix the errors above to calculate your payment.';
-        resultElement.className = 'result error';
-        resultElement.style.display = 'block';
-        additionalResults.style.display = 'none';
+    const displayResults = (results) => {
+      if (!results) {
+        $('result').textContent = 'Please fix the errors above to calculate your payment.';
+        $('result').className = 'result error';
+        $('result').style.display = 'block';
+        $('payment-breakdown').style.display = 'none';
+        $('additional-results').style.display = 'none';
         return;
       }
-      
-      resultElement.textContent = `Your estimated monthly payment is ${formatCurrency(monthlyPayment)}`;
-      resultElement.className = 'result success fade-in-up';
-      resultElement.style.display = 'block';
-      
-      // Display additional results
-      $('total-payments').textContent = formatCurrency(loanDetails.totalPayments);
-      $('total-interest').textContent = formatCurrency(loanDetails.totalInterest);
-      additionalResults.className = 'additional-results fade-in-up';
-      additionalResults.style.display = 'block';
+
+      // Main result
+      $('result').textContent = `Your estimated monthly payment is ${formatCurrency(results.totalMonthlyPayment)}`;
+      $('result').className = 'result success fade-in-up';
+      $('result').style.display = 'block';
+
+      // Payment breakdown
+      $('breakdown-pi').textContent = formatCurrency(results.monthlyPI);
+      $('breakdown-tax').textContent = formatCurrency(results.monthlyTax);
+      $('breakdown-insurance').textContent = formatCurrency(results.monthlyInsurance);
+      $('breakdown-pmi').textContent = formatCurrency(results.monthlyPMI);
+      $('breakdown-total').textContent = formatCurrency(results.totalMonthlyPayment);
+      $('payment-breakdown').className = 'payment-breakdown fade-in-up';
+      $('payment-breakdown').style.display = 'block';
+
+      // Additional results
+      $('total-loan-amount').textContent = formatCurrency(results.loanAmount);
+      $('down-payment-percent').textContent = formatPercent(results.downPaymentPercent);
+      $('total-payments').textContent = formatCurrency(results.totalPayments);
+      $('total-interest').textContent = formatCurrency(results.totalInterest);
+      $('additional-results').className = 'additional-results fade-in-up';
+      $('additional-results').style.display = 'block';
     };
 
     // Main calculation function
-    const calculateLoan = () => {
-      const monthlyPayment = calculateLoanPayment();
-      const loanDetails = monthlyPayment ? calculateLoanDetails(monthlyPayment) : null;
-      displayResults(monthlyPayment, loanDetails);
+    const calculateMortgagePayment = () => {
+      const results = calculateMortgage();
+      displayResults(results);
     };
 
     // Share on WhatsApp
     const shareOnWhatsApp = () => {
       const url = window.location.href;
-      const text = "Check out this free Loan Repayment Calculator from SmartCalcHub: " + url;
+      const text = "Check out this free Mortgage Calculator from SmartCalcHub: " + url;
       const whatsappUrl = "https://wa.me/?text=" + encodeURIComponent(text);
       window.open(whatsappUrl, "_blank");
     };
 
-    // Reset form
-    const resetForm = () => {
-      $('amount').value = '';
-      $('rate').value = '';
-      $('term').value = '';
-      $('result').style.display = 'none';
-      $('additional-results').style.display = 'none';
-      
-      // Reset error states
-      $$('.error-message').forEach(el => el.style.display = 'none');
-      $$('.form-input').forEach(el => el.classList.remove('error'));
-      
-      // Focus on first input
-      $('amount').focus();
-    };
-
     // Initialize event listeners
     const initializeEventListeners = () => {
-      $('calculate-btn').addEventListener('click', calculateLoan);
+      $('calculate-btn').addEventListener('click', calculateMortgagePayment);
       $('share-link').addEventListener('click', shareOnWhatsApp);
       
       // Calculate on Enter key in any input
       $$('.form-input').forEach(input => {
         input.addEventListener('keypress', (e) => {
           if (e.key === 'Enter') {
-            calculateLoan();
+            calculateMortgagePayment();
           }
         });
         
         // Clear errors when user starts typing
         input.addEventListener('input', () => {
           input.classList.remove('error');
-          $(`${input.id}-error`).style.display = 'none';
+          const errorId = input.id + '-error';
+          if ($(errorId)) {
+            $(errorId).style.display = 'none';
+          }
         });
       });
     };
@@ -798,7 +817,7 @@
     // Initialize the application
     const init = () => {
       initializeEventListeners();
-      console.log('Enhanced Loan Calculator initialized');
+      console.log('Mortgage Calculator initialized');
     };
 
     // Start when DOM is loaded
