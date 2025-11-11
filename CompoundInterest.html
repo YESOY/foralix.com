@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Compound Interest Calculator – SmartCalcHub</title>
+  <meta name="description" content="Free Compound Interest Calculator. Calculate future value with annual, monthly, daily compounding and contributions.">
+  <style>
+    :root {
+      --brand-primary: #007BFF;
+      --brand-primary-dark: #0056b3;
+      --brand-gradient: linear-gradient(135deg, #007BFF 0%, #0056b3 100%);
+      --success-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      --background: #f8fafc;
+      --surface: #ffffff;
+      --text-primary: #1e293b;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --radius: 12px;
+      --radius-lg: 20px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
+      background: var(--background);
+      color: var(--text-primary);
+      line-height: 1.7;
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    /* Enhanced Header */
+    .header {
+      text-align: center;
+      padding: 30px 20px;
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      margin-bottom: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--brand-gradient);
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand-logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      background: var(--brand-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+      transition: var(--transition);
+    }
+
+    .brand-logo:hover {
+      transform: scale(1.05) rotate(5deg);
+    }
+
+    .logo-icon {
+      font-size: 28px;
+      color: white;
+      font-weight: bold;
+    }
+
+    .brand-text {
+      text-align: left;
+    }
+
+    .header-title {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+
+    .header-subtitle {
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    .header-link {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    .header-link:hover {
+      opacity: 0.9;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--brand-primary);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 12px 20px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      transition: var(--transition);
+      margin-top: 16px;
+    }
+
+    .back-link:hover {
+      background: var(--brand-primary);
+      color: white;
+      border-color: var(--brand-primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    /* Layout */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 1024px) {
+      .grid {
+        grid-template-columns: 400px 1fr;
+      }
+    }
+
+    /* Card Components */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+
+    .card-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border-light);
+      font-weight: 700;
+      font-size: 1.2rem;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .card-header-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: var(--brand-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 14px;
+    }
+
+    .card-body {
+      padding: 24px;
+    }
+
+    /* Form Elements */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 150px;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      font-size: 14px;
+      color: var(--text-secondary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-input,
+    .form-select {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      background: #fafbfc;
+      font-size: 14px;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .form-input:focus,
+    .form-select:focus {
+      outline: none;
+      border-color: var(--brand-primary);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1);
+      transform: translateY(-1px);
+    }
+
+    .form-input.error {
+      border-color: #ef4444;
+      background: #fef2f2;
+    }
+
+    .error-message {
+      color: #ef4444;
+      font-size: 12px;
+      margin-top: 6px;
+      display: none;
+      font-weight: 500;
+    }
+
+    /* Buttons */
+    .actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .btn {
+      appearance: none;
+      border: none;
+      border-radius: var(--radius);
+      padding: 14px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-primary {
+      background: var(--brand-gradient);
+      color: white;
+      box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+    }
+
+    .btn-secondary {
+      background: #64748b;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: #475569;
+      transform: translateY(-2px);
+    }
+
+    /* KPI Cards */
+    .kpis {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .kpis {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .kpi {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      text-align: center;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kpi::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--success-gradient);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .kpi:hover::before {
+      transform: scaleX(1);
+    }
+
+    .kpi:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .kpi-label {
+      display: block;
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .kpi-value {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    /* Chart */
+    .chart-container {
+      margin-top: 24px;
+      position: relative;
+      background: white;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-light);
+      padding: 20px;
+    }
+
+    .chart {
+      width: 100%;
+      height: 300px;
+      border-radius: var(--radius);
+    }
+
+    /* Table */
+    .table-container {
+      max-height: 400px;
+      overflow: auto;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      margin-top: 24px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th, td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border-light);
+      text-align: right;
+    }
+
+    th:first-child, td:first-child {
+      text-align: left;
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      background: #f8fafc;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 12px;
+    }
+
+    tbody tr {
+      transition: var(--transition);
+    }
+
+    tbody tr:hover {
+      background: #f8fafc;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 24px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-light);
+    }
+
+    /* Calculator Icon */
+    .calculator-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      border: 2px solid #e0f2fe;
+    }
+
+    .calculator-icon i {
+      font-size: 36px;
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .container {
+        padding: 16px;
+      }
+      
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      
+      .card-body {
+        padding: 20px;
+      }
+      
+      .kpis {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .brand-text {
+        text-align: center;
+      }
+      
+      .actions {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-content">
+        <div class="brand-logo">
+          <span class="logo-icon">∑</span>
+        </div>
+        <div class="brand-text">
+          <a href="index.html" class="header-link">
+            <h1 class="header-title">SmartCalcHub</h1>
+            <div class="header-subtitle">Professional Financial Calculators</div>
+          </a>
+        </div>
+      </div>
+      
+    </header>
+
+    <div class="grid">
+      <!-- Inputs -->
+      <section class="card">
+        <div class="card-header">
+          <div class="card-header-icon">⚡</div>
+          Input Parameters
+        </div>
+        <div class="card-body">
+          <div class="calculator-icon">
+            <i>💰</i>
+          </div>
+
+          <div class="form-group">
+            <div class="form-row">
+              <label for="initial" class="form-label">Initial Amount</label>
+              <input id="initial" class="form-input" type="number" value="1000" min="0" step="0.01" aria-label="Initial investment amount">
+            </div>
+            <div id="initial-error" class="error-message">Please enter a valid initial amount</div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-row">
+              <label for="monthly" class="form-label">Monthly Contribution</label>
+              <input id="monthly" class="form-input" type="number" value="200" min="0" step="0.01" aria-label="Monthly contribution amount">
+            </div>
+            <div id="monthly-error" class="error-message">Please enter a valid monthly contribution</div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-row">
+              <label for="rate" class="form-label">Annual Interest Rate</label>
+              <input id="rate" class="form-input" type="number" value="6" min="0" step="0.01" aria-label="Annual interest rate in percent">
+            </div>
+            <div id="rate-error" class="error-message">Please enter a valid interest rate</div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-row">
+              <label for="years" class="form-label">Investment Period</label>
+              <input id="years" class="form-input" type="number" value="10" min="1" step="1" aria-label="Number of years">
+            </div>
+            <div id="years-error" class="error-message">Please enter a valid number of years (minimum 1)</div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-row">
+              <label for="compound" class="form-label">Compounding Frequency</label>
+              <select id="compound" class="form-select" aria-label="Compounding frequency">
+                <option value="1">Annually</option>
+                <option value="4">Quarterly</option>
+                <option value="12" selected>Monthly</option>
+                <option value="365">Daily</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button id="calcBtn" class="btn btn-primary" aria-label="Calculate compound interest">
+              Calculate Growth
+            </button>
+            <button id="resetBtn" class="btn btn-secondary" title="Reset inputs to defaults">
+              Reset Values
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Results & Chart -->
+      <section class="card">
+        <div class="card-header">
+          <div class="card-header-icon">📊</div>
+          Investment Projection
+        </div>
+        <div class="card-body">
+          <div class="kpis">
+            <div class="kpi">
+              <span class="kpi-label">Future Value</span>
+              <span class="kpi-value" id="fv">—</span>
+            </div>
+            <div class="kpi">
+              <span class="kpi-label">Total Contributions</span>
+              <span class="kpi-value" id="contrib">—</span>
+            </div>
+            <div class="kpi">
+              <span class="kpi-label">Interest Earned</span>
+              <span class="kpi-value" id="interest">—</span>
+            </div>
+          </div>
+
+          <div class="chart-container">
+            <canvas id="chart" class="chart" height="300" aria-label="Compound interest growth chart" role="img"></canvas>
+          </div>
+
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Year</th>
+                  <th>End Balance</th>
+                  <th>Total Contributed</th>
+                  <th>Interest Earned</th>
+                </tr>
+              </thead>
+              <tbody id="tableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="footer">
+      © 2025 SmartCalcHub • Professional Financial Tools
+    </footer>
+  </div>
+
+  <script>
+    // DOM utility functions
+    const $ = (id) => document.getElementById(id);
+    const $$ = (selector) => document.querySelectorAll(selector);
+    
+    // Format currency
+    const formatCurrency = (amount) => {
+      return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2
+      }).format(amount);
+    };
+
+    // Input validation
+    const validateInputs = () => {
+      const initial = parseFloat($('initial').value);
+      const monthly = parseFloat($('monthly').value);
+      const rate = parseFloat($('rate').value);
+      const years = parseInt($('years').value);
+      
+      let isValid = true;
+      
+      // Reset error states
+      $$('.error-message').forEach(el => el.style.display = 'none');
+      $$('.form-input').forEach(el => el.classList.remove('error'));
+      
+      // Validate initial amount
+      if (isNaN(initial) || initial < 0) {
+        $('initial-error').style.display = 'block';
+        $('initial').classList.add('error');
+        isValid = false;
+      }
+      
+      // Validate monthly contribution
+      if (isNaN(monthly) || monthly < 0) {
+        $('monthly-error').style.display = 'block';
+        $('monthly').classList.add('error');
+        isValid = false;
+      }
+      
+      // Validate interest rate
+      if (isNaN(rate) || rate < 0) {
+        $('rate-error').style.display = 'block';
+        $('rate').classList.add('error');
+        isValid = false;
+      }
+      
+      // Validate years
+      if (isNaN(years) || years < 1) {
+        $('years-error').style.display = 'block';
+        $('years').classList.add('error');
+        isValid = false;
+      }
+      
+      return isValid;
+    };
+
+    // Calculate compound interest
+    const calculateCompoundInterest = () => {
+      if (!validateInputs()) return null;
+      
+      const P = parseFloat($("initial").value) || 0;
+      const PMT = parseFloat($("monthly").value) || 0;
+      const r = (parseFloat($("rate").value) || 0) / 100;
+      const years = parseInt($("years").value) || 0;
+      const m = parseInt($("compound").value);
+
+      const n = years * m;
+      const i = r / m;
+
+      // Calculate future value
+      const futureValueLump = P * Math.pow(1 + i, n);
+      const futureValueContrib = i === 0 ? PMT * n : PMT * ((Math.pow(1 + i, n) - 1) / i);
+      const futureValue = futureValueLump + futureValueContrib;
+      const totalContributions = P + PMT * n;
+
+      return {
+        futureValue,
+        totalContributions,
+        totalInterest: futureValue - totalContributions
+      };
+    };
+
+    // Build yearly breakdown table
+    const buildTable = (P, PMT, i, m, years) => {
+      const body = $("tableBody");
+      body.innerHTML = "";
+      let balance = P;
+
+      for (let year = 1; year <= years; year++) {
+        for (let period = 0; period < m; period++) {
+          balance *= (1 + i);
+          balance += PMT;
+        }
+
+        const contributions = P + PMT * (year * m);
+        const interest = balance - contributions;
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${year}</td>
+          <td>${formatCurrency(balance)}</td>
+          <td>${formatCurrency(contributions)}</td>
+          <td>${formatCurrency(interest)}</td>
+        `;
+        body.appendChild(row);
+      }
+    };
+
+    // Draw chart
+    const drawChart = () => {
+      const canvas = $("chart");
+      const ctx = canvas.getContext("2d");
+      const rows = Array.from($("tableBody").children);
+
+      if (rows.length === 0) return;
+
+      // Set canvas dimensions for high DPI displays
+      const devicePixelRatio = window.devicePixelRatio || 1;
+      const width = canvas.clientWidth;
+      const height = canvas.clientHeight;
+      
+      canvas.width = width * devicePixelRatio;
+      canvas.height = height * devicePixelRatio;
+      ctx.scale(devicePixelRatio, devicePixelRatio);
+
+      // Clear canvas
+      ctx.clearRect(0, 0, width, height);
+
+      // Extract data points
+      const points = rows.map((row, index) => ({
+        x: index + 1,
+        y: parseFloat(row.children[1].textContent.replace(/[^0-9.-]+/g, ""))
+      }));
+
+      // Chart dimensions
+      const padding = {
+        left: 60,
+        right: 20,
+        top: 20,
+        bottom: 40
+      };
+      
+      const innerWidth = width - padding.left - padding.right;
+      const innerHeight = height - padding.top - padding.bottom;
+
+      const maxY = Math.max(...points.map(p => p.y));
+      const minY = 0;
+      const yRange = maxY - minY;
+
+      // Draw axes
+      ctx.strokeStyle = '#e2e8f0';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(padding.left, padding.top);
+      ctx.lineTo(padding.left, height - padding.bottom);
+      ctx.lineTo(width - padding.right, height - padding.bottom);
+      ctx.stroke();
+
+      // Draw grid lines and Y-axis labels
+      ctx.fillStyle = '#64748b';
+      ctx.font = '12px Inter, system-ui, sans-serif';
+      ctx.textAlign = 'right';
+      
+      for (let i = 0; i <= 5; i++) {
+        const value = minY + (yRange * i / 5);
+        const y = padding.top + innerHeight - (innerHeight * i / 5);
+        
+        // Grid line
+        ctx.strokeStyle = '#f1f5f9';
+        ctx.beginPath();
+        ctx.moveTo(padding.left, y);
+        ctx.lineTo(width - padding.right, y);
+        ctx.stroke();
+        
+        // Label
+        ctx.fillStyle = '#64748b';
+        ctx.fillText(formatCurrency(value), padding.left - 10, y + 4);
+      }
+
+      // Draw line with gradient
+      const gradient = ctx.createLinearGradient(0, 0, 0, height);
+      gradient.addColorStop(0, '#007BFF');
+      gradient.addColorStop(1, '#0056b3');
+      
+      ctx.strokeStyle = gradient;
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      
+      points.forEach((point, index) => {
+        const x = padding.left + (innerWidth * index / (points.length - 1));
+        const y = padding.top + innerHeight - ((point.y - minY) / yRange * innerHeight);
+        
+        if (index === 0) {
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
+      });
+      
+      ctx.stroke();
+
+      // Draw points
+      ctx.fillStyle = '#007BFF';
+      
+      points.forEach((point, index) => {
+        const x = padding.left + (innerWidth * index / (points.length - 1));
+        const y = padding.top + innerHeight - ((point.y - minY) / yRange * innerHeight);
+        
+        ctx.beginPath();
+        ctx.arc(x, y, 4, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Add glow effect
+        ctx.shadowColor = '#007BFF';
+        ctx.shadowBlur = 8;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      });
+
+      // Draw X-axis labels
+      ctx.fillStyle = '#64748b';
+      ctx.textAlign = 'center';
+      ctx.font = '12px Inter, system-ui, sans-serif';
+      
+      points.forEach((point, index) => {
+        const x = padding.left + (innerWidth * index / (points.length - 1));
+        const y = height - padding.bottom + 20;
+        
+        // Only show some labels if there are many years
+        if (points.length <= 12 || index % Math.ceil(points.length / 12) === 0) {
+          ctx.fillText(`Year ${point.x}`, x, y);
+        }
+      });
+
+      // Chart title
+      ctx.fillStyle = '#1e293b';
+      ctx.textAlign = 'center';
+      ctx.font = '16px Inter, system-ui, sans-serif';
+      ctx.fillText('Compound Interest Growth Over Time', width / 2, 20);
+    };
+
+    // Main calculation function
+    const calculate = () => {
+      const result = calculateCompoundInterest();
+      
+      if (!result) return;
+      
+      const P = parseFloat($("initial").value) || 0;
+      const PMT = parseFloat($("monthly").value) || 0;
+      const r = (parseFloat($("rate").value) || 0) / 100;
+      const years = parseInt($("years").value) || 0;
+      const m = parseInt($("compound").value);
+      const i = r / m;
+
+      // Update result displays
+      $("fv").textContent = formatCurrency(result.futureValue);
+      $("contrib").textContent = formatCurrency(result.totalContributions);
+      $("interest").textContent = formatCurrency(result.totalInterest);
+
+      // Build table and draw chart
+      buildTable(P, PMT, i, m, years);
+      drawChart();
+    };
+
+    // Reset form
+    const reset = () => {
+      $("initial").value = 1000;
+      $("monthly").value = 200;
+      $("rate").value = 6;
+      $("years").value = 10;
+      $("compound").value = 12;
+      
+      // Clear errors
+      $$('.error-message').forEach(el => el.style.display = 'none');
+      $$('.form-input').forEach(el => el.classList.remove('error'));
+      
+      calculate();
+    };
+
+    // Initialize event listeners
+    const initializeEventListeners = () => {
+      $("calcBtn").addEventListener('click', calculate);
+      $("resetBtn").addEventListener('click', reset);
+      
+      // Auto-calculate when inputs change
+      $$('.form-input, .form-select').forEach(input => {
+        input.addEventListener('change', calculate);
+        input.addEventListener('input', () => {
+          // Remove error styling when user starts typing
+          input.classList.remove('error');
+          const errorId = `${input.id}-error`;
+          if ($(errorId)) {
+            $(errorId).style.display = 'none';
+          }
+        });
+      });
+      
+      // Handle window resize
+      let resizeTimeout;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          const rows = Array.from($("tableBody").children);
+          if (rows.length > 0) {
+            drawChart();
+          }
+        }, 250);
+      });
+    };
+
+    // Initialize the application
+    const init = () => {
+      initializeEventListeners();
+      calculate(); // Run initial calculation
+    };
+
+    // Start when DOM is loaded
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
