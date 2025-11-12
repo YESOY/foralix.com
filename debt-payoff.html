@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <script>
+  // Force HTTPS redirect
+  if (window.location.protocol === 'http:') {
+    window.location.href = 'https://' + window.location.host + window.location.pathname + window.location.search + window.location.hash;
+  }
+  </script>
+
+  <meta name="keywords" content="debt payoff calculator, debt snowball calculator, credit card payoff, debt free calculator, debt repayment calculator, get out of debt">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Debt Payoff Calculator",
+    "description": "Free debt payoff calculator with snowball and avalanche methods. Calculate how to become debt free faster.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any"
+  }
+  </script>
+  
+  <title>Debt Payoff Calculator - SmartCalcHub</title>
+  <meta name="description" content="Calculate how to pay off your debt faster using snowball or avalanche methods. Free debt payoff calculator with extra payments and interest savings.">
+  <style>
+    :root {
+      --brand-primary: #007BFF;
+      --brand-primary-dark: #0056b3;
+      --brand-gradient: linear-gradient(135deg, #007BFF 0%, #0056b3 100%);
+      --background: #f8fafc;
+      --surface: #ffffff;
+      --text-primary: #1e293b;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --radius: 12px;
+      --radius-lg: 20px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
+      background: var(--background);
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Enhanced Header */
+    .header {
+      text-align: center;
+      padding: 30px 20px;
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      margin-bottom: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--brand-gradient);
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand-logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      background: var(--brand-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+      transition: var(--transition);
+    }
+
+    .brand-logo:hover {
+      transform: scale(1.05) rotate(5deg);
+    }
+
+    .logo-icon {
+      font-size: 28px;
+      color: white;
+      font-weight: bold;
+    }
+
+    .brand-text {
+      text-align: left;
+    }
+
+    .header-title {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+
+    .header-subtitle {
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    .header-link {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    .header-link:hover {
+      opacity: 0.9;
+    }
+
+    /* Main Container */
+    .container {
+      background: var(--surface);
+      padding: 30px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      flex-grow: 1;
+      border: 1px solid var(--border-light);
+    }
+
+    /* Calculator Header */
+    .calculator-header {
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .calculator-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .calculator-subtitle {
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    .calculator-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      border: 2px solid #e0f2fe;
+    }
+
+    .calculator-icon i {
+      font-size: 36px;
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Form Elements */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 16px;
+      border-radius: var(--radius);
+      border: 2px solid var(--border);
+      font-size: 16px;
+      transition: var(--transition);
+      background: #fafbfc;
+      font-weight: 500;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--brand-primary);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .form-input.error {
+      border-color: #ef4444;
+      background: #fef2f2;
+    }
+
+    .error-message {
+      color: #ef4444;
+      font-size: 14px;
+      margin-top: 6px;
+      display: none;
+      font-weight: 500;
+    }
+
+    /* Buttons */
+    .btn {
+      padding: 16px;
+      border-radius: var(--radius);
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn-primary {
+      background: var(--brand-gradient);
+      color: white;
+      box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+    }
+
+    .btn-secondary {
+      background: #64748b;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: #475569;
+    }
+
+    .btn-full {
+      width: 100%;
+    }
+
+    /* Debt List */
+    .debt-list {
+      margin-bottom: 20px;
+    }
+
+    .debt-item {
+      background: #f8fafc;
+      padding: 20px;
+      border-radius: var(--radius);
+      margin-bottom: 15px;
+      border: 1px solid var(--border-light);
+    }
+
+    .debt-item-header {
+      display: flex;
+      justify-content: between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .debt-item-title {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .remove-debt {
+      background: #ef4444;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .debt-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    /* Method Selector */
+    .method-selector {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .method-option {
+      padding: 20px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .method-option.selected {
+      border-color: var(--brand-primary);
+      background: #f0f9ff;
+    }
+
+    .method-option h3 {
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+
+    .method-option p {
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    /* Results */
+    .result {
+      margin-top: 24px;
+      font-weight: bold;
+      font-size: 18px;
+      text-align: center;
+      padding: 20px;
+      border-radius: var(--radius);
+      background-color: #f8fafc;
+      display: none;
+      border-left: 4px solid transparent;
+    }
+
+    .result.success {
+      background-color: #f0fdf4;
+      color: #166534;
+      border-left-color: #22c55e;
+    }
+
+    .result.error {
+      background-color: #fef2f2;
+      color: #991b1b;
+      border-left-color: #ef4444;
+    }
+
+    /* Additional Results */
+    .additional-results {
+      margin-top: 24px;
+      display: none;
+      background: #f8fafc;
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid var(--border-light);
+    }
+
+    .result-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .result-item:last-child {
+      border-bottom: none;
+    }
+
+    .result-label {
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .result-value {
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* Payment Plan */
+    .payment-plan {
+      margin-top: 24px;
+      display: none;
+      background: #f8fafc;
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid var(--border-light);
+    }
+
+    .plan-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    .plan-table th,
+    .plan-table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .plan-table th {
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: var(--background);
+    }
+
+    /* Share Section */
+    .share {
+      text-align: center;
+      margin-top: 24px;
+      padding: 16px;
+      background: #f0f9ff;
+      border-radius: var(--radius);
+    }
+
+    .share-link {
+      text-decoration: none;
+      color: var(--brand-primary);
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+      font-weight: 600;
+    }
+
+    .share-link:hover {
+      color: var(--brand-primary-dark);
+      transform: translateY(-1px);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      margin-top: 40px;
+      color: var(--text-muted);
+      padding: 20px 0;
+    }
+
+    /* Back Button */
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface);
+      color: var(--text-primary);
+      padding: 14px 24px;
+      text-decoration: none;
+      border-radius: var(--radius);
+      margin-top: 30px;
+      transition: var(--transition);
+      font-weight: 600;
+      text-align: center;
+      border: 2px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .back-button:hover {
+      background: var(--brand-primary);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--brand-primary);
+    }
+
+    .button-container {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .debt-fields {
+        grid-template-columns: 1fr;
+      }
+      
+      .method-selector {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 16px;
+      }
+      
+      .container {
+        padding: 24px 20px;
+      }
+      
+      .calculator-title {
+        font-size: 22px;
+      }
+      
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .brand-text {
+        text-align: center;
+      }
+    }
+
+    /* Animation for results */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.5s ease-out;
+    }
+  </style>
+</head>
+<body>
+  <header class="header" role="banner">
+    <div class="header-content">
+      <div class="brand-logo">
+        <span class="logo-icon">∑</span>
+      </div>
+      <div class="brand-text">
+        <a href="index.html" class="header-link">
+          <h1 class="header-title">SmartCalcHub</h1>
+          <div class="header-subtitle">Professional Financial Calculators</div>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section class="content-section" style="background: var(--surface); padding: 40px; border-radius: var(--radius-lg); margin-bottom: 30px; box-shadow: var(--shadow);">
+    <div class="content-header" style="text-align: center; margin-bottom: 30px;">
+        <h2 style="color: var(--text-primary); font-size: 2rem; margin-bottom: 15px;">Debt Payoff Calculator</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem; max-width: 800px; margin: 0 auto;">Calculate how to become debt free faster using snowball or avalanche methods. See how extra payments can save you thousands in interest.</p>
+    </div>
+    
+    <div class="content-grid" style="display: grid; gap: 30px; grid-template-columns: 1fr;">
+        <div class="content-block">
+            <h3 style="color: var(--brand-primary); margin-bottom: 15px;">Debt Snowball vs Avalanche Methods</h3>
+            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 15px;">
+                The <strong>Debt Snowball</strong> method focuses on paying off debts from smallest to largest balance. This creates quick wins and psychological motivation as you eliminate debts one by one.
+            </p>
+            <p style="color: var(--text-secondary); line-height: 1.7;">
+                The <strong>Debt Avalanche</strong> method prioritizes debts with the highest interest rates first. This approach saves you the most money on interest over time but may take longer to see progress.
+            </p>
+        </div>
+        
+        <div class="content-block">
+            <h3 style="color: var(--brand-primary); margin-bottom: 15px;">How Our Debt Payoff Calculator Works</h3>
+            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 15px;">
+                Our calculator analyzes your debts and creates a customized payoff plan:
+            </p>
+            <div style="background: #f8f9fa; padding: 20px; border-radius: var(--radius); border-left: 4px solid var(--brand-primary); margin-bottom: 15px;">
+                <p style="font-family: monospace; color: var(--text-primary); margin: 0;">
+                    Total Time Saved = (Original Payoff Time) - (Optimized Payoff Time)
+                </p>
+            </div>
+            <p style="color: var(--text-secondary); line-height: 1.7;">
+                We calculate:<br>
+                • <strong>Optimal payment order</strong> based on your chosen method<br>
+                • <strong>Interest savings</strong> from extra payments<br>
+                • <strong>Time to debt freedom</strong> with your current plan vs optimized plan<br>
+                • <strong>Monthly payment schedule</strong> until all debts are paid
+            </p>
+        </div>
+        
+        <div class="content-block">
+            <h3 style="color: var(--brand-primary); margin-bottom: 15px;">Which Method Should You Choose?</h3>
+            <div style="display: grid; gap: 15px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 20px; border-radius: var(--radius);">
+                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">Choose Snowball If:</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">You need motivation, want quick wins, have similar interest rates, or struggle with debt burnout.</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 20px; border-radius: var(--radius);">
+                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">Choose Avalanche If:</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">You want to save the most money, have high-interest debts, or are highly disciplined.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-block">
+            <h3 style="color: var(--brand-primary); margin-bottom: 15px;">Debt Payoff Tips</h3>
+            <div style="display: grid; gap: 15px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                <div style="border: 1px solid var(--border); padding: 20px; border-radius: var(--radius);">
+                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">💰 Make Extra Payments</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Even $50-100 extra per month can cut years off your debt and save thousands in interest.</p>
+                </div>
+                <div style="border: 1px solid var(--border); padding: 20px; border-radius: var(--radius);">
+                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">📊 Track Your Progress</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Use our calculator monthly to see your progress and stay motivated on your debt-free journey.</p>
+                </div>
+                <div style="border: 1px solid var(--border); padding: 20px; border-radius: var(--radius);">
+                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">🏦 Consider Balance Transfers</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Transfer high-interest credit card debt to 0% APR cards to accelerate payoff.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <main class="container" role="main">
+    <div class="calculator-header">
+      <div class="calculator-icon">
+        <i>💳</i>
+      </div>
+      <h1 class="calculator-title">Debt Payoff Calculator</h1>
+      <p class="calculator-subtitle">Calculate your fastest path to debt freedom</p>
+    </div>
+
+    <!-- Method Selection -->
+    <div class="method-selector">
+      <div class="method-option selected" data-method="snowball">
+        <h3>Debt Snowball</h3>
+        <p>Pay smallest debts first for quick wins</p>
+      </div>
+      <div class="method-option" data-method="avalanche">
+        <h3>Debt Avalanche</h3>
+        <p>Pay highest interest first to save money</p>
+      </div>
+    </div>
+
+    <!-- Debt List -->
+    <div class="debt-list" id="debt-list">
+      <div class="debt-item">
+        <div class="debt-item-header">
+          <div class="debt-item-title">Credit Card #1</div>
+          <button class="remove-debt" onclick="removeDebt(this)">Remove</button>
+        </div>
+        <div class="debt-fields">
+          <div class="form-group">
+            <label class="form-label">Balance</label>
+            <input type="number" class="form-input debt-balance" placeholder="5000" min="0" step="0.01" value="5000">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Interest Rate (%)</label>
+            <input type="number" class="form-input debt-rate" placeholder="18.99" min="0" step="0.01" value="18.99">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Minimum Payment</label>
+            <input type="number" class="form-input debt-minimum" placeholder="150" min="0" step="0.01" value="150">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Debt Name</label>
+            <input type="text" class="form-input debt-name" placeholder="Credit Card" value="Credit Card">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Debt Button -->
+    <button id="add-debt" class="btn btn-secondary btn-full" style="margin-bottom: 20px;">
+      + Add Another Debt
+    </button>
+
+    <!-- Extra Payment -->
+    <div class="form-group">
+      <label for="extra-payment" class="form-label">Extra Monthly Payment (Optional)</label>
+      <input type="number" id="extra-payment" class="form-input" placeholder="Enter extra payment amount" min="0" step="0.01" value="100">
+    </div>
+
+    <button id="calculate-btn" class="btn btn-primary btn-full">
+      Calculate Payoff Plan
+    </button>
+
+    <div id="result" class="result" role="status" aria-live="polite"></div>
+
+    <div id="additional-results" class="additional-results">
+      <div class="result-item">
+        <span class="result-label">Total Debt:</span>
+        <span class="result-value" id="total-debt">—</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Time to Debt Freedom:</span>
+        <span class="result-value" id="time-to-freedom">—</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Total Interest:</span>
+        <span class="result-value" id="total-interest">—</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Interest Savings:</span>
+        <span class="result-value" id="interest-savings">—</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Time Saved:</span>
+        <span class="result-value" id="time-saved">—</span>
+      </div>
+    </div>
+
+    <div id="payment-plan" class="payment-plan">
+      <h3 style="color: var(--text-primary); margin-bottom: 15px; text-align: center;">Payoff Schedule</h3>
+      <div style="max-height: 400px; overflow-y: auto;">
+        <table class="plan-table">
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Debt</th>
+              <th>Payment</th>
+              <th>Interest</th>
+              <th>Principal</th>
+              <th>Remaining</th>
+            </tr>
+          </thead>
+          <tbody id="plan-body">
+            <!-- JavaScript will populate this -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="share">
+      <a href="#" id="share-link" class="share-link">
+        <span>📤</span> Share this tool on WhatsApp
+      </a>
+    </div>
+  </main>
+
+  <div class="button-container">
+    <a href="index.html" class="back-button">
+      ← Back to Homepage
+    </a>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    &copy; 2025 SmartCalcHub | All Rights Reserved
+  </footer>
+
+  <script>
+    // DOM utility functions
+    const $ = (id) => document.getElementById(id);
+    const $$ = (selector) => document.querySelectorAll(selector);
+    
+    // Format currency
+    const formatCurrency = (amount) => {
+      return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2
+      }).format(amount);
+    };
+
+    // Format months to years/months
+    const formatMonths = (months) => {
+      const years = Math.floor(months / 12);
+      const remainingMonths = months % 12;
+      
+      if (years === 0) return `${remainingMonths} months`;
+      if (remainingMonths === 0) return `${years} years`;
+      return `${years} years, ${remainingMonths} months`;
+    };
+
+    let selectedMethod = 'snowball';
+    let debtCounter = 1;
+
+    // Initialize method selection
+    const initializeMethodSelection = () => {
+      $$('.method-option').forEach(option => {
+        option.addEventListener('click', () => {
+          $$('.method-option').forEach(opt => opt.classList.remove('selected'));
+          option.classList.add('selected');
+          selectedMethod = option.dataset.method;
+        });
+      });
+    };
+
+    // Add new debt
+    const addDebt = () => {
+      debtCounter++;
+      const debtList = $('debt-list');
+      const newDebt = document.createElement('div');
+      newDebt.className = 'debt-item';
+      newDebt.innerHTML = `
+        <div class="debt-item-header">
+          <div class="debt-item-title">Credit Card #${debtCounter}</div>
+          <button class="remove-debt" onclick="removeDebt(this)">Remove</button>
+        </div>
+        <div class="debt-fields">
+          <div class="form-group">
+            <label class="form-label">Balance</label>
+            <input type="number" class="form-input debt-balance" placeholder="3000" min="0" step="0.01" value="3000">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Interest Rate (%)</label>
+            <input type="number" class="form-input debt-rate" placeholder="15.99" min="0" step="0.01" value="15.99">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Minimum Payment</label>
+            <input type="number" class="form-input debt-minimum" placeholder="100" min="0" step="0.01" value="100">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Debt Name</label>
+            <input type="text" class="form-input debt-name" placeholder="Personal Loan" value="Personal Loan">
+          </div>
+        </div>
+      `;
+      debtList.appendChild(newDebt);
+    };
+
+    // Remove debt
+    const removeDebt = (button) => {
+      if ($$('.debt-item').length > 1) {
+        button.closest('.debt-item').remove();
+      } else {
+        alert('You need at least one debt to calculate payoff.');
+      }
+    };
+
+    // Calculate debt payoff
+    const calculateDebtPayoff = () => {
+      const debts = [];
+      let totalMinimumPayment = 0;
+
+      // Collect debt data
+      $$('.debt-item').forEach((debtItem, index) => {
+        const balance = parseFloat(debtItem.querySelector('.debt-balance').value);
+        const rate = parseFloat(debtItem.querySelector('.debt-rate').value) / 100 / 12;
+        const minimum = parseFloat(debtItem.querySelector('.debt-minimum').value);
+        const name = debtItem.querySelector('.debt-name').value || `Debt ${index + 1}`;
+
+        if (!balance || balance <= 0) {
+          showError('Please enter a valid balance for all debts');
+          return null;
+        }
+        if (!minimum || minimum <= 0) {
+          showError('Please enter a valid minimum payment for all debts');
+          return null;
+        }
+
+        debts.push({
+          name,
+          balance,
+          rate,
+          minimum,
+          originalBalance: balance
+        });
+
+        totalMinimumPayment += minimum;
+      });
+
+      const extraPayment = parseFloat($('extra-payment').value) || 0;
+      const totalPayment = totalMinimumPayment + extraPayment;
+
+      // Sort debts based on selected method
+      if (selectedMethod === 'snowball') {
+        debts.sort((a, b) => a.balance - b.balance);
+      } else {
+        debts.sort((a, b) => b.rate - a.rate);
+      }
+
+      let month = 0;
+      const plan = [];
+      let totalInterest = 0;
+
+      while (debts.some(debt => debt.balance > 0)) {
+        month++;
+        let remainingPayment = totalPayment;
+
+        // Pay minimums first
+        debts.forEach(debt => {
+          if (debt.balance > 0) {
+            const interest = debt.balance * debt.rate;
+            const principal = Math.min(debt.minimum, debt.balance + interest);
+            
+            if (principal > 0) {
+              debt.balance = debt.balance + interest - principal;
+              totalInterest += interest;
+              remainingPayment -= debt.minimum;
+
+              plan.push({
+                month,
+                debt: debt.name,
+                payment: debt.minimum,
+                interest,
+                principal: principal - interest,
+                balance: Math.max(0, debt.balance)
+              });
+            }
+          }
+        });
+
+        // Apply extra payment to first debt in order
+        if (remainingPayment > 0) {
+          const firstDebt = debts.find(debt => debt.balance > 0);
+          if (firstDebt) {
+            const extra = Math.min(remainingPayment, firstDebt.balance);
+            firstDebt.balance -= extra;
+            
+            plan.push({
+              month,
+              debt: firstDebt.name,
+              payment: extra,
+              interest: 0,
+              principal: extra,
+              balance: Math.max(0, firstDebt.balance)
+            });
+          }
+        }
+
+        // Stop if taking too long (safety)
+        if (month > 600) break; // 50 years max
+      }
+
+      const totalDebt = debts.reduce((sum, debt) => sum + debt.originalBalance, 0);
+      
+      return {
+        totalDebt,
+        totalInterest,
+        months: month,
+        plan
+      };
+    };
+
+    // Show error message
+    const showError = (message) => {
+      $('result').textContent = message;
+      $('result').className = 'result error';
+      $('result').style.display = 'block';
+    };
+
+    // Display results
+    const displayResults = (results) => {
+      if (!results) return;
+
+      // Main result
+      $('result').textContent = `You can be debt free in ${formatMonths(results.months)}!`;
+      $('result').className = 'result success fade-in-up';
+      $('result').style.display = 'block';
+
+      // Additional results
+      $('total-debt').textContent = formatCurrency(results.totalDebt);
+      $('time-to-freedom').textContent = formatMonths(results.months);
+      $('total-interest').textContent = formatCurrency(results.totalInterest);
+      $('interest-savings').textContent = '—'; // Could calculate vs minimum payments only
+      $('time-saved').textContent = '—'; // Could calculate vs minimum payments only
+      
+      $('additional-results').className = 'additional-results fade-in-up';
+      $('additional-results').style.display = 'block';
+
+      // Payment plan
+      const planBody = $('plan-body');
+      planBody.innerHTML = '';
+      
+      results.plan.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${item.month}</td>
+          <td>${item.debt}</td>
+          <td>${formatCurrency(item.payment)}</td>
+          <td>${formatCurrency(item.interest)}</td>
+          <td>${formatCurrency(item.principal)}</td>
+          <td>${formatCurrency(item.balance)}</td>
+        `;
+        planBody.appendChild(row);
+      });
+
+      $('payment-plan').className = 'payment-plan fade-in-up';
+      $('payment-plan').style.display = 'block';
+    };
+
+    // Main calculation function
+    const calculatePayoffPlan = () => {
+      const results = calculateDebtPayoff();
+      displayResults(results);
+    };
+
+    // Share on WhatsApp
+    const shareOnWhatsApp = () => {
+      const url = window.location.href;
+      const text = "Check out this free Debt Payoff Calculator from SmartCalcHub: " + url;
+      const whatsappUrl = "https://wa.me/?text=" + encodeURIComponent(text);
+      window.open(whatsappUrl, "_blank");
+    };
+
+    // Initialize event listeners
+    const initializeEventListeners = () => {
+      $('calculate-btn').addEventListener('click', calculatePayoffPlan);
+      $('add-debt').addEventListener('click', addDebt);
+      $('share-link').addEventListener('click', shareOnWhatsApp);
+      
+      // Calculate on Enter key in any input
+      $$('.form-input').forEach(input => {
+        input.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            calculatePayoffPlan();
+          }
+        });
+      });
+    };
+
+    // Initialize the application
+    const init = () => {
+      initializeMethodSelection();
+      initializeEventListeners();
+      console.log('Debt Payoff Calculator initialized');
+    };
+
+    // Start when DOM is loaded
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
