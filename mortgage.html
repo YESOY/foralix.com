@@ -754,6 +754,27 @@
       // Calculate totals over loan term
       const totalPayments = totalMonthlyPayment * numberOfPayments;
       const totalInterest = (monthlyPI * numberOfPayments) - loanAmount;
+      // Calculate amortization schedule
+const calculateAmortization = (loanAmount, monthlyRate, monthlyPI, numberOfPayments) => {
+    const schedule = [];
+    let balance = loanAmount;
+    
+    for (let month = 1; month <= Math.min(12, numberOfPayments); month++) {
+        const interestPayment = balance * monthlyRate;
+        const principalPayment = monthlyPI - interestPayment;
+        balance -= principalPayment;
+        
+        schedule.push({
+            month: month,
+            payment: monthlyPI,
+            principal: principalPayment,
+            interest: interestPayment,
+            balance: Math.max(0, balance)
+        });
+    }
+    
+    return schedule;
+};
 
       return {
         loanAmount,
@@ -794,6 +815,29 @@
         return;
       }
 
+      // Display amortization schedule
+const displayAmortizationSchedule = (schedule) => {
+    const amortizationBody = $('amortization-body');
+    amortizationBody.innerHTML = '';
+    
+    schedule.forEach(item => {
+        const row = document.createElement('tr');
+        row.style.borderBottom = '1px solid var(--border-light)';
+        row.innerHTML = `
+            <td style="padding: 10px; text-align: left;">${item.month}</td>
+            <td style="padding: 10px; text-align: right;">${formatCurrency(item.payment)}</td>
+            <td style="padding: 10px; text-align: right; color: #059669;">${formatCurrency(item.principal)}</td>
+            <td style="padding: 10px; text-align: right; color: #dc2626;">${formatCurrency(item.interest)}</td>
+            <td style="padding: 10px; text-align: right;">${formatCurrency(item.balance)}</td>
+        `;
+        amortizationBody.appendChild(row);
+    });
+    
+    $('amortization-schedule').className = 'additional-results fade-in-up';
+    $('amortization-schedule').style.display = 'block';
+};
+     
+      
       // Main result
       $('result').textContent = `Your estimated monthly payment is ${formatCurrency(results.totalMonthlyPayment)}`;
       $('result').className = 'result success fade-in-up';
@@ -815,6 +859,15 @@
       $('total-interest').textContent = formatCurrency(results.totalInterest);
       $('additional-results').className = 'additional-results fade-in-up';
       $('additional-results').style.display = 'block';
+      // Display amortization schedule
+const amortizationSchedule = calculateAmortization(
+    results.loanAmount,
+    results.interestRate / 12,
+    results.monthlyPI,
+    results.numberOfPayments
+);
+
+displayAmortizationSchedule(amortizationSchedule);
     };
 
     // Main calculation function
