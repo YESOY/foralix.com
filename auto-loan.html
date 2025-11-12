@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <script>
+  // Force HTTPS redirect
+  if (window.location.protocol === 'http:') {
+    window.location.href = 'https://' + window.location.host + window.location.pathname + window.location.search + window.location.hash;
+  }
+  </script>
+
+  <meta name="keywords" content="auto loan calculator, car loan calculator, monthly car payment, vehicle financing, car payment calculator, auto financing">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Auto Loan Calculator",
+    "description": "Free online auto loan calculator with down payment, trade-in value, and sales tax",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any"
+  }
+  </script>
+  
+  <title>Auto Loan Calculator - SmartCalcHub</title>
+  <meta name="description" content="Calculate your monthly car payment with down payment, trade-in value, and sales tax. Free auto loan calculator for new and used cars.">
+  <style>
+    :root {
+      --brand-primary: #007BFF;
+      --brand-primary-dark: #0056b3;
+      --brand-gradient: linear-gradient(135deg, #007BFF 0%, #0056b3 100%);
+      --background: #f8fafc;
+      --surface: #ffffff;
+      --text-primary: #1e293b;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --radius: 12px;
+      --radius-lg: 20px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
+      background: var(--background);
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Enhanced Header */
+    .header {
+      text-align: center;
+      padding: 30px 20px;
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      margin-bottom: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--brand-gradient);
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand-logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      background: var(--brand-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+      transition: var(--transition);
+    }
+
+    .brand-logo:hover {
+      transform: scale(1.05) rotate(5deg);
+    }
+
+    .logo-icon {
+      font-size: 28px;
+      color: white;
+      font-weight: bold;
+    }
+
+    .brand-text {
+      text-align: left;
+    }
+
+    .header-title {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+
+    .header-subtitle {
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    .header-link {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    .header-link:hover {
+      opacity: 0.9;
+    }
+
+    /* Main Container */
+    .container {
+      background: var(--surface);
+      padding: 30px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      flex-grow: 1;
+      border: 1px solid var(--border-light);
+    }
+
+    /* Calculator Header */
+    .calculator-header {
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .calculator-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .calculator-subtitle {
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    .calculator-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      border: 2px solid #e0f2fe;
+    }
+
+    .calculator-icon i {
+      font-size: 36px;
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Form Elements */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 16px;
+      border-radius: var(--radius);
+      border: 2px solid var(--border);
+      font-size: 16px;
+      transition: var(--transition);
+      background: #fafbfc;
+      font-weight: 500;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--brand-primary);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .form-input.error {
+      border-color: #ef4444;
+      background: #fef2f2;
+    }
+
+    .error-message {
+      color: #ef4444;
+      font-size: 14px;
+      margin-top: 6px;
+      display: none;
+      font-weight: 500;
+    }
+
+    /* Buttons */
+    .btn {
+      width: 100%;
+      padding: 16px;
+      border-radius: var(--radius);
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn-primary {
+      background: var(--brand-gradient);
+      color: white;
+      box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+    }
+
+    .btn-secondary {
+      background: #64748b;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: #475569;
+    }
+
+    /* Results */
+    .result {
+      margin-top: 24px;
+      font-weight: bold;
+      font-size: 18px;
+      text-align: center;
+      padding: 20px;
+      border-radius: var(--radius);
+      background-color: #f8fafc;
+      display: none;
+      border-left: 4px solid transparent;
+    }
+
+    .result.success {
+      background-color: #f0fdf4;
+      color: #166534;
+      border-left-color: #22c55e;
+    }
+
+    .result.error {
+      background-color: #fef2f2;
+      color: #991b1b;
+      border-left-color: #ef4444;
+    }
+
+    /* Additional Results */
+    .additional-results {
+      margin-top: 24px;
+      display: none;
+      background: #f8fafc;
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid var(--border-light);
+    }
+
+    .result-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .result-item:last-child {
+      border-bottom: none;
+    }
+
+    .result-label {
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .result-value {
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* Payment Breakdown */
+    .payment-breakdown {
+      margin-top: 24px;
+      display: none;
+      background: #f8fafc;
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid var(--border-light);
+    }
+
+    .breakdown-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .breakdown-item:last-child {
+      border-bottom: none;
+      font-weight: bold;
+      border-top: 2px solid var(--border);
+      margin-top: 10px;
+      padding-top: 15px;
+    }
+
+    /* Share Section */
+    .share {
+      text-align: center;
+      margin-top: 24px;
+      padding: 16px;
+      background: #f0f9ff;
+      border-radius: var(--radius);
+    }
+
+    .share-link {
+      text-decoration: none;
+      color: var(--brand-primary);
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+      font-weight: 600;
+    }
+
+    .share-link:hover {
+      color: var(--brand-primary-dark);
+      transform: translateY(-1px);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      margin-top: 40px;
+      color: var(--text-muted);
+      padding: 20px 0;
+    }
+
+    /* Back Button */
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface);
+      color: var(--text-primary);
+      padding: 14px 24px;
+      text-decoration: none;
+      border-radius: var(--radius);
+      margin-top: 30px;
+      transition: var(--transition);
+      font-weight: 600;
+      text-align: center;
+      border: 2px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .back-button:hover {
+      background: var(--brand-primary);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--brand-primary);
+    }
+
+    .button-container {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 480px) {
+      body {
+        padding: 16px;
+      }
+      
+      .container {
+        padding: 24px 20px;
+      }
+      
+      .calculator-title {
+        font-size: 22px;
+      }
+      
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .brand-text {
+        text-align: center;
+      }
+    }
+
+    /* Animation for results */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.5s ease-out;
+    }
+  </style>
+</head>
+<body>
+  <header class="header" role="banner">
+    <div class="header-content">
+      <div class="brand-logo">
+        <span class="logo-icon">∑</span>
+      </div>
+      <div class="brand-text">
+        <a href="index.html" class="header-link">
+          <h1 class="header-title">SmartCalcHub</h1>
+          <div class="header-subtitle">Professional Financial Calculators</div>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section class="content-section" style="background: var(--surface); padding: 40px; border-radius: var(--radius-lg); margin-bottom: 30px; box-shadow: var(--shadow);">
+    <div class="content-header" style="text-align: center; margin-bottom: 30px;">
+        <h2 style="color: var(--text-primary); font-size: 2rem; margin-bottom: 15px;">Auto Loan Calculator</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem; max-width: 800px; margin: 0 auto;">Calculate your monthly car payment with down payment, trade-in value, and sales tax. Perfect for new and used car purchases.</p>
+    </div>
+    
+    <div class="content-grid" style="display: grid; gap: 30px; grid-template-columns: 1fr;">
+        <div class="content-block">
+            <h3 style="color: var(--brand-primary); margin-bottom: 15px;">Understanding Auto Loans</h3>
+            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 15px;">
+                An auto loan allows you to purchase a vehicle by borrowing money from a lender and repaying it over time with interest. Your monthly payment is determined by the vehicle price, down payment, loan term, interest rate, and additional costs like sales tax and fees.
+            </p>
+            <p style="color: var(--text-secondary); line-height: 1.7;">
+                Understanding how these factors work together helps you budget effectively and negotiate better deals. A larger down payment or shorter loan term can significantly reduce your total interest costs.
+            </p>
+        </div>
+        
+        <div class="content-block">
+            <h3 style="color: var(--brand-primary); margin-bottom: 15px;">How Our Auto Loan Calculator Works</h3>
+            <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 15px;">
+                Our calculator computes your complete monthly car payment using the standard auto loan formula:
+            </p>
+            <div style="background: #f8f9fa; padding: 20px; border-radius: var(--radius); border-left: 4px solid var(--brand-primary); margin-bottom: 15px;">
+                <p style="font-family: monospace; color: var(--text-primary); margin: 0;">
+                    Loan Amount = (Vehicle Price - Down Payment - Trade-in) × (1 + Sales Tax Rate)
+                </p>
+            </div>
+            <p style="color: var(--text-secondary); line-height: 1.7;">
+                Where:<br>
+                • <strong>Vehicle Price</strong> = Total cost of the car<br>
+                • <strong>Down Payment</strong> = Initial cash payment<br>
+                • <strong>Trade-in Value</strong> = Value of your current vehicle<br>
+                • <strong>Sales Tax</strong> = Your local sales tax rate<br>
+            </p>
+        </div>
+        
+        <div class="content-block">
+            <h3 style="color: var(--brand-primary); margin-bottom: 15px;">Types of Auto Loans</h3>
+            <div style="display: grid; gap: 15px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 20px; border-radius: var(--radius);">
+                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">New Car Loans</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Typically lower interest rates (3-5%) with terms from 2-7 years. Higher depreciation but better reliability.</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 20px; border-radius: var(--radius);">
+                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">Used Car Loans</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Slightly higher rates (4-8%) with shorter terms. Lower depreciation and better value.</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 20px; border-radius: var(--radius);">
+                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">Refinancing</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Lower your interest rate after purchase. Good option if your credit score improved.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-block">
+            <h3 style="color: var(--brand-primary); margin-bottom: 15px;">Car Buying Tips</h3>
+            <div style="display: grid; gap: 15px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                <div style="border: 1px solid var(--border); padding: 20px; border-radius: var(--radius);">
+                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">💰 Save for Down Payment</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Aim for 20% down on new cars, 10% on used cars. This reduces your loan amount and monthly payments.</p>
+                </div>
+                <div style="border: 1px solid var(--border); padding: 20px; border-radius: var(--radius);">
+                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">📊 Check Your Credit</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Know your credit score before shopping. Scores above 720 get the best interest rates.</p>
+                </div>
+                <div style="border: 1px solid var(--border); padding: 20px; border-radius: var(--radius);">
+                    <h4 style="color: var(--text-primary); margin-bottom: 10px;">🏦 Get Pre-Approved</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Secure financing from your bank or credit union before visiting dealerships for better negotiating power.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <main class="container" role="main">
+    <div class="calculator-header">
+      <div class="calculator-icon">
+        <i>🚗</i>
+      </div>
+      <h1 class="calculator-title">Auto Loan Calculator</h1>
+      <p class="calculator-subtitle">Calculate your monthly car payment</p>
+    </div>
+
+    <!-- Auto Loan Specific Form Fields -->
+    <div class="form-group">
+      <label for="vehicle-price" class="form-label">Vehicle Price</label>
+      <input type="number" id="vehicle-price" class="form-input" placeholder="Enter vehicle price in USD" min="0" step="0.01" />
+      <div id="vehicle-price-error" class="error-message">Please enter a valid vehicle price</div>
+    </div>
+
+    <div class="form-group">
+      <label for="down-payment" class="form-label">Down Payment</label>
+      <input type="number" id="down-payment" class="form-input" placeholder="Enter down payment amount" min="0" step="0.01" />
+      <div id="down-payment-error" class="error-message">Please enter a valid down payment</div>
+    </div>
+
+    <div class="form-group">
+      <label for="trade-in" class="form-label">Trade-in Value (Optional)</label>
+      <input type="number" id="trade-in" class="form-input" placeholder="Enter trade-in value" min="0" step="0.01" value="0" />
+    </div>
+
+    <div class="form-group">
+      <label for="sales-tax" class="form-label">Sales Tax Rate</label>
+      <input type="number" id="sales-tax" class="form-input" placeholder="Enter sales tax rate (%)" min="0" step="0.01" value="7" />
+      <div id="sales-tax-error" class="error-message">Please enter a valid sales tax rate</div>
+    </div>
+
+    <div class="form-group">
+      <label for="loan-term" class="form-label">Loan Term</label>
+      <input type="number" id="loan-term" class="form-input" placeholder="Enter loan term in years" min="1" max="8" step="1" value="5" />
+      <div id="loan-term-error" class="error-message">Please enter a valid loan term (1-8 years)</div>
+    </div>
+
+    <div class="form-group">
+      <label for="interest-rate" class="form-label">Interest Rate</label>
+      <input type="number" id="interest-rate" class="form-input" placeholder="Enter annual interest rate (%)" min="0" step="0.01" value="5.5" />
+      <div id="interest-rate-error" class="error-message">Please enter a valid interest rate</div>
+    </div>
+
+    <button id="calculate-btn" class="btn btn-primary">
+      Calculate Car Payment
+    </button>
+
+    <div id="result" class="result" role="status" aria-live="polite"></div>
+
+    <div id="payment-breakdown" class="payment-breakdown">
+      <h3 style="color: var(--text-primary); margin-bottom: 15px; text-align: center;">Payment Breakdown</h3>
+      <div class="breakdown-item">
+        <span class="result-label">Monthly Principal & Interest:</span>
+        <span class="result-value" id="breakdown-pi">—</span>
+      </div>
+      <div class="breakdown-item">
+        <span class="result-label">Total Loan Amount:</span>
+        <span class="result-value" id="breakdown-loan-amount">—</span>
+      </div>
+      <div class="breakdown-item">
+        <span class="result-label">Total Cost of Vehicle:</span>
+        <span class="result-value" id="breakdown-total-cost">—</span>
+      </div>
+    </div>
+
+    <div id="additional-results" class="additional-results">
+      <div class="result-item">
+        <span class="result-label">Total Loan Amount:</span>
+        <span class="result-value" id="total-loan-amount">—</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Down Payment %:</span>
+        <span class="result-value" id="down-payment-percent">—</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Total Payments:</span>
+        <span class="result-value" id="total-payments">—</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Total Interest:</span>
+        <span class="result-value" id="total-interest">—</span>
+      </div>
+    </div>
+
+    <div id="amortization-schedule" class="additional-results" style="display: none;">
+      <h3 style="color: var(--text-primary); margin-bottom: 15px; text-align: center;">Amortization Schedule (First 12 Months)</h3>
+      <div style="max-height: 300px; overflow-y: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+          <thead>
+            <tr style="background: var(--background);">
+              <th style="padding: 12px; text-align: left; border-bottom: 2px solid var(--border); font-weight: 600;">Month</th>
+              <th style="padding: 12px; text-align: right; border-bottom: 2px solid var(--border); font-weight: 600;">Payment</th>
+              <th style="padding: 12px; text-align: right; border-bottom: 2px solid var(--border); font-weight: 600;">Principal</th>
+              <th style="padding: 12px; text-align: right; border-bottom: 2px solid var(--border); font-weight: 600;">Interest</th>
+              <th style="padding: 12px; text-align: right; border-bottom: 2px solid var(--border); font-weight: 600;">Balance</th>
+            </tr>
+          </thead>
+          <tbody id="amortization-body">
+            <!-- JavaScript will populate this -->
+          </tbody>
+        </table>
+      </div>
+      <p style="text-align: center; color: var(--text-muted); font-size: 12px; margin-top: 10px;">
+        Showing first 12 months. In early years, most payments go toward interest.
+      </p>
+    </div>
+
+    <div class="share">
+      <a href="#" id="share-link" class="share-link">
+        <span>📤</span> Share this tool on WhatsApp
+      </a>
+    </div>
+  </main>
+
+  <div class="button-container">
+    <a href="index.html" class="back-button">
+      ← Back to Homepage
+    </a>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    &copy; 2025 SmartCalcHub | All Rights Reserved
+  </footer>
+
+  <script>
+    // DOM utility functions
+    const $ = (id) => document.getElementById(id);
+    const $$ = (selector) => document.querySelectorAll(selector);
+    
+    // Format currency
+    const formatCurrency = (amount) => {
+      return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2
+      }).format(amount);
+    };
+
+    // Format percentage
+    const formatPercent = (value) => {
+      return value.toFixed(2) + '%';
+    };
+
+    // Calculate amortization schedule
+    const calculateAmortization = (loanAmount, monthlyRate, monthlyPI, numberOfPayments) => {
+      const schedule = [];
+      let balance = loanAmount;
+      
+      for (let month = 1; month <= Math.min(12, numberOfPayments); month++) {
+        const interestPayment = balance * monthlyRate;
+        const principalPayment = monthlyPI - interestPayment;
+        balance -= principalPayment;
+        
+        schedule.push({
+          month: month,
+          payment: monthlyPI,
+          principal: principalPayment,
+          interest: interestPayment,
+          balance: Math.max(0, balance)
+        });
+      }
+      
+      return schedule;
+    };
+
+    // Display amortization schedule
+    const displayAmortizationSchedule = (schedule) => {
+      const amortizationBody = $('amortization-body');
+      amortizationBody.innerHTML = '';
+      
+      schedule.forEach(item => {
+        const row = document.createElement('tr');
+        row.style.borderBottom = '1px solid var(--border-light)';
+        row.innerHTML = `
+          <td style="padding: 10px; text-align: left;">${item.month}</td>
+          <td style="padding: 10px; text-align: right;">${formatCurrency(item.payment)}</td>
+          <td style="padding: 10px; text-align: right; color: #059669;">${formatCurrency(item.principal)}</td>
+          <td style="padding: 10px; text-align: right; color: #dc2626;">${formatCurrency(item.interest)}</td>
+          <td style="padding: 10px; text-align: right;">${formatCurrency(item.balance)}</td>
+        `;
+        amortizationBody.appendChild(row);
+      });
+      
+      $('amortization-schedule').className = 'additional-results fade-in-up';
+      $('amortization-schedule').style.display = 'block';
+    };
+
+    // Calculate auto loan payment
+    const calculateAutoLoan = () => {
+      // Get input values
+      const vehiclePrice = parseFloat($('vehicle-price').value);
+      const downPayment = parseFloat($('down-payment').value) || 0;
+      const tradeIn = parseFloat($('trade-in').value) || 0;
+      const salesTaxRate = parseFloat($('sales-tax').value) / 100;
+      const loanTerm = parseFloat($('loan-term').value);
+      const interestRate = parseFloat($('interest-rate').value) / 100;
+
+      // Validate inputs
+      if (!vehiclePrice || vehiclePrice <= 0) {
+        showError('vehicle-price-error', 'Please enter a valid vehicle price');
+        return null;
+      }
+      if (downPayment < 0 || downPayment >= vehiclePrice) {
+        showError('down-payment-error', 'Please enter a valid down payment');
+        return null;
+      }
+      if (!loanTerm || loanTerm < 1 || loanTerm > 8) {
+        showError('loan-term-error', 'Please enter a valid loan term (1-8 years)');
+        return null;
+      }
+      if (!interestRate || interestRate < 0) {
+        showError('interest-rate-error', 'Please enter a valid interest rate');
+        return null;
+      }
+
+      // Clear errors
+      clearErrors();
+
+      // Calculate loan amount with sales tax
+      const priceAfterDownPayment = vehiclePrice - downPayment - tradeIn;
+      const taxAmount = priceAfterDownPayment * salesTaxRate;
+      const loanAmount = priceAfterDownPayment + taxAmount;
+      const downPaymentPercent = (downPayment / vehiclePrice) * 100;
+
+      // Calculate monthly principal & interest
+      const monthlyRate = interestRate / 12;
+      const numberOfPayments = loanTerm * 12;
+
+      let monthlyPI;
+      if (monthlyRate === 0) {
+        monthlyPI = loanAmount / numberOfPayments;
+      } else {
+        monthlyPI = (loanAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
+      }
+
+      // Calculate totals
+      const totalPayments = monthlyPI * numberOfPayments;
+      const totalInterest = totalPayments - loanAmount;
+      const totalVehicleCost = vehiclePrice + taxAmount;
+
+      return {
+        loanAmount,
+        downPaymentPercent,
+        monthlyPI,
+        totalPayments,
+        totalInterest,
+        totalVehicleCost,
+        numberOfPayments,
+        interestRate: interestRate
+      };
+    };
+
+    // Show error message
+    const showError = (errorId, message) => {
+      $(errorId).textContent = message;
+      $(errorId).style.display = 'block';
+      $(errorId.split('-error')[0]).classList.add('error');
+    };
+
+    // Clear all errors
+    const clearErrors = () => {
+      $$('.error-message').forEach(el => el.style.display = 'none');
+      $$('.form-input').forEach(el => el.classList.remove('error'));
+    };
+
+    // Display results
+    const displayResults = (results) => {
+      if (!results) {
+        $('result').textContent = 'Please fix the errors above to calculate your payment.';
+        $('result').className = 'result error';
+        $('result').style.display = 'block';
+        $('payment-breakdown').style.display = 'none';
+        $('additional-results').style.display = 'none';
+        $('amortization-schedule').style.display = 'none';
+        return;
+      }
+
+      // Main result
+      $('result').textContent = `Your estimated monthly payment is ${formatCurrency(results.monthlyPI)}`;
+      $('result').className = 'result success fade-in-up';
+      $('result').style.display = 'block';
+
+      // Payment breakdown
+      $('breakdown-pi').textContent = formatCurrency(results.monthlyPI);
+      $('breakdown-loan-amount').textContent = formatCurrency(results.loanAmount);
+      $('breakdown-total-cost').textContent = formatCurrency(results.totalVehicleCost);
+      $('payment-breakdown').className = 'payment-breakdown fade-in-up';
+      $('payment-breakdown').style.display = 'block';
+
+      // Additional results
+      $('total-loan-amount').textContent = formatCurrency(results.loanAmount);
+      $('down-payment-percent').textContent = formatPercent(results.downPaymentPercent);
+      $('total-payments').textContent = formatCurrency(results.totalPayments);
+      $('total-interest').textContent = formatCurrency(results.totalInterest);
+      $('additional-results').className = 'additional-results fade-in-up';
+      $('additional-results').style.display = 'block';
+
+      // Display amortization schedule
+      const amortizationSchedule = calculateAmortization(
+        results.loanAmount,
+        results.interestRate / 12,
+        results.monthlyPI,
+        results.numberOfPayments
+      );
+
+      displayAmortizationSchedule(amortizationSchedule);
+    };
+
+    // Main calculation function
+    const calculateAutoLoanPayment = () => {
+      const results = calculateAutoLoan();
+      displayResults(results);
+    };
+
+    // Share on WhatsApp
+    const shareOnWhatsApp = () => {
+      const url = window.location.href;
+      const text = "Check out this free Auto Loan Calculator from SmartCalcHub: " + url;
+      const whatsappUrl = "https://wa.me/?text=" + encodeURIComponent(text);
+      window.open(whatsappUrl, "_blank");
+    };
+
+    // Initialize event listeners
+    const initializeEventListeners = () => {
+      $('calculate-btn').addEventListener('click', calculateAutoLoanPayment);
+      $('share-link').addEventListener('click', shareOnWhatsApp);
+      
+      // Calculate on Enter key in any input
+      $$('.form-input').forEach(input => {
+        input.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            calculateAutoLoanPayment();
+          }
+        });
+        
+        // Clear errors when user starts typing
+        input.addEventListener('input', () => {
+          input.classList.remove('error');
+          const errorId = input.id + '-error';
+          if ($(errorId)) {
+            $(errorId).style.display = 'none';
+          }
+        });
+      });
+    };
+
+    // Initialize the application
+    const init = () => {
+      initializeEventListeners();
+      console.log('Auto Loan Calculator initialized');
+    };
+
+    // Start when DOM is loaded
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
