@@ -11,18 +11,17 @@
   }
   </script>
 
-  <!-- Add to mortgage.html <head> -->
-<meta name="keywords" content="mortgage calculator, monthly mortgage payment, home loan calculator, mortgage rates, PITI calculator, PMI calculator">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Mortgage Calculator",
-  "description": "Free online mortgage calculator with taxes, insurance, and PMI",
-  "applicationCategory": "FinanceApplication",
-  "operatingSystem": "Any"
-}
-</script>
+  <meta name="keywords" content="mortgage calculator, monthly mortgage payment, home loan calculator, mortgage rates, PITI calculator, PMI calculator">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Mortgage Calculator",
+    "description": "Free online mortgage calculator with taxes, insurance, and PMI",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any"
+  }
+  </script>
   
   <title>Mortgage Calculator - SmartCalcHub</title>
   <meta name="description" content="Calculate your monthly mortgage payments with taxes, insurance, and PMI. Free online mortgage calculator for home buying.">
@@ -531,7 +530,7 @@
             </p>
         </div>
     </div>
-</section>
+  </section>
 
   <main class="container" role="main">
     <div class="calculator-header">
@@ -622,37 +621,33 @@
         <span class="result-label">Total Payments (30 years):</span>
         <span class="result-value" id="total-payments">—</span>
       </div>
-
-      <div id="amortization-schedule" class="additional-results" style="display: none;">
-    <h3 style="color: var(--text-primary); margin-bottom: 15px; text-align: center;">Amortization Schedule (First 12 Months)</h3>
-    <div style="max-height: 300px; overflow-y: auto;">
-        <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
-            <thead>
-                <tr style="background: var(--background);">
-                    <th style="padding: 12px; text-align: left; border-bottom: 2px solid var(--border); font-weight: 600;">Month</th>
-                    <th style="padding: 12px; text-align: right; border-bottom: 2px solid var(--border); font-weight: 600;">Payment</th>
-                    <th style="padding: 12px; text-align: right; border-bottom: 2px solid var(--border); font-weight: 600;">Principal</th>
-                    <th style="padding: 12px; text-align: right; border-bottom: 2px solid var(--border); font-weight: 600;">Interest</th>
-                    <th style="padding: 12px; text-align: right; border-bottom: 2px solid var(--border); font-weight: 600;">Balance</th>
-                </tr>
-            </thead>
-            <tbody id="amortization-body">
-                <!-- JavaScript will populate this -->
-            </tbody>
-        </table>
-    </div>
-    <p style="text-align: center; color: var(--text-muted); font-size: 12px; margin-top: 10px;">
-        Showing first 12 months. In early years, most payments go toward interest.
-    </p>
-</div>
-
-<div class="share">
-    <a href="#" id="share-link" class="share-link">
-      
       <div class="result-item">
         <span class="result-label">Total Interest:</span>
         <span class="result-value" id="total-interest">—</span>
       </div>
+    </div>
+
+    <div id="amortization-schedule" class="additional-results" style="display: none;">
+      <h3 style="color: var(--text-primary); margin-bottom: 15px; text-align: center;">Amortization Schedule (First 12 Months)</h3>
+      <div style="max-height: 300px; overflow-y: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+          <thead>
+            <tr style="background: var(--background);">
+              <th style="padding: 12px; text-align: left; border-bottom: 2px solid var(--border); font-weight: 600;">Month</th>
+              <th style="padding: 12px; text-align: right; border-bottom: 2px solid var(--border); font-weight: 600;">Payment</th>
+              <th style="padding: 12px; text-align: right; border-bottom: 2px solid var(--border); font-weight: 600;">Principal</th>
+              <th style="padding: 12px; text-align: right; border-bottom: 2px solid var(--border); font-weight: 600;">Interest</th>
+              <th style="padding: 12px; text-align: right; border-bottom: 2px solid var(--border); font-weight: 600;">Balance</th>
+            </tr>
+          </thead>
+          <tbody id="amortization-body">
+            <!-- JavaScript will populate this -->
+          </tbody>
+        </table>
+      </div>
+      <p style="text-align: center; color: var(--text-muted); font-size: 12px; margin-top: 10px;">
+        Showing first 12 months. In early years, most payments go toward interest.
+      </p>
     </div>
 
     <div class="share">
@@ -689,6 +684,50 @@
     // Format percentage
     const formatPercent = (value) => {
       return value.toFixed(2) + '%';
+    };
+
+    // Calculate amortization schedule
+    const calculateAmortization = (loanAmount, monthlyRate, monthlyPI, numberOfPayments) => {
+      const schedule = [];
+      let balance = loanAmount;
+      
+      for (let month = 1; month <= Math.min(12, numberOfPayments); month++) {
+        const interestPayment = balance * monthlyRate;
+        const principalPayment = monthlyPI - interestPayment;
+        balance -= principalPayment;
+        
+        schedule.push({
+          month: month,
+          payment: monthlyPI,
+          principal: principalPayment,
+          interest: interestPayment,
+          balance: Math.max(0, balance)
+        });
+      }
+      
+      return schedule;
+    };
+
+    // Display amortization schedule
+    const displayAmortizationSchedule = (schedule) => {
+      const amortizationBody = $('amortization-body');
+      amortizationBody.innerHTML = '';
+      
+      schedule.forEach(item => {
+        const row = document.createElement('tr');
+        row.style.borderBottom = '1px solid var(--border-light)';
+        row.innerHTML = `
+          <td style="padding: 10px; text-align: left;">${item.month}</td>
+          <td style="padding: 10px; text-align: right;">${formatCurrency(item.payment)}</td>
+          <td style="padding: 10px; text-align: right; color: #059669;">${formatCurrency(item.principal)}</td>
+          <td style="padding: 10px; text-align: right; color: #dc2626;">${formatCurrency(item.interest)}</td>
+          <td style="padding: 10px; text-align: right;">${formatCurrency(item.balance)}</td>
+        `;
+        amortizationBody.appendChild(row);
+      });
+      
+      $('amortization-schedule').className = 'additional-results fade-in-up';
+      $('amortization-schedule').style.display = 'block';
     };
 
     // Calculate mortgage payment
@@ -754,27 +793,6 @@
       // Calculate totals over loan term
       const totalPayments = totalMonthlyPayment * numberOfPayments;
       const totalInterest = (monthlyPI * numberOfPayments) - loanAmount;
-      // Calculate amortization schedule
-const calculateAmortization = (loanAmount, monthlyRate, monthlyPI, numberOfPayments) => {
-    const schedule = [];
-    let balance = loanAmount;
-    
-    for (let month = 1; month <= Math.min(12, numberOfPayments); month++) {
-        const interestPayment = balance * monthlyRate;
-        const principalPayment = monthlyPI - interestPayment;
-        balance -= principalPayment;
-        
-        schedule.push({
-            month: month,
-            payment: monthlyPI,
-            principal: principalPayment,
-            interest: interestPayment,
-            balance: Math.max(0, balance)
-        });
-    }
-    
-    return schedule;
-};
 
       return {
         loanAmount,
@@ -787,7 +805,7 @@ const calculateAmortization = (loanAmount, monthlyRate, monthlyPI, numberOfPayme
         totalPayments,
         totalInterest,
         numberOfPayments,
-        interestRate: interestRate 
+        interestRate: interestRate
       };
     };
 
@@ -812,32 +830,10 @@ const calculateAmortization = (loanAmount, monthlyRate, monthlyPI, numberOfPayme
         $('result').style.display = 'block';
         $('payment-breakdown').style.display = 'none';
         $('additional-results').style.display = 'none';
+        $('amortization-schedule').style.display = 'none';
         return;
       }
 
-      // Display amortization schedule
-const displayAmortizationSchedule = (schedule) => {
-    const amortizationBody = $('amortization-body');
-    amortizationBody.innerHTML = '';
-    
-    schedule.forEach(item => {
-        const row = document.createElement('tr');
-        row.style.borderBottom = '1px solid var(--border-light)';
-        row.innerHTML = `
-            <td style="padding: 10px; text-align: left;">${item.month}</td>
-            <td style="padding: 10px; text-align: right;">${formatCurrency(item.payment)}</td>
-            <td style="padding: 10px; text-align: right; color: #059669;">${formatCurrency(item.principal)}</td>
-            <td style="padding: 10px; text-align: right; color: #dc2626;">${formatCurrency(item.interest)}</td>
-            <td style="padding: 10px; text-align: right;">${formatCurrency(item.balance)}</td>
-        `;
-        amortizationBody.appendChild(row);
-    });
-    
-    $('amortization-schedule').className = 'additional-results fade-in-up';
-    $('amortization-schedule').style.display = 'block';
-};
-     
-      
       // Main result
       $('result').textContent = `Your estimated monthly payment is ${formatCurrency(results.totalMonthlyPayment)}`;
       $('result').className = 'result success fade-in-up';
@@ -859,15 +855,16 @@ const displayAmortizationSchedule = (schedule) => {
       $('total-interest').textContent = formatCurrency(results.totalInterest);
       $('additional-results').className = 'additional-results fade-in-up';
       $('additional-results').style.display = 'block';
-      // Display amortization schedule
-const amortizationSchedule = calculateAmortization(
-    results.loanAmount,
-    results.interestRate / 12,
-    results.monthlyPI,
-    results.numberOfPayments
-);
 
-displayAmortizationSchedule(amortizationSchedule);
+      // Display amortization schedule
+      const amortizationSchedule = calculateAmortization(
+        results.loanAmount,
+        results.interestRate / 12,
+        results.monthlyPI,
+        results.numberOfPayments
+      );
+
+      displayAmortizationSchedule(amortizationSchedule);
     };
 
     // Main calculation function
