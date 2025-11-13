@@ -1045,6 +1045,7 @@
     const calculatePayoffPlan = () => {
       const results = calculateDebtPayoff();
       displayResults(results);
+      trackCalculatorUsage('Debt Payoff Calculator');
     };
 
     // Share on WhatsApp
