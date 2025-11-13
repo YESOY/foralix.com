@@ -919,6 +919,7 @@
     const calculateMortgagePayment = () => {
       const results = calculateMortgage();
       displayResults(results);
+      trackCalculatorUsage('Mortgage Calculator');
     };
 
     // Share on WhatsApp
