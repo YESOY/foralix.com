@@ -910,6 +910,7 @@
     const calculateAutoLoanPayment = () => {
       const results = calculateAutoLoan();
       displayResults(results);
+      trackCalculatorUsage('Auto Loan Calculator');
     };
 
     // Share on WhatsApp
