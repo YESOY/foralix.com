@@ -13,6 +13,24 @@
 
   gtag('config', 'G-WDSN8J1KJ6');
 </script>
+
+ <script>
+  // Track calculator usage
+  function trackCalculatorUsage(calculatorName) {
+    gtag('event', 'calculator_used', {
+      'event_category': 'Calculators',
+      'event_label': calculatorName
+    });
+  }
+
+  // Track social shares
+  function trackSocialShare(platform) {
+    gtag('event', 'share', {
+      'event_category': 'Social',
+      'event_label': platform
+    });
+  }
+</script>
   
   <script>
   // Force HTTPS redirect
