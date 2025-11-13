@@ -1031,6 +1031,7 @@
     const calculateBudgetPlan = () => {
       const results = calculateBudget();
       displayResults(results);
+      trackCalculatorUsage('Budget Planner');
     };
 
     // Share on WhatsApp
