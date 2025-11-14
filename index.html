@@ -267,46 +267,86 @@
 
   <main id="main-content" class="main-content" role="main">
     <div class="tools-grid">
+
+      
       <!-- Loan Calculator Card -->
-      <a href="loan.html" class="tool-card" aria-label="Loan Calculator - Calculate monthly payments based on interest and term">
-        <div class="tool-card-icon" aria-hidden="true">
-          💰
-        </div>
-        <h2 class="tool-card-title">Loan Calculator</h2>
-        <p class="tool-card-description">Calculate monthly payments, total interest, and amortization schedule for any loan.</p>
-        <div class="tool-card-arrow" aria-hidden="true">
-          Try it now <span>→</span>
-        </div>
-      </a>
 
+<div class="calculators-grid">
   
-  <!-- Auto Loan Calculator Card -->
+  <div class="calculator-card">
+    <div class="calculator-icon">💰</div>
+    <h3>Loan Calculator</h3>
+    <p>Calculate monthly payments, interest, and amortization</p>
+    <a href="loan.html" class="try-button">Try Now →</a>
+  </div>
 
-    <a href="auto-loan.html" class="tool-card" aria-label="Auto Loan Calculator - Calculate monthly car payment with down payment and trade-in value">
-     <div class="tool-card-icon" aria-hidden="true">
-        🚗
-     </div>
-    <h2 class="tool-card-title">Auto Loan Calculator</h2>
-    <p class="tool-card-description">Calculate monthly car payment with down payment and trade-in value.</p>
-    <div class="tool-card-arrow" aria-hidden="true">
-        Try it now <span>→</span>
-    </div>
+  <div class="calculator-card">
+    <div class="calculator-icon">🚗</div>
+    <h3>Auto Loan Calculator</h3>
+    <p>Calculate car payments with down payment & trade-in</p>
+    <a href="auto-loan.html" class="try-button">Try Now →</a>
+  </div>
 
-    </a>
+  <div class="calculator-card">
+    <div class="calculator-icon">🏠</div>
+    <h3>Mortgage Calculator</h3>
+    <p>Calculate complete mortgage payments with taxes & insurance</p>
+    <a href="mortgage.html" class="try-button">Try Now →</a>
+  </div>
 
-       <!-- mortgage calculator cards -->
+</div>
 
-      <a href="mortgage.html" class="tool-card" aria-label="Mortgage Calculator - Calculate complete monthly mortgage payments with taxes, insurance, and PMI.">
-        <div class="tool-card-icon" aria-hidden="true">
-          🏠
-        </div>
-        <h2 class="tool-card-title">Mortgage Calculator</h2>
-        <p class="tool-card-description">Calculate complete monthly mortgage payments with taxes, insurance, and PMI.</p>
-        <div class="tool-card-arrow" aria-hidden="true">
-          Try it now <span>→</span>
-        </div>
-      </a>
+<style>
+.calculators-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin: 40px 0;
+}
 
+.calculator-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 25px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.calculator-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.calculator-icon {
+  font-size: 2.5em;
+  margin-bottom: 15px;
+}
+
+.calculator-card h3 {
+  margin: 10px 0;
+  color: #2c3e50;
+}
+
+.calculator-card p {
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.try-button {
+  display: inline-block;
+  background: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.try-button:hover {
+  background: #0056b3;
+}
+</style>
 
       <!-- Savings Calculator Card -->
       <a href="savings.html" class="tool-card" aria-label="Savings Growth Calculator - Estimate your savings with compound interest">
