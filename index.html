@@ -3,18 +3,28 @@
 <head>
     <title>SmartCalcHub - Free Online Financial Calculators</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
         .calculators-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             margin: 40px 0;
-            max-width: 1000px;
         }
         .calculator-card {
             border: 1px solid #e0e0e0;
             border-radius: 10px;
             padding: 25px;
             text-align: center;
+            background: white;
+        }
+        .calculator-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
         }
         .try-button {
             background: #007bff;
@@ -24,6 +34,10 @@
             text-decoration: none;
             display: inline-block;
             margin-top: 10px;
+            font-weight: bold;
+        }
+        .try-button:hover {
+            background: #0056b3;
         }
     </style>
 </head>
@@ -32,22 +46,48 @@
     <p>Free, fast, and easy-to-use online financial calculators</p>
     
     <div class="calculators-grid">
+        <!-- Row 1 -->
         <div class="calculator-card">
+            <div class="calculator-icon">💰</div>
             <h3>Loan Calculator</h3>
             <p>Calculate monthly payments, interest, and amortization</p>
             <a href="loan.html" class="try-button">Try Now →</a>
         </div>
         
         <div class="calculator-card">
+            <div class="calculator-icon">🚗</div>
             <h3>Auto Loan Calculator</h3>
             <p>Calculate car payments with down payment & trade-in</p>
             <a href="auto-loan.html" class="try-button">Try Now →</a>
         </div>
         
         <div class="calculator-card">
+            <div class="calculator-icon">🏠</div>
             <h3>Mortgage Calculator</h3>
             <p>Calculate complete mortgage payments</p>
             <a href="mortgage.html" class="try-button">Try Now →</a>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="calculator-card">
+            <div class="calculator-icon">📈</div>
+            <h3>Savings Calculator</h3>
+            <p>Estimate future savings with compound interest</p>
+            <a href="savings.html" class="try-button">Try Now →</a>
+        </div>
+        
+        <div class="calculator-card">
+            <div class="calculator-icon">📊</div>
+            <h3>Budget Planner</h3>
+            <p>Create monthly budget with 50/30/20 rule</p>
+            <a href="budget-planner.html" class="try-button">Try Now →</a>
+        </div>
+        
+        <div class="calculator-card">
+            <div class="calculator-icon">💳</div>
+            <h3>Debt Payoff Calculator</h3>
+            <p>Calculate fastest path to debt freedom</p>
+            <a href="debt-payoff.html" class="try-button">Try Now →</a>
         </div>
     </div>
 </body>
