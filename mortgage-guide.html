@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Mortgage Payments: Complete Guide - SmartCalcHub</title>
+    <meta name="description" content="Learn how mortgage payments work with our comprehensive guide. Understand principal, interest, taxes, insurance (PITI) and use our free mortgage calculator.">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WDSN8J1KJ6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-WDSN8J1KJ6');
+    </script>
+
+    <style>
+        /* Reuse your existing styles */
+        :root {
+            --brand-primary: #007BFF;
+            --brand-primary-dark: #0056b3;
+            --background: #f8fafc;
+            --surface: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.7;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .article-meta {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .content-section {
+            background: var(--surface);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--text-primary);
+            margin: 30px 0 20px 0;
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            color: var(--text-primary);
+            margin: 25px 0 15px 0;
+            font-size: 1.4rem;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .calculator-cta {
+            background: linear-gradient(135deg, #007BFF, #0056b3);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #007BFF;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: transform 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .formula-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #007BFF;
+            margin: 20px 0;
+            font-family: monospace;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: var(--surface);
+            color: var(--text-primary);
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 20px;
+            border: 2px solid var(--border);
+        }
+
+        .piti-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .piti-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #007BFF;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .piti-letter {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007BFF;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+            
+            .content-section {
+                padding: 25px;
+            }
+            
+            .piti-breakdown {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="article-title">Understanding Mortgage Payments: Complete Guide</h1>
+            <div class="article-meta">
+                Published on December 19, 2024 • 10 min read
+            </div>
+        </header>
+
+        <div class="content-section">
+            <h2>What Makes Up a Mortgage Payment?</h2>
+            <p>When you look at a mortgage payment, you're actually seeing four different components working together. Understanding these elements is crucial for budgeting and making informed home-buying decisions.</p>
+
+            <div class="calculator-cta">
+                <h3 style="color: white;">Calculate Your Mortgage Payments</h3>
+                <p style="color: white; opacity: 0.9;">Use our free mortgage calculator to estimate your complete monthly payment</p>
+                <a href="mortgage.html" class="cta-button">Calculate Mortgage →</a>
+            </div>
+
+            <h2>The PITI Breakdown</h2>
+            <p>Most mortgage payments consist of four parts, commonly referred to as PITI:</p>
+
+            <div class="piti-breakdown">
+                <div class="piti-item">
+                    <div class="piti-letter">P</div>
+                    <h3>Principal</h3>
+                    <p>The amount going toward paying down your actual loan balance</p>
+                </div>
+                <div class="piti-item">
+                    <div class="piti-letter">I</div>
+                    <h3>Interest</h3>
+                    <p>The cost of borrowing money from the lender</p>
+                </div>
+                <div class="piti-item">
+                    <div class="piti-letter">T</div>
+                    <h3>Taxes</h3>
+                    <p>Property taxes collected by your lender for local government</p>
+                </div>
+                <div class="piti-item">
+                    <div class="piti-letter">I</div>
+                    <h3>Insurance</h3>
+                    <p>Homeowners insurance and possibly PMI (Private Mortgage Insurance)</p>
+                </div>
+            </div>
+
+            <h2>How Mortgage Interest Works</h2>
+            <p>Mortgage interest is typically compounded monthly, which means you pay interest on both your principal balance and any accumulated interest.</p>
+
+            <div class="formula-box">
+                Monthly Interest = (Annual Rate ÷ 12) × Remaining Principal
+            </div>
+
+            <h3>Amortization: The Magic of Mortgage Payments</h3>
+            <p>In the early years of your mortgage, most of your payment goes toward interest. As time passes, more goes toward principal. This process is called amortization.</p>
+
+            <p><strong>Example:</strong> On a 30-year $300,000 mortgage at 4%:</p>
+            <ul style="color: var(--text-secondary); margin-bottom: 20px; padding-left: 20px;">
+                <li><strong>Year 1:</strong> $1,000 payment = $900 interest, $100 principal</li>
+                <li><strong>Year 15:</strong> $1,000 payment = $600 interest, $400 principal</li>
+            </ul>
+
+            <div class="calculator-cta">
+                <h3 style="color: white;">See Your Amortization Schedule</h3>
+                <p style="color: white; opacity: 0.9;">Our mortgage calculator shows exactly how each payment is split over time</p>
+                <a href="mortgage.html" class="cta-button">View Payment Schedule →</a>
+            </div>
+
+            <h2>Additional Mortgage Costs to Consider</h2>
+
+            <h3>Private Mortgage Insurance (PMI)</h3>
+            <p>If your down payment is less than 20%, lenders typically require PMI. This protects the lender if you default on the loan and usually costs 0.5% to 1% of the loan amount annually.</p>
+
+            <h3>Homeowners Insurance</h3>
+            <p>Most lenders require insurance to protect their investment. Costs vary by location, home value, and coverage level.</p>
+
+            <h3>Property Taxes</h3>
+            <p>Lenders often collect 1/12 of your annual property tax bill each month, holding it in an escrow account.</p>
+
+            <h2>Fixed-Rate vs. Adjustable-Rate Mortgages</h2>
+
+            <h3>Fixed-Rate Mortgages</h3>
+            <p>Your interest rate and payment remain the same for the entire loan term. Perfect for stability and long-term planning.</p>
+
+            <h3>Adjustable-Rate Mortgages (ARMs)</h3>
+            <p>Start with a lower rate that adjusts periodically. Better for short-term ownership but carries uncertainty.</p>
+
+            <h2>How Down Payments Affect Your Payment</h2>
+            <p>Your down payment significantly impacts your monthly payment and total loan cost:</p>
+
+            <div class="formula-box">
+                $400,000 Home | 20% Down = $320,000 Loan<br>
+                $400,000 Home | 10% Down = $360,000 Loan + PMI<br>
+                $400,000 Home | 5% Down = $380,000 Loan + Higher PMI
+            </div>
+
+            <h2>Using Our Mortgage Calculator Effectively</h2>
+            <p>Our free mortgage calculator helps you understand the full picture of homeownership costs:</p>
+
+            <ul style="color: var(--text-secondary); margin-bottom: 20px; padding-left: 20px;">
+                <li><strong>Compare different scenarios</strong> - 15-year vs 30-year terms</li>
+                <li><strong>Understand PMI costs</strong> with various down payments</li>
+                <li><strong>Plan for property taxes</strong> and insurance</li>
+                <li><strong>See total interest paid</strong> over the loan life</li>
+            </ul>
+
+            <h2>Mortgage Payment Calculation Example</h2>
+            <p>Let's calculate payments for a $350,000 home with 10% down:</p>
+
+            <div class="formula-box">
+                Home Price: $350,000<br>
+                Down Payment: $35,000 (10%)<br>
+                Loan Amount: $315,000<br>
+                Interest Rate: 4.5%<br>
+                Term: 30 years<br>
+                Property Tax: $3,500/year<br>
+                Insurance: $1,200/year<br>
+                PMI: 0.75%<br><br>
+                <strong>Total Monthly Payment: $2,147</strong>
+            </div>
+
+            <h2>Conclusion</h2>
+            <p>Understanding mortgage payments empowers you to make smarter home-buying decisions. By knowing how PITI works and using tools like our mortgage calculator, you can accurately budget for homeownership and choose the right mortgage for your financial situation.</p>
+
+            <p><strong>Ready to calculate your specific mortgage scenario?</strong> Use our free tool below:</p>
+
+            <div style="text-align: center; margin: 40px 0;">
+                <a href="mortgage.html" class="cta-button" style="background: #007BFF; color: white;">Calculate My Mortgage</a>
+            </div>
+
+            <a href="index.html" class="back-button">← Back to All Calculators</a>
+        </div>
+    </div>
+</body>
+</html>
