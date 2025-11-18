@@ -1,1 +1,13 @@
+# SmartCalcHub URL Redirects
 Redirect 301 /Loan.html /loan.html
+
+# Block bad bots and random product URLs
+RewriteEngine On
+
+# Block suspicious product URLs that aren't real pages
+RewriteRule ^products/ - [G]
+
+# Ensure all URLs are case-insensitive
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . / [L,R=301]
