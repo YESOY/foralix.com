@@ -1,0 +1,119 @@
+# ============================================
+# ForAlix.com - HTACCESS Configuration
+# ============================================
+
+# Activer le moteur de réécriture
+RewriteEngine On
+
+# ============================================
+# 1. CORRECTION DES ERREURS 404
+# ============================================
+
+# URL fantôme Shopify - Répondre 410 Gone (supprimée définitivement)
+RewriteRule ^products/zigzag-minion - [G,L]
+
+# Correction de la casse pour Loan.html (si quelqu'un tape avec majuscule)
+Redirect 301 /Loan.html /loan.html
+
+# ============================================
+# 2. FORCER HTTPS (SÉCURITÉ + SEO)
+# ============================================
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# ============================================
+# 3. STANDARDISATION DES WWW
+# ============================================
+# Choisissez UNE version : AVEC ou SANS www
+# OPTION A: SANS www (recommandé)
+RewriteCond %{HTTP_HOST} ^www\.foralix\.com [NC]
+RewriteRule ^(.*)$ https://foralix.com/$1 [R=301,L]
+
+# OPTION B: AVEC www (décommentez si préféré)
+# RewriteCond %{HTTP_HOST} ^foralix\.com [NC]
+# RewriteRule ^(.*)$ https://www.foralix.com/$1 [R=301,L]
+
+# ============================================
+# 4. STANDARDISATION DU SLASH FINAL
+# ============================================
+# Ajoute un slash à la fin des URLs de répertoire
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !(.*)/$
+RewriteRule ^(.*)$ /$1/ [R=301,L]
+
+# Enlève le .html et redirige vers version sans .html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# ============================================
+# 5. COMPRESSION GZIP (AMÉLIORE LA VITESSE)
+# ============================================
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+</IfModule>
+
+# ============================================
+# 6. EN-TÊTES DE CACHE (AMÉLIORE LA VITESSE)
+# ============================================
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # Images
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    
+    # CSS, JavaScript
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    
+    # Polices
+    ExpiresByType font/woff2 "access plus 1 year"
+    
+    # HTML (cache court pour contenu dynamique)
+    ExpiresByType text/html "access plus 1 hour"
+</IfModule>
+
+# ============================================
+# 7. PROTECTION DE BASE
+# ============================================
+# Empêche l'accès aux fichiers .htaccess
+<Files .htaccess>
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Empêche l'accès aux fichiers sensibles
+<FilesMatch "^(wp-config\.php|php\.ini|\.git|composer\.json|composer\.lock|package\.json|package-lock\.json)">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# ============================================
+# 8. GESTION DES ERREURS
+# ============================================
+ErrorDocument 400 /404.html
+ErrorDocument 401 /404.html
+ErrorDocument 403 /404.html
+ErrorDocument 404 /404.html
+ErrorDocument 500 /404.html
+
+# ============================================
+# 9. OPTIMISATION POUR MOBILE
+# ============================================
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options nosniff
+    Header set X-Frame-Options SAMEORIGIN
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>
