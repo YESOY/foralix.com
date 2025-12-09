@@ -149,3 +149,6 @@ RewriteEngine On
 RewriteMap lowercase int:tolower
 RewriteCond %{REQUEST_URI} [A-Z]
 RewriteRule (.*) ${lowercase:$1} [R=301,L]
+
+# Redirect Savings.html (any case) to savings.html
+RedirectMatch 301 (?i)/savings\.html /savings.html
