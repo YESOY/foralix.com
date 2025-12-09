@@ -19,6 +19,9 @@ Redirect 301 /Loan.html /loan.html
 # Correction casse Savings.html → savings.html
 Redirect 301 /Savings.html /savings.html
 
+# Redirect Savings.html (any case) to savings.html
+RedirectMatch 301 (?i)/savings\.html /savings.html
+
 # ============================================
 # 2. HTTPS OBLIGATOIRE (SÉCURITÉ + SEO)
 # ============================================
