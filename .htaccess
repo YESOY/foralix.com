@@ -16,6 +16,9 @@ RewriteRule ^products/zigzag-minion - [G,L]
 # Correction casse Loan.html → loan.html
 Redirect 301 /Loan.html /loan.html
 
+# Correction casse Savings.html → savings.html
+Redirect 301 /Savings.html /savings.html
+
 # ============================================
 # 2. HTTPS OBLIGATOIRE (SÉCURITÉ + SEO)
 # ============================================
