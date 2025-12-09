@@ -137,3 +137,15 @@ AddDefaultCharset UTF-8
 # RewriteCond %{HTTP_REFERER} !^$
 # RewriteCond %{HTTP_REFERER} !^https://foralix\.com/.*$ [NC]
 # RewriteRule \.(jpg|jpeg|png|gif)$ - [F]
+
+
+
+
+# Fix case sensitivity
+CheckSpelling on
+
+# OR force lowercase URLs
+RewriteEngine On
+RewriteMap lowercase int:tolower
+RewriteCond %{REQUEST_URI} [A-Z]
+RewriteRule (.*) ${lowercase:$1} [R=301,L]
