@@ -1,23 +1,82 @@
+# ============================================
+# SmartCalcHub - HTACCESS Configuration
+# ============================================
+
 RewriteEngine On
 
-# Force HTTPS
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://foralix.com/$1 [R=301,L]
-
-# Remove www
+# 1. HTTPS and remove www (MUST BE FIRST)
+RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} ^www\.foralix\.com [NC]
 RewriteRule ^(.*)$ https://foralix.com/$1 [R=301,L]
 
-# Serve files regardless of case (let the OS handle it)
-# No redirects for case issues
+# 2. Redirect ALL uppercase .html files to lowercase
+# This handles: Loan.html, Savings.html, About.html, etc.
+RewriteCond %{REQUEST_URI} \.html$ [NC]
+RewriteCond %{REQUEST_URI} [A-Z]
+RewriteRule ^(.*)\.html$ ${tolower:$1}.html [R=301,L]
 
-# Add .html extension
+# 3. Redirect uppercase files without extension too
+# This handles: /Loan, /About, /Savings
+RewriteCond %{REQUEST_URI} [A-Z]
+RewriteCond %{REQUEST_URI} !\.(jpg|jpeg|png|gif|css|js)$ [NC]
+RewriteRule ^(.*)$ ${tolower:$1} [R=301,L]
+
+# 4. Add .html extension to URLs without it
+# This handles: /loan → /loan.html, /about → /about.html
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME}.html -f [OR]
-RewriteCond %{REQUEST_FILENAME}.HTML -f
+RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^([^/]+)/?$ $1.html [L]
 
-# Remove index.html
-RewriteRule ^index\.html$ / [R=301,L]
-RewriteRule ^(.*)/index\.html$ /$1/ [R=301,L]
+# 5. Remove index.html from URLs
+RewriteCond %{THE_REQUEST} /index\.html [NC]
+RewriteRule ^(.*)index\.html$ /$1 [R=301,L]
+
+# 6. Gzip Compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# 7. Browser Caching
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/html "access plus 1 hour"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# 8. Security Headers
+<IfModule mod_headers.c>
+    Header set X-XSS-Protection "1; mode=block"
+    Header set X-Content-Type-Options nosniff
+    Header set X-Frame-Options SAMEORIGIN
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# 9. Custom Error Pages
+ErrorDocument 400 /404.html
+ErrorDocument 401 /404.html
+ErrorDocument 403 /404.html
+ErrorDocument 404 /404.html
+ErrorDocument 500 /404.html
+
+# 10. Block sensitive files
+<Files .htaccess>
+    Order Allow,Deny
+    Deny from all
+</Files>
+<FilesMatch "\.(env|log|ini|conf|sql|bak|save)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# 11. Disable directory browsing
+Options -Indexes
