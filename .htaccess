@@ -16,8 +16,6 @@ RewriteRule ^products/zigzag-minion - [G,L]
 # Correction casse Loan.html → loan.html
 Redirect 301 /Loan.html /loan.html
 
-# Correction casse Savings.html → savings.html
-Redirect 301 /Savings.html /savings.html
 
 # Redirect Savings.html (any case) to savings.html
 RedirectMatch 301 (?i)/savings\.html /savings.html
