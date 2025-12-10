@@ -1,19 +1,23 @@
 RewriteEngine On
 
-# HTTPS et suppression WWW
-RewriteCond %{HTTPS} off [OR]
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://foralix.com/$1 [R=301,L]
+
+# Remove www
 RewriteCond %{HTTP_HOST} ^www\.foralix\.com [NC]
 RewriteRule ^(.*)$ https://foralix.com/$1 [R=301,L]
 
-# Redirige toutes les majuscules vers minuscules
-RewriteCond %{REQUEST_URI} [A-Z]
-RewriteRule (.*) ${tolower:$1} [R=301,L]
+# Serve files regardless of case (let the OS handle it)
+# No redirects for case issues
 
-# Ajoute .html aux URLs sans extension
+# Add .html extension
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteCond %{REQUEST_FILENAME}.html -f [OR]
+RewriteCond %{REQUEST_FILENAME}.HTML -f
 RewriteRule ^([^/]+)/?$ $1.html [L]
 
-# Redirige index vers racine
-RewriteRule ^(index|home)\.(php|html)?$ / [R=301,L]
+# Remove index.html
+RewriteRule ^index\.html$ / [R=301,L]
+RewriteRule ^(.*)/index\.html$ /$1/ [R=301,L]
