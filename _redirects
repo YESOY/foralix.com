@@ -1,0 +1,19 @@
+# Uppercase to lowercase redirects
+/Loan.html    /loan.html    301
+/Savings.html /savings.html 301
+/About.html   /about.html   301
+/Contact.html /contact.html 301
+/Privacy.html /privacy.html 301
+/Terms.html   /terms.html   301
+/CookiePolicy.html /cookiepolicy.html 301
+/compoundInterest.html /compoundinterest.html 301
+
+# Also handle URLs without .html extension
+/Loan    /loan.html    301
+/Savings /savings.html 301
+/About   /about.html   301
+/Contact /contact.html 301
+/Privacy /privacy.html 301
+/Terms   /terms.html   301
+/CookiePolicy /cookiepolicy.html 301
+/compoundInterest /compoundinterest.html 301
