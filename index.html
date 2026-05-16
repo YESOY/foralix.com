@@ -1,458 +1,906 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://foralix.com/" />
-    <meta name="description" content="Foralix - Free financial tools: loan calculators, savings, budget, mortgage and debt management for better financial health">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://foralix.com/" />
 
-      <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-5RH5T6NC');</script>
-<!-- End Google Tag Manager -->
+  <title>Foralix - Free Financial Calculators & Money Management Tools</title>
+  <meta name="description" content="Free financial calculators for loans, mortgage, savings, budget planning and debt payoff. Easy-to-use tools and guides to help you make smarter money decisions.">
 
-    <!-- code adsense -->
-   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2686512623005431"
-     crossorigin="anonymous"></script>
-
-    <meta name="google-adsense-account" content="ca-pub-2686512623005431">
-    
-    <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WDSN8J1KJ6"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-WDSN8J1KJ6');
-  </script>
+  <!-- Open Graph -->
+  <meta property="og:title" content="Foralix - Free Financial Calculators & Money Management Tools">
+  <meta property="og:description" content="Free loan, mortgage, savings, budget and debt payoff calculators with expert guides. Make smarter financial decisions with Foralix.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://foralix.com/">
+  <meta property="og:site_name" content="Foralix">
 
   <!-- Google Search Console Verification -->
   <meta name="google-site-verification" content="google3722c59abbdf6ba7" />
 
-    
+  <!-- Google Tag Manager (ONE instance only) -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5RH5T6NC');</script>
 
-    
-    <title>Foralix - Financial Tools & Calculators</title>
-    <style>
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5655775153440301"
+  crossorigin="anonymous"></script>
+
+  <!-- Schema: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Foralix",
+    "url": "https://foralix.com/",
+    "description": "Free financial calculators and guides for loans, mortgage, savings, budget planning and debt payoff.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Foralix",
+      "url": "https://foralix.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://foralix.com/logo.png"
+      }
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://foralix.com/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- Schema: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Foralix",
+    "url": "https://foralix.com/",
+    "logo": "https://foralix.com/logo.png",
+    "description": "Foralix provides free, accurate financial calculators and educational guides to help people make better money decisions.",
+    "sameAs": []
+  }
+  </script>
+
+  <!-- Schema: ItemList (all tools) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Foralix Financial Calculators",
+    "description": "Free financial calculators and guides for personal finance management",
+    "numberOfItems": 13,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Loan Calculator",
+        "url": "https://foralix.com/loan.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Mortgage Calculator",
+        "url": "https://foralix.com/mortgage.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Auto Loan Calculator",
+        "url": "https://foralix.com/auto-loan.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Savings Calculator",
+        "url": "https://foralix.com/savings.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "name": "Budget Planner",
+        "url": "https://foralix.com/budget-planner.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 6,
+        "name": "Debt Payoff Calculator",
+        "url": "https://foralix.com/debt-payoff.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 7,
+        "name": "Loan Payment Guide",
+        "url": "https://foralix.com/loan-payment-guide.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 8,
+        "name": "Mortgage Guide",
+        "url": "https://foralix.com/mortgage-guide.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 9,
+        "name": "Compound Interest Guide",
+        "url": "https://foralix.com/compound-interest-guide.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 10,
+        "name": "Debt Payoff Methods Guide",
+        "url": "https://foralix.com/debt-payoff-methods.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 11,
+        "name": "50/30/20 Budget Rule Guide",
+        "url": "https://foralix.com/50-30-20-budget-rule.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 12,
+        "name": "Emergency Fund Guide",
+        "url": "https://foralix.com/emergency-fund-guide.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 13,
+        "name": "Auto Loan Negotiation Guide",
+        "url": "https://foralix.com/auto-loan-negotiation-guide.html"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Schema: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Are Foralix calculators free to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. All Foralix financial calculators and guides are completely free to use with no registration or payment required."
         }
-
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #f8f9fa;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+      },
+      {
+        "@type": "Question",
+        "name": "What financial calculators does Foralix offer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Foralix offers loan calculators, mortgage calculators, auto loan calculators, savings calculators, budget planners, debt payoff calculators, and comprehensive financial guides."
         }
-
-        /* Professional Header */
-        .professional-header {
-            background: linear-gradient(135deg, #007bff, #0056b3);
-            color: white;
-            padding: 50px 20px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      },
+      {
+        "@type": "Question",
+        "name": "How accurate are the Foralix calculators?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Foralix calculators use standard financial formulas to provide accurate estimates. Results are for educational purposes and should be verified with a qualified financial advisor for major decisions."
         }
-
-        .logo {
-            font-size: 4rem;
-            margin-bottom: 15px;
+      },
+      {
+        "@type": "Question",
+        "name": "What is the best way to pay off debt?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The two most popular methods are the Debt Snowball (pay smallest balances first for motivation) and Debt Avalanche (pay highest interest first to save money). Use our free Debt Payoff Calculator to compare both methods."
         }
+      }
+    ]
+  }
+  </script>
 
-        .site-title {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            letter-spacing: -0.5px;
-        }
+  <style>
+    /* =====================
+       RESET & BASE
+    ===================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .tagline {
-            font-size: 1.3rem;
-            opacity: 0.95;
-            font-weight: 300;
-            max-width: 500px;
-            margin: 0 auto;
-        }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f8f9fa;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-        /* Main Content */
-        main {
-            flex: 1;
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
-        }
+    /* =====================
+       STICKY NAV
+    ===================== */
+    .site-nav {
+      background: #fff;
+      border-bottom: 2px solid #e8ecef;
+      padding: 12px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
 
-        /* Calculators Grid */
-        .calculators-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
-        }
+    .site-nav .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
 
-        .calculator-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            border: 1px solid #e8ecef;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
+    .nav-logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #007bff;
+      text-decoration: none;
+    }
 
-        .calculator-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #007bff, #0056b3);
-        }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 16px;
+    }
 
-        .calculator-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
+    .nav-links a {
+      color: #475569;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
 
-        .calculator-icon {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            display: block;
-        }
+    .nav-links a:hover { color: #007bff; }
 
-        .calculator-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: #2c3e50;
-            font-weight: 600;
-        }
+    /* =====================
+       HERO HEADER
+    ===================== */
+    .hero {
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      color: white;
+      padding: 60px 20px 50px;
+      text-align: center;
+    }
 
-        .calculator-card p {
-    color: #666;
-    margin-bottom: 25px;
-    line-height: 1.5;
-    font-size: 0.95rem;
-    min-height: 60px; 
-}
+    .hero-logo { font-size: 3.5rem; margin-bottom: 12px; }
 
-        .try-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #007bff, #0056b3);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
 
-        .try-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,123,255,0.3);
-        }
+    .hero p.tagline {
+      font-size: 1.15rem;
+      opacity: 0.95;
+      font-weight: 300;
+      max-width: 520px;
+      margin: 0 auto 25px;
+    }
 
-        /* Footer */
-        .footer {
-            margin-top: auto;
-            padding: 40px 20px;
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-        }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 25px;
-            margin-bottom: 20px;
-        }
+    .hero-stat {
+      text-align: center;
+    }
 
-        .footer-link {
-            color: #ecf0f1;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
+    .hero-stat strong {
+      display: block;
+      font-size: 1.8rem;
+      font-weight: 800;
+    }
 
-        .footer-link:hover {
-            color: #3498db;
-        }
+    .hero-stat span {
+      font-size: 0.85rem;
+      opacity: 0.85;
+    }
 
-        .footer-note {
-            color: #bdc3c7;
-            font-size: 0.9rem;
-        }
+    /* =====================
+       MAIN
+    ===================== */
+    main {
+      flex: 1;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .professional-header {
-                padding: 40px 20px;
-            }
+    /* =====================
+       INTRO SECTION
+    ===================== */
+    .intro-section {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 30px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    }
 
-            .logo {
-                font-size: 3rem;
-            }
+    .intro-section h2 {
+      font-size: 1.8rem;
+      color: #2c3e50;
+      margin-bottom: 14px;
+    }
 
-            .site-title {
-                font-size: 2.2rem;
-            }
+    .intro-section p {
+      color: #555;
+      font-size: 1.05rem;
+      max-width: 750px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
 
-            .tagline {
-                font-size: 1.1rem;
-            }
+    /* =====================
+       SECTION LABELS
+    ===================== */
+    .section-label {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #2c3e50;
+      margin: 40px 0 18px;
+      padding-left: 14px;
+      border-left: 4px solid #007bff;
+    }
 
-            .calculators-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
+    /* =====================
+       CALCULATOR CARDS GRID
+    ===================== */
+    .calculators-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 22px;
+      margin-bottom: 40px;
+    }
 
-            .calculator-card {
-                padding: 25px;
-            }
+    .calculator-card {
+      background: white;
+      border-radius: 15px;
+      padding: 28px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+      border: 1px solid #e8ecef;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-            .footer-links {
-                flex-direction: column;
-                gap: 15px;
-            }
-        }
+    .calculator-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #007bff, #0056b3);
+    }
 
-        @media (max-width: 480px) {
-            main {
-                padding: 20px 15px;
-            }
+    .calculator-card.guide-card {
+      border: 2px dashed #007bff;
+    }
 
-            .professional-header {
-                padding: 30px 15px;
-            }
+    .calculator-card.guide-card::before {
+      background: linear-gradient(90deg, #10b981, #059669);
+    }
 
-            .site-title {
-                font-size: 1.8rem;
-            }
+    .calculator-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+    }
 
-            .calculator-card {
-                padding: 20px;
-            }
-        }
-    </style>
+    .calculator-icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .calculator-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+      color: #2c3e50;
+      font-weight: 600;
+    }
+
+    .calculator-card p {
+      color: #666;
+      margin-bottom: 22px;
+      line-height: 1.55;
+      font-size: 0.92rem;
+      flex: 1;
+    }
+
+    .try-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      color: white;
+      padding: 11px 26px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      margin-top: auto;
+    }
+
+    .try-button.guide-btn {
+      background: linear-gradient(135deg, #10b981, #059669);
+    }
+
+    .try-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,123,255,0.3);
+    }
+
+    .try-button.guide-btn:hover {
+      box-shadow: 0 5px 15px rgba(16,185,129,0.3);
+    }
+
+    /* =====================
+       TRUST SECTION
+    ===================== */
+    .trust-section {
+      background: white;
+      border-radius: 15px;
+      padding: 40px 30px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      margin-bottom: 40px;
+    }
+
+    .trust-section h2 {
+      text-align: center;
+      font-size: 1.7rem;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    .trust-section .lead {
+      text-align: center;
+      color: #555;
+      font-size: 1rem;
+      margin-bottom: 30px;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .trust-item {
+      text-align: center;
+      padding: 22px 16px;
+      background: #f8fafc;
+      border-radius: 12px;
+      border: 1px solid #e8ecef;
+    }
+
+    .trust-item .trust-icon {
+      font-size: 2.2rem;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .trust-item h3 {
+      font-size: 1rem;
+      color: #2c3e50;
+      margin-bottom: 8px;
+    }
+
+    .trust-item p {
+      font-size: 0.88rem;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    /* =====================
+       FAQ SECTION
+    ===================== */
+    .faq-section {
+      background: white;
+      border-radius: 15px;
+      padding: 40px 30px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      margin-bottom: 40px;
+    }
+
+    .faq-section h2 {
+      font-size: 1.7rem;
+      color: #2c3e50;
+      margin-bottom: 24px;
+      padding-left: 14px;
+      border-left: 4px solid #007bff;
+    }
+
+    .faq-item {
+      background: #f8fafc;
+      border: 1px solid #e8ecef;
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin-bottom: 14px;
+    }
+
+    .faq-item h3 {
+      font-size: 1rem;
+      color: #2c3e50;
+      margin-bottom: 8px;
+    }
+
+    .faq-item p {
+      font-size: 0.92rem;
+      color: #555;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* =====================
+       FOOTER
+    ===================== */
+    .footer {
+      background: #1e293b;
+      color: #94a3b8;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      margin-bottom: 20px;
+    }
+
+    .footer-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: white; }
+
+    .footer-note {
+      color: #64748b;
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+    }
+
+    .footer-disclaimer {
+      color: #475569;
+      font-size: 0.78rem;
+      max-width: 650px;
+      margin: 10px auto 0;
+      line-height: 1.5;
+    }
+
+    /* =====================
+       RESPONSIVE
+    ===================== */
+    @media (max-width: 768px) {
+      .hero h1      { font-size: 2rem; }
+      .hero-logo    { font-size: 2.8rem; }
+      .hero-stats   { gap: 25px; }
+      .calculators-grid { grid-template-columns: 1fr; }
+      .nav-links    { display: none; }
+      .trust-grid   { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .hero         { padding: 40px 15px; }
+      .hero h1      { font-size: 1.7rem; }
+      main          { padding: 20px 15px; }
+      .trust-grid   { grid-template-columns: 1fr; }
+      .intro-section { padding: 20px; }
+    }
+  </style>
 </head>
+
 <body>
 
-     <!-- Google Tag Manager (noscript) -->
+<!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5RH5T6NC"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-    
-    <!-- Professional Header -->
-    <header class="professional-header">
-        <div class="logo">📊</div>
-        <h1 class="site-title">Foralix</h1>
-        <p class="tagline">Professional Financial Calculators</p>
-    </header>
 
-    <!-- Main Content -->
-    <main>
+<!-- ===================== STICKY NAV ===================== -->
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="inner">
+    <a href="https://foralix.com/" class="nav-logo">💰 Foralix</a>
+    <div class="nav-links">
+      <a href="https://foralix.com/loan.html">Loan</a>
+      <a href="https://foralix.com/mortgage.html">Mortgage</a>
+      <a href="https://foralix.com/auto-loan.html">Auto Loan</a>
+      <a href="https://foralix.com/savings.html">Savings</a>
+      <a href="https://foralix.com/budget-planner.html">Budget</a>
+      <a href="https://foralix.com/debt-payoff.html">Debt Payoff</a>
+      <a href="https://foralix.com/loan-payment-guide.html">Guides</a>
+    </div>
+  </div>
+</nav>
 
-        <section style="margin-bottom:30px; text-align:center;">
-  <h2>Free Financial Tools to Manage Your Money</h2>
-  <p>
-    Foralix provides easy-to-use financial calculators and guides to help you 
-    manage loans, savings, budgets, and debt. Whether you're planning a mortgage 
-    or building an emergency fund, our tools help you make smarter financial decisions.
-  </p>
-</section>
-        
-        <div class="calculators-grid">
-            <!-- Loan Calculator -->
-            <div class="calculator-card">
-                <div class="calculator-icon">💰</div>
-                <h3>Loan Calculator</h3>
-                <p>Calculate monthly payments, interest rates, and amortization schedules for any type of loan</p>
-                <a href="loan.html" class="try-button">Try Now →</a>
-            </div>
+<!-- ===================== HERO ===================== -->
+<header class="hero" role="banner">
+  <div class="hero-logo">📊</div>
+  <h1>Foralix</h1>
+  <p class="tagline">Free financial calculators and guides to help you make smarter money decisions</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <strong>6+</strong>
+      <span>Free Calculators</span>
+    </div>
+    <div class="hero-stat">
+      <strong>7+</strong>
+      <span>Expert Guides</span>
+    </div>
+    <div class="hero-stat">
+      <strong>100%</strong>
+      <span>Free Forever</span>
+    </div>
+  </div>
+</header>
 
+<!-- ===================== MAIN ===================== -->
+<main>
 
-            <!-- Add this as a special card in your calculators grid -->
+  <!-- Intro -->
+  <section class="intro-section">
+    <h2>Free Financial Tools to Manage Your Money</h2>
+    <p>
+      Foralix provides easy-to-use financial calculators and expert guides to help you manage
+      loans, savings, budgets, mortgages and debt. Whether you are planning to buy a home,
+      pay off credit card debt or build an emergency fund, our tools give you the numbers
+      you need to make confident, informed financial decisions — completely free.
+    </p>
+  </section>
 
-            <div class="calculator-card" style="border: 2px dashed #007bff;">
-                <div class="calculator-icon">📚</div>
-                <h3>Loan Payment Guide</h3>
-                <p>Learn how to calculate loan payments with our comprehensive guide</p>
-                <a href="loan-payment-guide.html" class="try-button">Read Guide →</a>
-            </div>
+  <!-- ====== CALCULATORS ====== -->
+  <h2 class="section-label">🧮 Financial Calculators</h2>
+  <div class="calculators-grid">
 
-            
-            <!-- Auto Loan Calculator -->
-            <div class="calculator-card">
-                <div class="calculator-icon">🚗</div>
-                <h3>Auto Loan Calculator</h3>
-                <p>Calculate car payments with down payment, trade-in value, and various loan terms</p>
-                <a href="auto-loan.html" class="try-button">Try Now →</a>
-            </div>
+    <!-- Loan -->
+    <article class="calculator-card">
+      <span class="calculator-icon">💰</span>
+      <h3>Loan Calculator</h3>
+      <p>Calculate monthly payments, total interest and full amortization schedules for any personal or student loan.</p>
+      <a href="https://foralix.com/loan.html" class="try-button">Try Now →</a>
+    </article>
 
+    <!-- Mortgage -->
+    <article class="calculator-card">
+      <span class="calculator-icon">🏠</span>
+      <h3>Mortgage Calculator</h3>
+      <p>Calculate complete mortgage payments including principal, interest, taxes, insurance and PMI in seconds.</p>
+      <a href="https://foralix.com/mortgage.html" class="try-button">Try Now →</a>
+    </article>
 
-            <!-- Auto Loan Negotiation Guide -->
-            <div class="calculator-card" style="border: 2px dashed #007bff;">
-                <div class="calculator-icon">💼</div>
-                <h3>Auto Loan Negotiation Guide</h3>
-                <p>Learn how to save thousands on your car loan with expert negotiation tips</p>
-                <a href="auto-loan-negotiation-guide.html" class="try-button">Read Guide →</a>
-            </div>
+    <!-- Auto Loan -->
+    <article class="calculator-card">
+      <span class="calculator-icon">🚗</span>
+      <h3>Auto Loan Calculator</h3>
+      <p>Calculate car payments with down payment, trade-in value, taxes and various loan terms side by side.</p>
+      <a href="https://foralix.com/auto-loan.html" class="try-button">Try Now →</a>
+    </article>
 
-            <!-- Mortgage Calculator -->
-            <div class="calculator-card">
-                <div class="calculator-icon">🏠</div>
-                <h3>Mortgage Calculator</h3>
-                <p>Calculate complete mortgage payments including taxes, insurance, and PMI</p>
-                <a href="mortgage.html" class="try-button">Try Now →</a>
-            </div>
+    <!-- Savings -->
+    <article class="calculator-card">
+      <span class="calculator-icon">📈</span>
+      <h3>Savings Calculator</h3>
+      <p>Project your future savings with compound interest, regular contributions and inflation adjustments.</p>
+      <a href="https://foralix.com/savings.html" class="try-button">Try Now →</a>
+    </article>
 
-       <!-- In your calculators grid, after Mortgage Calculator -->
+    <!-- Budget Planner -->
+    <article class="calculator-card">
+      <span class="calculator-icon">📊</span>
+      <h3>Budget Planner</h3>
+      <p>Build a monthly budget using the 50/30/20 rule, track your income and expenses and find where to save more.</p>
+      <a href="https://foralix.com/budget-planner.html" class="try-button">Try Now →</a>
+    </article>
 
-            <div class="calculator-card" style="border: 2px dashed #007bff;">
-                <div class="calculator-icon">📖</div>
-                <h3>Mortgage Guide</h3>
-                <p>Learn how mortgage payments work with our comprehensive guide</p>
-                <a href="mortgage-guide.html" class="try-button">Read Guide →</a>
-            </div>
-          
-            <!-- Savings Calculator -->
-            <div class="calculator-card">
-                <div class="calculator-icon">📈</div>
-                <h3>Savings Calculator</h3>
-                <p>Estimate future savings with compound interest, monthly contributions, and inflation</p>
-                <a href="savings.html" class="try-button">Try Now →</a>
-            </div>
+    <!-- Debt Payoff -->
+    <article class="calculator-card">
+      <span class="calculator-icon">💳</span>
+      <h3>Debt Payoff Calculator</h3>
+      <p>Find your fastest path to debt freedom using the snowball or avalanche method with a full monthly schedule.</p>
+      <a href="https://foralix.com/debt-payoff.html" class="try-button">Try Now →</a>
+    </article>
 
+  </div>
 
+  <!-- ====== GUIDES ====== -->
+  <h2 class="section-label">📚 Financial Guides</h2>
+  <div class="calculators-grid">
 
-              <!-- Emergency Fund Guide Card - Savings Calculator -->
+    <!-- Loan Payment Guide -->
+    <article class="calculator-card guide-card">
+      <span class="calculator-icon">📚</span>
+      <h3>Loan Payment Guide</h3>
+      <p>Learn how loan payments are calculated, what affects your interest rate and how to pay off loans faster.</p>
+      <a href="https://foralix.com/loan-payment-guide.html" class="try-button guide-btn">Read Guide →</a>
+    </article>
 
-            <div class="calculator-card" style="border: 2px dashed #007bff;">
+    <!-- Mortgage Guide -->
+    <article class="calculator-card guide-card">
+      <span class="calculator-icon">📖</span>
+      <h3>Mortgage Guide</h3>
+      <p>Everything you need to know about mortgage payments, types of mortgages and how to qualify for the best rate.</p>
+      <a href="https://foralix.com/mortgage-guide.html" class="try-button guide-btn">Read Guide →</a>
+    </article>
 
-                <div class="calculator-icon">🛡️</div>
-                <h3>Emergency Fund Guide</h3>
-                <p>Learn how much to save for emergencies and build your financial safety net</p>
-                <a href="emergency-fund-guide.html" class="try-button">Read Guide →</a>
-            </div>
-                <!-- In  Calculator -->
+    <!-- Auto Loan Negotiation Guide -->
+    <article class="calculator-card guide-card">
+      <span class="calculator-icon">💼</span>
+      <h3>Auto Loan Negotiation Guide</h3>
+      <p>Learn how to save thousands on your next car loan with proven negotiation strategies and insider tips.</p>
+      <a href="https://foralix.com/auto-loan-negotiation-guide.html" class="try-button guide-btn">Read Guide →</a>
+    </article>
 
-            <div class="calculator-card">
-    <div class="calculator-icon">💹</div>
-    <h3>Compound Interest Calculator</h3>
-    <p>Calculate future savings with compound interest and monthly contributions</p>
-    <a href="compoundInterest.html" class="try-button">Try Now →</a>
-</div>
+    <!-- Compound Interest Guide -->
+    <article class="calculator-card guide-card">
+      <span class="calculator-icon">💹</span>
+      <h3>Compound Interest Guide</h3>
+      <p>Understand how compound interest works, why it matters for savings and investments, and how to use it to your advantage.</p>
+      <a href="https://foralix.com/compound-interest-guide.html" class="try-button guide-btn">Read Guide →</a>
+    </article>
 
+    <!-- Debt Payoff Methods Guide -->
+    <article class="calculator-card guide-card">
+      <span class="calculator-icon">📊</span>
+      <h3>Debt Payoff Methods Guide</h3>
+      <p>Snowball vs Avalanche — compare both methods with real examples to find which strategy saves you the most money.</p>
+      <a href="https://foralix.com/debt-payoff-methods.html" class="try-button guide-btn">Read Guide →</a>
+    </article>
 
-            <div class="calculator-card" style="border: 2px dashed #007bff;">
-    <div class="calculator-icon">📚</div>
-    <h3>Compound Interest Guide</h3>
-    <p>Learn how compound interest works and grows your savings</p>
-    <a href="compound-interest-guide.html" class="try-button">Read Guide →</a>
-</div>
-      
-            <!-- Budget Planner -->
-            <div class="calculator-card">
-                <div class="calculator-icon">📊</div>
-                <h3>Budget Planner</h3>
-                <p>Create monthly budgets using the 50/30/20 rule and track your expenses effectively</p>
-                <a href="budget-planner.html" class="try-button">Try Now →</a>
-            </div>
+    <!-- 50/30/20 Budget Guide -->
+    <article class="calculator-card guide-card">
+      <span class="calculator-icon">📖</span>
+      <h3>50/30/20 Budget Rule Guide</h3>
+      <p>Master the most popular budgeting framework with step-by-step examples and practical tips for any income level.</p>
+      <a href="https://foralix.com/50-30-20-budget-rule.html" class="try-button guide-btn">Read Guide →</a>
+    </article>
 
+    <!-- Emergency Fund Guide -->
+    <article class="calculator-card guide-card">
+      <span class="calculator-icon">🛡️</span>
+      <h3>Emergency Fund Guide</h3>
+      <p>Learn exactly how much to save for emergencies, where to keep it, and how to build your financial safety net fast.</p>
+      <a href="https://foralix.com/emergency-fund-guide.html" class="try-button guide-btn">Read Guide →</a>
+    </article>
 
-            <!-- NEW: 50/30/20 Budget Guide -->
+  </div>
 
-            <div class="calculator-card" style="border: 2px dashed #007bff;">
-                <div class="calculator-icon">📖</div>
-                <h3>50/30/20 Budget Guide</h3>
-                <p>Master the popular budgeting rule with our complete guide and examples</p>
-                <a href="50-30-20-budget-rule.html" class="try-button">Read Guide →</a>
-            </div>
+  <!-- ====== TRUST SECTION ====== -->
+  <section class="trust-section">
+    <h2>Why Trust Foralix?</h2>
+    <p class="lead">Our tools are built on standard financial formulas and designed to give you accurate, useful results — no hidden fees, no registration, no ads pushing you toward products.</p>
+    <div class="trust-grid">
+      <div class="trust-item">
+        <span class="trust-icon">✅</span>
+        <h3>100% Free</h3>
+        <p>Every calculator and guide on Foralix is completely free to use with no registration required.</p>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">🔒</span>
+        <h3>No Data Stored</h3>
+        <p>All calculations happen in your browser. We never store or sell your personal financial data.</p>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">📐</span>
+        <h3>Accurate Formulas</h3>
+        <p>Our calculators use industry-standard financial formulas used by banks and financial advisors.</p>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">📱</span>
+        <h3>Works on Any Device</h3>
+        <p>Fully optimized for mobile, tablet and desktop — use Foralix anywhere, anytime.</p>
+      </div>
+    </div>
+  </section>
 
-            
+  <!-- ====== FAQ SECTION ====== -->
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
 
-            <!-- Debt Payoff Calculator -->
-            <div class="calculator-card">
-                <div class="calculator-icon">💳</div>
-                <h3>Debt Payoff Calculator</h3>
-                <p>Calculate the fastest path to debt freedom using snowball or avalanche methods</p>
-                <a href="debt-payoff.html" class="try-button">Try Now →</a>
-            </div>
+    <div class="faq-item">
+      <h3>Are Foralix calculators free to use?</h3>
+      <p>Yes. All Foralix financial calculators and guides are completely free to use with no registration, subscription or payment required. Ever.</p>
+    </div>
 
+    <div class="faq-item">
+      <h3>What financial calculators does Foralix offer?</h3>
+      <p>Foralix offers a loan calculator, mortgage calculator, auto loan calculator, savings calculator, budget planner, and debt payoff calculator — plus 7 expert guides covering the most important personal finance topics.</p>
+    </div>
 
-            <!-- debt payoff guide calculator cards -->
+    <div class="faq-item">
+      <h3>How accurate are the Foralix calculators?</h3>
+      <p>Foralix calculators use standard financial formulas to provide accurate estimates. Results are educational and should be verified with a qualified financial advisor for major financial decisions.</p>
+    </div>
 
-            <div class="calculator-card" style="border: 2px dashed #007bff;">
-                <div class="calculator-icon">📊</div>
-                <h3>Debt Payoff Guide</h3>
-                <p>Snowball vs Avalanche: Which method saves more money?</p>
-                <a href="debt-payoff-methods.html" class="try-button">Read Guide →</a>
-            </div>
-       
-        </div>
-    </main>
+    <div class="faq-item">
+      <h3>What is the best way to pay off debt?</h3>
+      <p>The two most popular strategies are the Debt Snowball (pay smallest balances first for motivation) and Debt Avalanche (pay highest interest rate first to save the most money). Use our free Debt Payoff Calculator to compare both methods with your actual numbers.</p>
+    </div>
 
-    <section style="margin-top:40px; text-align:center;">
-  <h2>Why Trust Us?</h2>
-  <p>
-    Our tools are designed to provide accurate financial calculations and 
-    practical advice to help users make better financial decisions.
-  </p>
-</section>
+    <div class="faq-item">
+      <h3>How much should I save in an emergency fund?</h3>
+      <p>Most financial experts recommend saving 3 to 6 months of living expenses in an easily accessible account. Read our Emergency Fund Guide for a step-by-step plan based on your income and situation.</p>
+    </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-links">
-            <a href="about.html" class="footer-link">About Us</a>
-            <a href="contact.html" class="footer-link">Contact Us</a>
-            <a href="privacy.html" class="footer-link">Privacy Policy</a>
-            <a href="terms.html" class="footer-link">Terms of Service</a>
-            <a href="cookiepolicy.html" class="footer-link">Cookie Policy</a>
-        </div>
-        <div class="footer-note">© 2025 SmartCalcHub. All rights reserved.</div>
-    </footer>
+  </section>
 
-    <script>
-        // Initialize the application
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('SmartCalcHub homepage loaded');
-            
-            // Add click tracking for analytics
-            const buttons = document.querySelectorAll('.try-button');
-            buttons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const calculatorName = this.closest('.calculator-card').querySelector('h3').textContent;
-                    if (typeof gtag !== 'undefined') {
-                        gtag('event', 'calculator_click', {
-                            'event_category': 'engagement',
-                            'event_label': calculatorName
-                        });
-                    }
-                });
-            });
-        });
+</main>
 
-        // Error handling
-        window.addEventListener('error', function(e) {
-            console.error('Error occurred:', e.error);
-        });
-    </script>
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer" role="contentinfo">
+  <div class="footer-links">
+    <a href="https://foralix.com/loan.html">Loan Calculator</a>
+    <a href="https://foralix.com/mortgage.html">Mortgage</a>
+    <a href="https://foralix.com/auto-loan.html">Auto Loan</a>
+    <a href="https://foralix.com/savings.html">Savings</a>
+    <a href="https://foralix.com/budget-planner.html">Budget Planner</a>
+    <a href="https://foralix.com/debt-payoff.html">Debt Payoff</a>
+    <a href="https://foralix.com/loan-payment-guide.html">Guides</a>
+    <a href="https://foralix.com/about.html">About Us</a>
+    <a href="https://foralix.com/contact.html">Contact</a>
+    <a href="https://foralix.com/privacy.html">Privacy Policy</a>
+    <a href="https://foralix.com/terms.html">Terms of Service</a>
+    <a href="https://foralix.com/cookiepolicy.html">Cookie Policy</a>
+  </div>
+  <p class="footer-note">© 2026 Foralix.com · All Rights Reserved · Smart financial tools for better decisions</p>
+  <p class="footer-disclaimer">Foralix provides educational financial calculators and tools only. This is not financial advice. Always consult a qualified financial advisor before making major financial decisions.</p>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+
+    // Track calculator/guide clicks
+    const buttons = document.querySelectorAll('.try-button');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', function () {
+        const name = this.closest('.calculator-card').querySelector('h3').textContent;
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'tool_click', {
+            event_category: 'engagement',
+            event_label: name
+          });
+        }
+      });
+    });
+
+  });
+
+  window.addEventListener('error', function (e) {
+    console.error('Foralix error:', e.error);
+  });
+</script>
+
 </body>
 </html>
