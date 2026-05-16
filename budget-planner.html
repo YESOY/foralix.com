@@ -1,188 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="canonical" href="https://foralix.com/budget-planner.html" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ✅ HTTPS redirect using replace() -->
-  <script>
-    if (location.protocol === 'http:') {
-      location.replace('https://' + location.host + location.pathname + location.search + location.hash);
-    }
-  </script>
+<title>Budget Planner Calculator | Foralix</title>
 
-  <!-- ✅ Favicon -->
-  <link rel="icon" href="https://foralix.com/favicon.ico" sizes="any">
-  <link rel="apple-touch-icon" href="https://foralix.com/logo.png">
+<meta name="description" content="Free Budget Planner Calculator by Foralix. Plan monthly income, expenses, savings and follow the 50/30/20 budgeting rule.">
 
-  <!-- ✅ Font loading optimization -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta name="keywords" content="budget planner, monthly budget calculator, 50/30/20 rule, budgeting tool, finance planner">
 
-  <!-- ✅ Single optimized title — Foralix not SmartCalcHub -->
-  <title>Budget Planner Calculator - 50/30/20 Rule | Foralix</title>
+<link rel="canonical" href="https://foralix.com/budget-planner.html">
 
-  <!-- ✅ Single meta description -->
-  <meta name="description" content="Free monthly budget planner using the 50/30/20 rule. Track your income, needs, wants and savings to take control of your money and reach your financial goals.">
-
-  <!-- ✅ Robots meta tag -->
-  <meta name="robots" content="index, follow, max-image-preview:large">
-
-  <!-- ✅ No meta keywords (Google ignores them) -->
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Budget Planner Calculator - 50/30/20 Rule | Foralix">
-  <meta property="og:description" content="Free monthly budget planner. Use the 50/30/20 rule to track income, expenses and savings goals with our easy online calculator.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://foralix.com/budget-planner.html">
-  <meta property="og:site_name" content="Foralix">
-  <meta property="og:image" content="https://foralix.com/logo.png">
-
-  <!-- Google Tag Manager (ONE instance only) -->
-  <!-- ✅ GA4 direct script removed — GTM only -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-5RH5T6NC');</script>
-
-  <!-- AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5655775153440301"
-  crossorigin="anonymous"></script>
-
-  <!-- ✅ WebPage Schema -->
-  <script type="application/ld+json">
-
-    {
- "@context":"https://schema.org",
- "@type":"Organization",
- "name":"Foralix",
- "url":"https://foralix.com",
- "logo":"https://foralix.com/logo.png",
- "sameAs":[]
+<!-- HTTPS Redirect -->
+<script>
+if (window.location.protocol === 'http:') {
+  window.location.href =
+    'https://' +
+    window.location.host +
+    window.location.pathname +
+    window.location.search +
+    window.location.hash;
 }
-    
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Budget Planner Calculator - 50/30/20 Rule",
-    "url": "https://foralix.com/budget-planner.html",
-    "description": "Free monthly budget planner using the 50/30/20 rule to track income, expenses and savings goals.",
-    "inLanguage": "en",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Foralix",
-      "url": "https://foralix.com/"
-    }
-  }
-  </script>
+</script>
 
-  <!-- ✅ WebApplication Schema with Foralix branding + logo dimensions -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Budget Planner Calculator",
-    "description": "Free monthly budget planner with 50/30/20 rule. Track income, expenses and savings goals.",
-    "url": "https://foralix.com/budget-planner.html",
-    "applicationCategory": "FinanceApplication",
-    "operatingSystem": "Any",
-    "author": {
-      "@type": "Person",
-      "name": "Foralix Research Team",
-      "url": "https://foralix.com/about.html"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Foralix",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://foralix.com/logo.png",
-        "width": 512,
-        "height": 512
-      }
-    },
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
-  }
-  </script>
+<!-- Google Tag Manager -->
+<script>
+(function(w,d,s,l,i){
+w[l]=w[l]||[];
+w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+j.async=true;
+j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5RH5T6NC');
+</script>
 
-  <!-- ✅ BreadcrumbList Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://foralix.com/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Budget Planner",
-        "item": "https://foralix.com/budget-planner.html"
-      }
-    ]
-  }
-  </script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WDSN8J1KJ6"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-WDSN8J1KJ6');
+</script>
 
-  <!-- ✅ FAQ Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is the 50/30/20 budget rule?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The 50/30/20 rule divides your after-tax income into three categories: 50% for needs (rent, utilities, groceries), 30% for wants (dining, entertainment, hobbies) and 20% for savings and debt repayment."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How do I start budgeting with the 50/30/20 rule?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Start by calculating your monthly after-tax income. Then track all expenses for one month. Categorize each expense as a need, want or savings. Use our free budget planner to see how your spending compares to the 50/30/20 targets."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What counts as a need vs a want in the 50/30/20 rule?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Needs are essentials you cannot live without: rent, mortgage, utilities, groceries, health insurance and minimum debt payments. Wants are non-essential lifestyle choices: dining out, Netflix, gym memberships, vacations and hobbies."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What if 50% is not enough for my needs?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "In high cost-of-living areas, 50% may not cover essential expenses. In that case, adjust the rule to fit your situation — for example 60/20/20. The goal is to use it as a guideline, not a rigid rule."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How much should I save each month?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The 50/30/20 rule recommends saving 20% of your after-tax income. This includes contributions to an emergency fund, retirement accounts and extra debt payments. Start with whatever you can and increase gradually."
-        }
-      }
-    ]
-  }
-  </script>
+<!-- AdSense -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5655775153440301"
+crossorigin="anonymous"></script>
+
+<!-- Tracking -->
+<script>
+function trackCalculatorUsage(name){
+gtag('event','calculator_used',{
+event_category:'Calculators',
+event_label:name
+});
+}
+
+function trackSocialShare(platform){
+gtag('event','share',{
+event_category:'Social',
+event_label:platform
+});
+}
+</script>
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@graph":[
+
+{
+"@type":"Organization",
+"name":"Foralix",
+"url":"https://foralix.com",
+"logo":"https://foralix.com/logo.png"
+},
+
+{
+"@type":"WebSite",
+"name":"Foralix",
+"url":"https://foralix.com"
+},
+
+{
+"@type":"WebPage",
+"name":"Budget Planner Calculator",
+"url":"https://foralix.com/budget-planner.html",
+"description":"Free monthly budget planner calculator using the 50/30/20 budgeting rule."
+},
+
+{
+"@type":"WebApplication",
+"name":"Budget Planner Calculator",
+"url":"https://foralix.com/budget-planner.html",
+"applicationCategory":"FinanceApplication",
+"operatingSystem":"Any",
+"offers":{
+"@type":"Offer",
+"price":"0",
+"priceCurrency":"USD"
+}
+},
+
+{
+"@type":"BreadcrumbList",
+"itemListElement":[
+{
+"@type":"ListItem",
+"position":1,
+"name":"Home",
+"item":"https://foralix.com/"
+},
+{
+"@type":"ListItem",
+"position":2,
+"name":"Budget Planner Calculator",
+"item":"https://foralix.com/budget-planner.html"
+}
+]
+}
+]
+}
+</script>
 
   <style>
     :root {
